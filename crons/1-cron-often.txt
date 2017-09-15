@@ -1,0 +1,11 @@
+#!/bin/bash
+
+################################
+#### littlebizzy cron often ####
+################################
+
+## scripts to run ##
+source /var/www/bash-check
+
+## delete lock file after done ##
+rm -R -f /tmp/1-cron-often.lock
