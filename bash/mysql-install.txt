@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#######################################
+#### littlebizzy install mysql 5.7 ####
+#######################################
+
+## server config details ##
+source /var/www/bash-config
+
+## set noninteractive ##
+export DEBIAN_FRONTEND=noninteractive
+
+## store mysql root password prior to installation ##
+echo "mysql-server mysql-server/root_password password "$dbpassroot"" | debconf-set-selections
+echo "mysql-server mysql-server/root_password_again password "$dbpassroot"" | debconf-set-selections
+# debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_password password "$dbpassroot""
+# debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_password_again password "$dbpassroot""
+
+## continue with the mysql installation ##
+DEBIAN_FRONTEND=noninteractive apt-get --yes --option Dpkg::Options::="--force-confold" install mysql-server
