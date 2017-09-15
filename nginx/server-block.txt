@@ -1,104 +1,176 @@
-## this block redirects all HTTP non-www to HTTP www version
+##############################################################################################
+#### littlebizzy nginx server block template (non-ssl) /etc/nginx/sites-available/default ####
+##############################################################################################
+
+## this catch-all server block redirects all erroneous traffic to the canonical domain ##
 server {
-    server_name            example.com;
-    listen                 *:80;
-    listen                 [::]:80 ipv6only=on;
-    return 301 http://www.example.com$request_uri;
+    listen                 80 default_server;
+    listen                 443 ssl default_server;
+    listen                 [::]:80;
+    listen                 [::]:443 ssl;
+    server_name            _;
+    ssl_certificate        /etc/ssl/nginx.crt;
+    ssl_certificate_key    /etc/ssl/nginx.key;
+    return 301             http://@DOMAIN$request_uri;
 }
 
-## this block is the default configuration for the live website
+## this server block is the canonical domain ##
 server {
-    server_name            www.example.com;
-    listen                 *:80 default_server;
-    listen                 [::]:80;
-    root                   /home/example/www;
-    index index.php index.html index.htm;
-    autoindex off;
-    ## improve public caching (no need for Last Modified too, and eTag is enabled by default in new Nginx versions)
-    expires 30d;
-    add_header Cache-Control "public";
-    add_header Pragma public;
-    if_modified_since before;
-    ## first try files, then directories, otherwise query index
-    location / {
-        ## force trailing slashes (don't enable for bbPress/BuddyPress)
-        # rewrite ^([^.]*[^/])$ $1/ permanent;
-	try_files $uri $uri/ /index.php?$args;
+    listen                 80;
+    listen                 [::]:80 ipv6only=on;
+    server_name            @DOMAIN;
+    if ($http_host != "@DOMAIN") {
+        return 301             $scheme://@DOMAIN$request_uri;
     }
-    ## make sure PHP loads via FCGI for better performance
+    root                   /var/www/html;
+    index                  index.php;
+
+    #### SKIP FASTCGI CACHE ####
+    set $skip_cache 0;
+    ## post requests should always skip the cache
+    if ($request_method = POST) {
+        set $skip_cache 1;
+    }
+    ## query strings should always skip the cache
+    if ($query_string != "") {
+        set $skip_cache 1;
+    }
+    ## sensitive wordpress urls should always skip the cache
+    if ($request_uri ~* "index.php|wp-.*.php|/wp-admin.*|/login.*|/cart.*|/checkout.*|/account.*|/my-.*|/dashboard.*|/order.*|/view.*|/profile.*|/settings.*|/contact.*") {
+        set $skip_cache 1;
+    }
+    ## logged in users or recent commenters etc should always skip the cache
+    if ($http_cookie ~* "wordpress_logged_in|wp-postpass|woocommerce_items_in_cart|woocommerce_cart_hash|comment_author") {
+        set $skip_cache 1;
+    }
+    ## woocommerce cart actions should always skip the cache
+    # if ($arg_add-to-cart != "") {
+    #    set $skip_cache 1;
+    # }
+    ## woocommerce shoppers should always skip the cache
+    # if ($http_cookie ~* "cookie_woocommerce_items_in_cart") {
+    #    set $skip_cache 1;
+    # }
+    ## woocommerce shoppers should always skip the cache
+    # if ($cookie_woocommerce_items_in_cart != "0") {
+    #    set $skip_cache 1;
+    # }
+
+    #### TRY FILES ####
+    location / {
+        ## first try physical files, then directories, otherwise query the wordpress php index
+        try_files $uri $uri/ /index.php?$args;
+	## force trailing slashes on urls... do not enable for bbpress/buddypress
+        # rewrite ^([^.]*[^/])$ $1/ permanent;
+    }
+
+    ### PHP-FPM ROUTING ###
     location ~ \.php$ {
+        set $rt_session "";
+        if ($http_cookie ~* "wp_woocommerce_session_[^=]*=([^%]+)%7C") {
+                set $rt_session wp_woocommerce_session_$1;
+        }	
+        if ($skip_cache = 0 ) {
+                more_clear_headers "Set-Cookie*";
+                set $rt_session "";
+        }
+
+        ## include /etc/nginx/fastcgi_params for older nginx versions
+        include /etc/nginx/fastcgi.conf;
         try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        ## if using PHP7
         fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         fastcgi_index index.php;
-        ## older nginx versions use: include fastcgi_params
-        include fastcgi.conf;
+        fastcgi_cache WORDPRESS;
+        fastcgi_cache_valid 200 301 404 60m;
+        fastcgi_cache_bypass $skip_cache;
+        fastcgi_no_cache $skip_cache;
         ## below line should not be needed
         # include snippets/fastcgi-php.conf;
     }
+
+    #### HIDDEN FILES ####
+    location ~ /\. {
+        ## block any attempted attacks or access
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    #### BRUTE FORCE PROTECTION ####
     location = /wp-login.php {
-        ## prevent brute force attacks (must enable in nginx.conf)
+        ## limit access to only one request per second per ip address
         limit_req zone=one burst=1 nodelay;
-        ## re-include basic FCGI settings for PHP files
+        ## we must re-include this routing for php-fpm ##
+        include /etc/nginx/fastcgi.conf;
+        try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        ## if using PHP7
         fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         fastcgi_index index.php;
-        ## older nginx versions use: include fastcgi_params
-        include fastcgi.conf;
+        fastcgi_cache WORDPRESS;
+        fastcgi_cache_valid 200 301 404 60m;
+        fastcgi_cache_bypass $skip_cache;
+        fastcgi_no_cache $skip_cache;
     }
-    ## block any attempted access to dotfiles
-    location ~ /\. {
-        deny all;
-        log_not_found off;
-        access_log off;
-    }
-    ## no need to log any access requests for favicon
+
+    #### FAVICON ####
     location = /favicon.ico {
-        ## 204 > 404 if favicon not found
+        ## 204 is better than 404 if favicon not found
         try_files $uri =204;
-        log_not_found off;
         access_log off;
+        log_not_found off;
     }
-    ## don't log robots file and allow any requests
+    
+    #### ROBOTS.TXT ####
     location = /robots.txt {
+        # first try physical files, then directories, otherwise query the wordpress php index
+        try_files $uri $uri/ /index.php?$args;
         allow all;
         log_not_found off;
         access_log off;
     }
-    ## block any attempted XMLRPC attacks
+
+    #### XML-RPC ####
     location = /xmlrpc.php {
+        ## block any attempted attacks or access
         deny all;
     }
-    ## comment this until WP is properly setup (blocks access)
+
+    #### WP-CONFIG ####
     location = /wp-config.php {
+        ## block any attempted attacks or access
         deny all;
     }
-    ## block access to hackers checking WP version
-    location ~* (licence|readme|license)\.(html|txt) {
+
+    #### GIT CONFIG ####
+    location = /.git/config {
+        ## block any attempted attacks or access
         deny all;
     }
-    ## deny access to PHP files in various directories
-    location ~* /(?:uploads|files|wp-content|wp-includes)/.*\.php$ {
+
+    #### WP INFO ####
+    location ~* (license|licence|readme)\.(html|txt) {
+        ## block any attempted attacks or access
         deny all;
     }
-    ## avoid any font problems in Firefox and IE
+
+    #### WP DIRS ####
+    location ~* /(?:uploads|wp-content|wp-includes)/.*\.php$ {
+        ## block any attempted attacks or access
+        deny all;
+    }
+
+    #### RESOURCE RENDER ####
     location ~ \.(eot|ttf|ttc|otf|woff|woff2|svg|css|js)$ {
-    add_header Access-Control-Allow-Origin "*";
+        ## avoid any render problems in firefox/ie browsers
+        add_header Access-Control-Allow-Origin "*";
     }
-    ## set maximum expiry times for static files
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|mp4|svg|svgz|ogg|ogv|webm|htc)$ {
+
+    #### STATIC RESOURCES ####
+    location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|ppt|tar|mid|midi|wav|bmp|rtf)$ {
+        expires max;
         log_not_found off;
         access_log off;
     }
-    ## define error pages in the web directory
-    error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-            root /usr/share/nginx/html;
-        }
-    ## flag to tell Comet Cache to shhh
-    location ~* \.php$ {
-      fastcgi_param WP_NGINX_CONFIG done;
-  }
+
 }
