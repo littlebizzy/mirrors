@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#####################################
+#### littlebizzy reset time zone ####
+#####################################
+
+## set server time zone to utc ##
+timedatectl set-timezone UTC
