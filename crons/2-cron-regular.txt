@@ -1,0 +1,12 @@
+#!/bin/bash
+
+##################################
+#### littlebizzy cron regular ####
+##################################
+
+## scripts to run ##
+source /var/www/bash-worker
+source /var/www/lemp-updates
+
+## delete lock file after done ##
+rm -R -f /tmp/2-cron-regular.lock
