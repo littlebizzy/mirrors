@@ -1,4 +1,4 @@
-<h3>Collection of custom scripts and configs for LEMP server management released and maintained by LittleBizzy, the best managed WordPress hosting in the world.</h3>
+<p>Collection of custom scripts and configs for LEMP server management released and maintained by LittleBizzy, the best managed WordPress hosting in the world.</p>
 
 <a href="bash/">/bash/</a><br>
 <a href="crons/">/crons/</a><br>
