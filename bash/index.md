@@ -1,3 +1,5 @@
+<p>Collection of custom scripts and configs for LEMP server management released and maintained by LittleBizzy, the best managed WordPress hosting in the world.</p>
+
 <a href="bash-check.txt">bash-check.txt</a><br>
 <a href="bash-worker.txt">bash-worker.txt</a><br>
 <a href="config.txt">config.txt</a><br>
