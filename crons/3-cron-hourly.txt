@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#################################
+#### littlebizzy cron hourly ####
+#################################
+
+## scripts to run ##
+source /var/www/wp-clean
+source /var/www/perms-reset
+
+## delete lock file after done ##
+rm -R -f /tmp/3-cron-hourly.lock
