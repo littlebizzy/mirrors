@@ -1,6 +1,6 @@
-<h1><a href="./">mirrors</a> / bash</h1>
-
 <p>Collection of custom scripts and configs for LEMP server management released and maintained by LittleBizzy, the best managed WordPress hosting in the world.</p>
+
+<h2><a href="../">mirrors</a> / bash</h2>
 
 <a href="bash-check.txt">bash-check.txt</a><br>
 <a href="bash-worker.txt">bash-worker.txt</a><br>
