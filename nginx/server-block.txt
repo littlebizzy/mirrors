@@ -1,0 +1,104 @@
+## this block redirects all HTTP non-www to HTTP www version
+server {
+    server_name            example.com;
+    listen                 *:80;
+    listen                 [::]:80 ipv6only=on;
+    return 301 http://www.example.com$request_uri;
+}
+
+## this block is the default configuration for the live website
+server {
+    server_name            www.example.com;
+    listen                 *:80 default_server;
+    listen                 [::]:80;
+    root                   /home/example/www;
+    index index.php index.html index.htm;
+    autoindex off;
+    ## improve public caching (no need for Last Modified too, and eTag is enabled by default in new Nginx versions)
+    expires 30d;
+    add_header Cache-Control "public";
+    add_header Pragma public;
+    if_modified_since before;
+    ## first try files, then directories, otherwise query index
+    location / {
+        ## force trailing slashes (don't enable for bbPress/BuddyPress)
+        # rewrite ^([^.]*[^/])$ $1/ permanent;
+	try_files $uri $uri/ /index.php?$args;
+    }
+    ## make sure PHP loads via FCGI for better performance
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        ## if using PHP7
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        ## older nginx versions use: include fastcgi_params
+        include fastcgi.conf;
+        ## below line should not be needed
+        # include snippets/fastcgi-php.conf;
+    }
+    location = /wp-login.php {
+        ## prevent brute force attacks (must enable in nginx.conf)
+        limit_req zone=one burst=1 nodelay;
+        ## re-include basic FCGI settings for PHP files
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        ## if using PHP7
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        ## older nginx versions use: include fastcgi_params
+        include fastcgi.conf;
+    }
+    ## block any attempted access to dotfiles
+    location ~ /\. {
+        deny all;
+        log_not_found off;
+        access_log off;
+    }
+    ## no need to log any access requests for favicon
+    location = /favicon.ico {
+        ## 204 > 404 if favicon not found
+        try_files $uri =204;
+        log_not_found off;
+        access_log off;
+    }
+    ## don't log robots file and allow any requests
+    location = /robots.txt {
+        allow all;
+        log_not_found off;
+        access_log off;
+    }
+    ## block any attempted XMLRPC attacks
+    location = /xmlrpc.php {
+        deny all;
+    }
+    ## comment this until WP is properly setup (blocks access)
+    location = /wp-config.php {
+        deny all;
+    }
+    ## block access to hackers checking WP version
+    location ~* (licence|readme|license)\.(html|txt) {
+        deny all;
+    }
+    ## deny access to PHP files in various directories
+    location ~* /(?:uploads|files|wp-content|wp-includes)/.*\.php$ {
+        deny all;
+    }
+    ## avoid any font problems in Firefox and IE
+    location ~ \.(eot|ttf|ttc|otf|woff|woff2|svg|css|js)$ {
+    add_header Access-Control-Allow-Origin "*";
+    }
+    ## set maximum expiry times for static files
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|mp4|svg|svgz|ogg|ogv|webm|htc)$ {
+        log_not_found off;
+        access_log off;
+    }
+    ## define error pages in the web directory
+    error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root /usr/share/nginx/html;
+        }
+    ## flag to tell Comet Cache to shhh
+    location ~* \.php$ {
+      fastcgi_param WP_NGINX_CONFIG done;
+  }
+}
