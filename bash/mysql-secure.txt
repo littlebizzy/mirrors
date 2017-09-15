@@ -1,0 +1,48 @@
+#!/bin/bash
+
+######################################
+#### littlebizzy secure mysql 5.7 ####
+######################################
+
+## server config details ##
+source /var/www/bash-config
+
+## set noninteractive ##
+export DEBIAN_FRONTEND=noninteractive
+
+## install expect ##
+DEBIAN_FRONTEND=noninteractive apt-get --yes --option Dpkg::Options::="--force-confold" install expect
+
+## build expect script ##
+SECURE_MYSQL=$(expect -c "
+set timeout 10
+spawn mysql_secure_installation
+
+expect "Enter password for user root:"
+send "$dbpassroot\r"
+
+expect "Press y|Y for Yes, any other key for No:"
+send "n\r"
+
+# expect "Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG:"
+# send "2\r"
+
+expect "Change the password for root ? ((Press y|Y for Yes, any other key for No) :"
+send "n\r"
+
+expect "Remove anonymous users? (Press y|Y for Yes, any other key for No) :"
+send "y\r"
+
+expect "Disallow root login remotely? (Press y|Y for Yes, any other key for No) :"
+send "y\r"
+
+expect "Remove test database and access to it? (Press y|Y for Yes, any other key for No) :"
+send "y\r"
+
+expect "Reload privilege tables now? (Press y|Y for Yes, any other key for No) :"
+send "y\r"
+
+expect eof
+")
+
+echo "$SECURE_MYSQL"
