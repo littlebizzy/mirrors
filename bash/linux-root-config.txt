@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#################################
+#### littlebizzy config root ####
+#################################
+
+## server-specific config variables ##
+source config
+
+## reset root password ##
+# echo root:$passroot | /usr/sbin/chpasswd
+
+## ensure root user and password never expire ##
+chage -E -1 -m 0 -M -1 -I -1 -W 99999 root
