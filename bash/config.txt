@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#############################################
+#### littlebizzy server config variables ####
+#############################################
+
+## sftp ##
+user="example"
+pass="password"
+
+## server ##
+domain="www.example.com"
+ssl="yes"
+cache="yes"
+updates="yes"
+
+## database ##
+dbhost="localhost"
+dbname="wordpress"
+dbprefix="wp_"
+dbuser="example"
+dbpass="password"
+dbpassroot="password"
+
+## profile ##
+country="US"
+state="Nevada"
+city="Las Vegas"
+company="Acme Company"
+dept=""
