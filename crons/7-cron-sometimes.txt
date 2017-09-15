@@ -1,0 +1,10 @@
+#!/bin/bash
+
+####################################
+#### littlebizzy cron sometimes ####
+####################################
+
+## scripts to run ##
+
+## delete lock file after done ##
+rm -R -f /tmp/7-cron-sometimes.lock
