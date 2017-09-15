@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#######################################
+#### littlebizzy install wordpress ####
+#######################################
+
+## server-specific config variables ##
+source config
+
+## download latest wordpress version and untar ##
+cd /var/www/html/
+wget http://wordpress.org/latest.tar.gz
+tar xfz latest.tar.gz
+rsync -raqIp wordpress/* ./
+rm -rf wordpress
+rm -f latest.tar.gz
+
+cd /home/$user/www/
+wget http://wordpress.org/latest.tar.gz
+tar xfz latest.tar.gz
+rsync -raqIp wordpress/* ./
+rm -rf wordpress
+rm -f latest.tar.gz
+
+## reset permissions after done ##
+source perms-reset
