@@ -1,0 +1,6 @@
+user="example"
+*/13 * * * * /usr/bin/flock -w 0 /tmp/check-cron.lock /home/$user/check-cron > /dev/null 2>&1
+*/23 * * * * /usr/bin/flock -w 0 /tmp/worker-cron.lock /home/$user/worker-cron > /dev/null 2>&1
+0 * * * * /usr/bin/flock -w 0 /tmp/permissions-reset.lock /home/$user/permissions-reset > /dev/null 2>&1
+0 0 * * * /usr/bin/flock -w 0 /tmp/muplugs-cron.lock /home/$user/muplugs-cron > /dev/null 2>&1
+0 0 1 * * /usr/bin/flock -w 0 /tmp/lemp-updates.lock /home/$user/lemp-updates > /dev/null 2>&1
