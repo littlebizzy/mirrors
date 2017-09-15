@@ -1,0 +1,33 @@
+#!/bin/bash
+
+################################################################
+#### littlebizzy install /etc/ssh/sshd_config from template ####
+################################################################
+
+## server-specific config variables ##
+source /var/www/config
+
+## delete all tmp files before we begin ##
+rm -R -f /tmp/sshd_config /tmp/sshd-config.txt
+
+## download template files ##
+cd /tmp/
+wget --no-cache http://mirrors.littlebizzy.com/ubuntu/sshd-config.txt
+
+## replace placeholders with variables from config ##
+sed -i "s/@CLIENT/${user}/g" /tmp/sshd-config.txt
+
+## rename tmp files ##
+mv sshd-config.txt sshd_config
+
+## overwrite all files to their various destinations ##
+cp -R -f --no-preserve=mode,ownership /tmp/sshd_config /etc/ssh/sshd_config
+
+## delete all tmp files after we finish ##
+rm -R -f /tmp/sshd_config /tmp/sshd-config.txt
+
+## quick permissions reset ##
+chown root:root /etc/ssh/sshd_config
+
+## restart ssh ##
+/etc/init.d/ssh restart
