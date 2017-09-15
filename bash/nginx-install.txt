@@ -1,0 +1,11 @@
+#!/bin/bash
+
+###################################
+#### littlebizzy install nginx ####
+###################################
+
+apt-get update
+apt-get install -y software-properties-common
+add-apt-repository ppa:nginx/development
+apt-get update
+apt-get install -y nginx
