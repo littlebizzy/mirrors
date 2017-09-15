@@ -1,0 +1,12 @@
+#!/bin/bash
+
+##########################################
+#### install littlebizzy sudoers file ####
+##########################################
+
+cd /tmp/
+wget --timestamping http://mirrors.littlebizzy.com/linux/sudoers.txt
+mv sudoers.txt sudoers
+cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/sudoers /etc/sudoers
+chown root:root /etc/sudoers
+rm -R -f /tmp/sudoers.txt sudoers
