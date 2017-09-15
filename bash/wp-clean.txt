@@ -1,0 +1,227 @@
+#!/bin/bash
+
+################################################
+#### littlebizzy clean wordpress and server ####
+################################################
+
+## delete junk linux files ##
+rm -R -f /var/www/html/index.nginx-debian.html
+
+## delete unused and expired logs ##
+rm -R -f /var/log/fpm-php.www.log*
+rm -R -f /var/log/php7.0-fpm.log*
+find /var/log/ -name "*.gz" -type f -delete
+
+## delete phpinfo files ##
+rm -R -f /var/www/html/i.php
+rm -R -f /var/www/html/info.php
+rm -R -f /var/www/html/phpinfo.php
+
+## delete wordpress xml-rpc file ##
+rm -R -f /var/www/html/xmlrpc.php
+
+## delete redundant nginx config files ##
+rm -R -f /var/www/html/nginx.conf
+
+## find and delete irrelevant file extensions ##
+find /var/www/html/ -name "*.htaccess" -type f -delete
+
+## find and delete unsafe file extensions ##
+find /var/www/html/ -name "*.exe" -type f -delete
+find /var/www/html/ -name "*.cmd" -type f -delete
+find /var/www/html/ -name "*.asp" -type f -delete
+find /var/www/html/ -name "*.aspx" -type f -delete
+find /var/www/html/ -name "*.jsb" -type f -delete
+find /var/www/html/ -name "*.jsp" -type f -delete
+find /var/www/html/ -name "*.com" -type f -delete
+find /var/www/html/ -name "*.bat" -type f -delete
+find /var/www/html/ -name "*.ascx" -type f -delete
+find /var/www/html/ -name "*.cfc" -type f -delete
+find /var/www/html/ -name "*.cfm" -type f -delete
+find /var/www/html/ -name "*.cfml" -type f -delete
+find /var/www/html/ -name "*.cfr" -type f -delete
+find /var/www/html/ -name "*.cfswf" -type f -delete
+find /var/www/html/ -name "*.jws" -type f -delete
+find /var/www/html/ -name "*.dll" -type f -delete
+find /var/www/html/ -name "*.vbs" -type f -delete
+find /var/www/html/ -name "*.reg" -type f -delete
+find /var/www/html/ -name "*.asis" -type f -delete
+find /var/www/html/ -name "*.pwml" -type f -delete
+find /var/www/html/ -name "*.cpl" -type f -delete
+find /var/www/html/ -name "*.asis" -type f -delete
+find /var/www/html/ -name "*.jhtml" -type f -delete
+find /var/www/html/ -name "*.mht" -type f -delete
+find /var/www/html/ -name "*.mhtml" -type f -delete
+find /var/www/html/ -name "*.msi" -type f -delete
+find /var/www/html/ -name "*.pif" -type f -delete
+find /var/www/html/ -name "*.py" -type f -delete
+find /var/www/html/ -name "*.scr" -type f -delete
+find /var/www/html/ -name "*.vxd" -type f -delete
+find /var/www/html/ -name "*.rb" -type f -delete
+find /var/www/html/ -name "*.htc" -type f -delete
+
+## delete cache enable lines in wp-config.php that conflict with fastcgi cache ##
+sed -i '/WP_CACHE/d' /var/www/html/wp-config.php
+sed -i '/wp_cache/d' /var/www/html/wp-config.php
+
+## delete useless stock plugins ##
+rm -R -f /var/www/html/wp-content/plugins/hello.php
+
+## delete plugins who add malware or spam ##
+rm -R -f /var/www/html/wp-content/plugins/display-widgets
+
+## delete codeguard related plugins that conflict with codeguard service ##
+rm -R -f /var/www/html/wp-content/plugins/codeguard*
+
+## delete remote management plugins that cause performance issues ##
+rm -R -f /var/www/html/wp-content/plugins/worker
+rm -R -f /var/www/html/wp-content/mu-plugins/0-worker.php
+rm -R -f /var/www/html/wp-content/plugins/iwp-client*
+rm -R -f /var/www/html/wp-content/plugins/wpremote*
+rm -R -f /var/www/html/wp-content/plugins/mainwp*
+rm -R -f /var/www/html/wp-content/plugins/mainwp-child*
+
+## delete plugins that cause cpu or mysql load to spike ##
+rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order*
+
+## delete janky backup plugins ##
+# rm -R -f /var/www/html/wp-content/plugins/updraftplus*
+# rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
+
+## delete do-everything plugins that cause performance and code conflict issues ##
+# rm -R -f /var/www/html/wp-content/plugins/woocommerce-jetpack*
+
+## delete plugins with with an abusive amount of database queries ##
+# rm -R -f /var/www/html/wp-content/plugins/icegram
+
+## delete firewall plugins that conflict with cloudflare and nginx config ##
+rm -R -f /var/www/html/wp-content/plugins/wordpress-firewall-2*
+rm -R -f /var/www/html/wp-content/plugins/bad-behavior*
+
+## delete self-hosted analytics plugins that cause performance issues ##
+rm -R -f /var/www/html/wp-content/plugins/wp-statistics*
+
+## delete cache config files that conflict with fastcgi cache and redis object cache ##
+rm -R -f /var/www/html/wp-content/cache*
+rm -R -f /var/www/html/wp-content/advanced-cache.php
+rm -R -f /var/www/html/wp-content/w3tc-config*
+rm -R -f /var/www/html/wp-content/wp-rocket-config*
+
+## delete any redis plugins that conflict with /wp-content/plugins/redis-cache/ plugin ##
+rm -R -f /var/www/html/wp-content/plugins/wp-redis*
+rm -R -f /var/www/html/wp-content/plugins/pj-page-cache-red*
+rm -R -f /var/www/html/wp-content/plugins/redis-object-cache*
+rm -R -f /var/www/html/wp-content/plugins/wp-lcache*
+rm -R -f /var/www/html/wp-content/plugins/simple-cache*
+rm -R -f /var/www/html/wp-content/plugins/wp-object-cache*
+rm -R -f /var/www/html/wp-content/plugins/apcu*
+rm -R -f /var/www/html/wp-content/plugins/gator-cache*
+
+## remove cache plugins that conflict with fastcgi cache and redis object cache ##
+rm -R -f /var/www/html/wp-content/plugins/comet-cache*
+rm -R -f /var/www/html/wp-content/plugins/w3-total-cache*
+rm -R -f /var/www/html/wp-content/plugins/wp-fastest-cache*
+rm -R -f /var/www/html/wp-content/plugins/wp-super-cache*
+rm -R -f /var/www/html/wp-content/plugins/litespeed-cache*
+rm -R -f /var/www/html/wp-content/plugins/cache-enabler*
+rm -R -f /var/www/html/wp-content/plugins/simple-cache*
+rm -R -f /var/www/html/wp-content/plugins/gator-cache*
+rm -R -f /var/www/html/wp-content/plugins/hyper-cache*
+rm -R -f /var/www/html/wp-content/plugins/super-static-cache*
+rm -R -f /var/www/html/wp-content/plugins/hyper-cache-extended*
+rm -R -f /var/www/html/wp-content/plugins/vendi-cache*
+rm -R -f /var/www/html/wp-content/plugins/sg-cachepress*
+rm -R -f /var/www/html/wp-content/plugins/pantheon-advanced-page-cache*
+rm -R -f /var/www/html/wp-content/plugins/wp-speed-of-light*
+rm -R -f /var/www/html/wp-content/plugins/pods-alternative-cache*
+rm -R -f /var/www/html/wp-content/plugins/full-site-cache-kc*
+rm -R -f /var/www/html/wp-content/plugins/blunt-cache*
+rm -R -f /var/www/html/wp-content/plugins/wp-spider-cache*
+rm -R -f /var/www/html/wp-content/plugins/wp-ffpc*
+rm -R -f /var/www/html/wp-content/plugins/warp-cache*
+rm -R -f /var/www/html/wp-content/plugins/batcache*
+rm -R -f /var/www/html/wp-content/plugins/preload-fullpage-cache*
+rm -R -f /var/www/html/wp-content/plugins/cache-performance*
+rm -R -f /var/www/html/wp-content/plugins/wp-rocket*
+
+## delete any poor performance social sharing plugins ##
+rm -R -f /var/www/html/wp-content/plugins/simple-share-buttons-adder*
+
+## delete any poor performance SMTP plugins ##
+rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
+
+## delete any risky file management plugins ##
+rm -R -f /var/www/html/wp-content/plugins/miwoftp*
+
+## delete any database unsafe admin plugins ##
+rm -R -f /var/www/html/wp-content/plugins/adminer*
+rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
+# rm -R -f /var/www/html/wp-content/plugins/wp-database-admin
+
+## delete any query strings related plugins (mu conflict) ##
+rm -R -f /var/www/html/wp-content/plugins/query-strings-remover
+rm -R -f /var/www/html/wp-content/plugins/zendy-speed-query-strings
+rm -R -f /var/www/html/wp-content/plugins/wp-version-in-query-string-modifier
+rm -R -f /var/www/html/wp-content/plugins/remove-query-strings
+rm -R -f /var/www/html/wp-content/plugins/remove-query-strings-from-static-resources
+rm -R -f /var/www/html/wp-content/plugins/remove-query-arg-from-media
+
+## delete any cloudflare related plugins besides cloudflare analytics (mu conflict) ##
+rm -R -f /var/www/html/wp-content/plugins/cloudflare-cache-purge
+rm -R -f /var/www/html/wp-content/plugins/cloudflare-flexible-ssl
+rm -R -f /var/www/html/wp-content/plugins/supersonic
+rm -R -f /var/www/html/wp-content/plugins/sunny
+rm -R -f /var/www/html/wp-content/plugins/purge-cache-for-cloudflare
+rm -R -f /var/www/html/wp-content/plugins/ec-developer-mode-integration-for-cloudflare
+rm -R -f /var/www/html/wp-content/plugins/ctw-ssl-for-cloudflare
+rm -R -f /var/www/html/wp-content/plugins/wp-cloudflare
+rm -R -f /var/www/html/wp-content/plugins/purge-cloud-flare
+rm -R -f /var/www/html/wp-content/plugins/cloudguard
+rm -R -f /var/www/html/wp-content/plugins/wp-denyhost
+
+## delete any optimization related plugins (cloudflare conflict) ##
+rm -R -f /var/www/html/wp-content/plugins/wp-speed-booster
+rm -R -f /var/www/html/wp-content/plugins/easy-pagespeed
+rm -R -f /var/www/html/wp-content/plugins/speed-booster-pack
+rm -R -f /var/www/html/wp-content/plugins/wp-speed-grades-pro
+rm -R -f /var/www/html/wp-content/plugins/disable-blogging
+rm -R -f /var/www/html/wp-content/plugins/wp-resources-url-optimization
+rm -R -f /var/www/html/wp-content/plugins/wp-super-simple-speed
+rm -R -f /var/www/html/wp-content/plugins/wp-performance-score-booster
+rm -R -f /var/www/html/wp-content/plugins/wp-clean
+rm -R -f /var/www/html/wp-content/plugins/mfp-mod-wp
+rm -R -f /var/www/html/wp-content/plugins/knapsack
+rm -R -f /var/www/html/wp-content/plugins/yablog
+rm -R -f /var/www/html/wp-content/plugins/remove-wp-overhead
+
+##  delete any emoji plugins that conflict with our Must-Use plugins (or slow down sites) ##
+rm -R -f /var/www/html/wp-content/plugins/emoji-settings
+rm -R -f /var/www/html/wp-content/plugins/emoji-reactions
+rm -R -f /var/www/html/wp-content/plugins/wp-disable-emjoi
+rm -R -f /var/www/html/wp-content/plugins/disable-emojis
+rm -R -f /var/www/html/wp-content/plugins/plugins/native-emoji
+rm -R -f /var/www/html/wp-content/plugins/shortcode-emojis
+rm -R -f /var/www/html/wp-content/plugins/wp-emoji-one
+rm -R -f /var/www/html/wp-content/plugins/super-emoji-plus
+rm -R -f /var/www/html/wp-content/plugins/compressed-emoji
+rm -R -f /var/www/html/wp-content/plugins/disable-wp-emojis
+rm -R -f /var/www/html/wp-content/plugins/big-emoji-comments
+rm -R -f /var/www/html/wp-content/plugins/simple-emoji-reactions
+rm -R -f /var/www/html/wp-content/plugins/wp-local-emoji
+rm -R -f /var/www/html/wp-content/plugins/disable-wp-emoji-icons
+rm -R -f /var/www/html/wp-content/plugins/unload-by-st-pagede
+rm -R -f /var/www/html/wp-content/plugins/x1f4a9
+rm -R -f /var/www/html/wp-content/plugins/emojized
+rm -R -f /var/www/html/wp-content/plugins/bp-reactions
+rm -R -f /var/www/html/wp-content/plugins/react-and-share
+rm -R -f /var/www/html/wp-content/plugins/instant-feedback
+rm -R -f /var/www/html/wp-content/plugins/speed-up-clean-wp
+rm -R -f /var/www/html/wp-content/plugins/falcon
+rm -R -f /var/www/html/wp-content/plugins/killji
+rm -R -f /var/www/html/wp-content/plugins/zuzu-hot-or-not
+rm -R -f /var/www/html/wp-content/plugins/zuzu-viral-reactions
+rm -R -f /var/www/html/wp-content/plugins/wp-grins-ssl
+rm -R -f /var/www/html/wp-content/plugins/fl3r-feelbox
+rm -R -f /var/www/html/wp-content/plugins/classic-smilies
+rm -R -f /var/www/html/wp-content/plugins/wp-reactions-box
+rm -R -f /var/www/html/wp-content/plugins/voting-platform-feelbacks
