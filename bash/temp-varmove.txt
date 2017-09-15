@@ -1,0 +1,71 @@
+#!/bin/bash
+
+###############################################################
+#### littlebizzy move from /home/user/www to /var/www/html ####
+###############################################################
+
+## server-specific config variables ##
+source config
+
+## copy and move config ##
+cp -R -f --preserve=mode,ownership /home/$user/config /var/www/config
+
+## purge contents of /var/www/html ##
+rm -R -f /var/www/html/*
+
+## remove all previous tars ##
+rm -R -f /tmp/varmove.tar
+rm -R -f /tmp/varmove.tar.gz
+rm -R -f /tmp/varmove1.tar.gz
+rm -R -f /tmp/migrate.tar.gz
+rm -R -f /tmp/migrate-new.tar.gz
+rm -R -f /tmp/migrate-newer.tar.gz
+rm -R -f /tmp/migrate-april.tar.gz
+rm -R -f /home/$user/www/varmove.tar
+rm -R -f /home/$user/www/varmove.tar.gz
+rm -R -f /home/$user/www/varmove1.tar.gz
+rm -R -f /home/$user/www/migrate.tar.gz
+rm -R -f /home/$user/www/migrate-new.tar.gz
+rm -R -f /home/$user/www/migrate-newer.tar.gz
+rm -R -f /home/$user/www/migrate-april.tar.gz
+rm -R -f /var/www/html/varmove.tar
+rm -R -f /var/www/html/varmove.tar.gz
+rm -R -f /var/www/html/varmove1.tar.gz
+rm -R -f /var/www/html/migrate.tar.gz
+rm -R -f /var/www/html/migrate-new.tar.gz
+rm -R -f /var/www/html/migrate-newer.tar.gz
+rm -R -f /var/www/html/migrate-april.tar.gz
+
+## tar old files and move over ##
+cd /home/$user/www/
+tar -czf varmove.tar *
+mv /home/$user/www/varmove.tar /var/www/html/varmove.tar
+cd /var/www/html/
+tar -xzf varmove.tar
+
+## config new nginx conf and block ##
+source /var/www/nginx-config
+
+## reset permissions ##
+source /var/www/perms-reset
+
+## rename old web root ##
+mv /home/$user/www /home/$user/DONOTUSE
+
+## new crontab file ##
+cd /tmp/
+rm -R -f /tmp/crontab.txt /tmp/root
+wget --no-cache http://mirrors.littlebizzy.com/ubuntu/crontab.txt
+mv /tmp/crontab.txt /tmp/root
+cp -R -f --preserve=mode,ownership /tmp/root /var/spool/cron/crontabs/root
+rm -R -f /tmp/crontab.txt /tmp/root
+chown root:root /var/spool/cron/crontabs/root
+
+## fix sftp ##
+sed -i 's/.*ChrootDirectory.*/ChrootDirectory \/var\/www\//' /etc/ssh/sshd_config
+# /etc/init/ssh.conf restart
+/etc/init.d/ssh restart
+
+## restart php-fpm and nginx ##
+/etc/init.d/php7.0-fpm restart
+/etc/init.d/nginx restart
