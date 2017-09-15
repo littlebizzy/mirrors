@@ -1,0 +1,16 @@
+#!/bin/bash
+
+##################################
+#### littlebizzy create users ####
+##################################
+
+## server config details ##
+source /var/www/bash-config
+
+## add user bizzy and set password ##
+/usr/sbin/useradd bizzy
+echo bizzy:$passroot | /usr/sbin/chpasswd
+
+## add user client and set password ##
+/usr/sbin/useradd client
+echo client:$pass | /usr/sbin/chpasswd
