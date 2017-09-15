@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#################################
+#### littlebizzy cron weekly ####
+#################################
+
+## scripts to run ##
+# source /var/www/lemp-updates
+# source /var/www/ssl-install
+
+## delete lock file after done ##
+rm -R -f /tmp/5-cron-weekly.lock
