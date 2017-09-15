@@ -1,0 +1,139 @@
+## this block redirects all HTTP/HTTPS www traffic to non-www version
+server {
+    server_name            www.example.com;
+    listen                 *:80;
+    listen                 [::]:80 ipv6only=on;
+    listen                 *:443 ssl;
+    listen                 [::]:443 ssl ipv6only=on;
+    ssl_certificate        /etc/ssl/nginx.crt;
+    ssl_certificate_key    /etc/ssl/nginx.key;
+    ## enable below to activate CloudFlare Authenticated Origin Pulls
+    ## copy cloudflare.crt from https://blog.cloudflare.com/protecting-the-origin-with-tls-authenticated-origin-pulls/
+    # ssl_client_certificate /etc/ssl/cloudflare.crt;
+    # ssl_verify_client on;
+    return 301 https://example.com$request_uri;
+}
+
+## this block redirects all HTTP non-www to HTTPS non-www version
+server {
+    server_name            example.com;
+    listen                 *:80;
+    listen                 [::]:80;
+    return 301 https://example.com$request_uri;
+}
+
+## this block is the default configuration for the live website
+server {
+    server_name            example.com;
+    listen                 443 ssl default_server;
+    listen                 [::]:443 ssl;
+    ssl_certificate        /etc/ssl/nginx.crt;
+    ssl_certificate_key    /etc/ssl/nginx.key;
+    ## enable below to activate CloudFlare Authenticated Origin Pulls
+    ## copy cloudflare.crt from https://blog.cloudflare.com/protecting-the-origin-with-tls-authenticated-origin-pulls/
+    # ssl_client_certificate /etc/ssl/cloudflare.crt;
+    # ssl_verify_client on;
+    root                   /home/example/www;
+    index index.php index.html index.htm;
+    autoindex off;
+
+
+
+    #### BRUTE FORCE PROTECTION ####
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    limit_req_status 444;
+    location = /wp-login.php {
+        ## limit access to only one request per second per ip address
+        limit_req zone=one burst=1 nodelay;
+    }
+
+    #### TRY FILES ####
+    location / {
+        ## first try physical files, then directories, otherwise query the wordpress php index
+        try_files $uri $uri/ /index.php?$args;
+	      ## force trailing slashes on urls... do not enable for bbpress/buddypress
+        # rewrite ^([^.]*[^/])$ $1/ permanent;
+    }
+
+    ### PHP-FPM REQUESTS ###
+    #### make sure PHP requests pass through FCGI for better performance
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        ## older nginx versions use: include fastcgi_params
+        include fastcgi.conf;
+        ## below line should not be needed
+        # include snippets/fastcgi-php.conf;
+    }
+
+    #### HIDDEN FILES ####
+    location ~ /\. {
+        ## block any attempted attacks or access
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    #### FAVICON ####
+    location = /favicon.ico {
+        ## 204 is better than 404 if favicon not found
+        try_files $uri =204;
+        access_log off;
+        log_not_found off;
+    }
+    
+    #### ROBOTS.TXT ####
+    location = /robots.txt {
+        # first try physical files, then directories, otherwise query the wordpress php index
+        try_files $uri $uri/ /index.php?$args;
+        allow all;
+        log_not_found off;
+        access_log off;
+    }
+
+    #### XML-RPC ####
+    location = /xmlrpc.php {
+        ## block any attempted attacks or access
+        deny all;
+    }
+
+    #### WP-CONFIG ####
+    location = /wp-config.php {
+        ## block any attempted attacks or access
+        deny all;
+    }
+
+    #### GIT CONFIG ####
+    location = /.git/config {
+        ## block any attempted attacks or access
+        deny all;
+    }
+
+    #### WP INFO ####
+    location ~* (license|licence|readme)\.(html|txt) {
+        ## block any attempted attacks or access
+        deny all;
+    }
+
+    #### WP DIRS ####
+    location ~* /(?:uploads|wp-content|wp-includes)/.*\.php$ {
+        ## block any attempted attacks or access
+        deny all;
+    }
+
+    #### RESOURCE RENDER ####
+    location ~ \.(eot|ttf|ttc|otf|woff|woff2|svg|css|js)$ {
+        ## avoid any render problems in firefox/ie browsers
+        add_header Access-Control-Allow-Origin "*";
+    }
+
+    #### STATIC RESOURCES ####
+    location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$ {
+        expires max;
+        log_not_found off;
+        access_log off;
+    }
+
+}
