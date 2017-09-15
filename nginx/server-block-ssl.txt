@@ -1,69 +1,92 @@
-## this block redirects all HTTP/HTTPS www traffic to non-www version
-server {
-    server_name            www.example.com;
-    listen                 *:80;
-    listen                 [::]:80 ipv6only=on;
-    listen                 *:443 ssl;
-    listen                 [::]:443 ssl ipv6only=on;
-    ssl_certificate        /etc/ssl/nginx.crt;
-    ssl_certificate_key    /etc/ssl/nginx.key;
-    ## enable below to activate CloudFlare Authenticated Origin Pulls
-    ## copy cloudflare.crt from https://blog.cloudflare.com/protecting-the-origin-with-tls-authenticated-origin-pulls/
-    # ssl_client_certificate /etc/ssl/cloudflare.crt;
-    # ssl_verify_client on;
-    return 301 https://example.com$request_uri;
-}
+##########################################################################################
+#### littlebizzy nginx server block template (ssl) /etc/nginx/sites-available/default ####
+##########################################################################################
 
-## this block redirects all HTTP non-www to HTTPS non-www version
+## this catch-all server block redirects all erroneous traffic to the canonical domain ##
 server {
-    server_name            example.com;
-    listen                 *:80;
-    listen                 [::]:80;
-    return 301 https://example.com$request_uri;
-}
-
-## this block is the default configuration for the live website
-server {
-    server_name            example.com;
+    listen                 80 default_server;
     listen                 443 ssl default_server;
+    listen                 [::]:80;
     listen                 [::]:443 ssl;
+    server_name            _;
     ssl_certificate        /etc/ssl/nginx.crt;
     ssl_certificate_key    /etc/ssl/nginx.key;
-    ## enable below to activate CloudFlare Authenticated Origin Pulls
-    ## copy cloudflare.crt from https://blog.cloudflare.com/protecting-the-origin-with-tls-authenticated-origin-pulls/
-    # ssl_client_certificate /etc/ssl/cloudflare.crt;
-    # ssl_verify_client on;
-    root                   /home/example/www;
-    index index.php index.html index.htm;
-    autoindex off;
+    return 301             https://@DOMAIN$request_uri;
+}
 
-
-
-    #### BRUTE FORCE PROTECTION ####
-    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
-    limit_req_status 444;
-    location = /wp-login.php {
-        ## limit access to only one request per second per ip address
-        limit_req zone=one burst=1 nodelay;
+## this server block is the canonical domain ##
+server {
+    listen                 443 ssl;
+    listen                 [::]:443 ssl ipv6only=on;
+    server_name            @DOMAIN;
+    if ($http_host != "@DOMAIN") {
+        return 301             $scheme://@DOMAIN$request_uri;
     }
+    ssl_certificate        /etc/ssl/nginx.crt;
+    ssl_certificate_key    /etc/ssl/nginx.key;
+    root                   /var/www/html;
+    index                  index.php;
+
+    #### SKIP FASTCGI CACHE ####
+    set $skip_cache 0;
+    ## post requests should always skip the cache
+    if ($request_method = POST) {
+        set $skip_cache 1;
+    }
+    ## query strings should always skip the cache
+    if ($query_string != "") {
+        set $skip_cache 1;
+    }
+    ## sensitive wordpress urls should always skip the cache
+    if ($request_uri ~* "index.php|wp-.*.php|/wp-admin.*|/login.*|/cart.*|/checkout.*|/account.*|/my-.*|/dashboard.*|/order.*|/view.*|/profile.*|/settings.*|/contact.*") {
+        set $skip_cache 1;
+    }
+    ## logged in users or recent commenters etc should always skip the cache
+    if ($http_cookie ~* "wordpress_logged_in|wp-postpass|woocommerce_items_in_cart|woocommerce_cart_hash|comment_author") {
+        set $skip_cache 1;
+    }
+    ## woocommerce cart actions should always skip the cache
+    # if ($arg_add-to-cart != "") {
+    #    set $skip_cache 1;
+    # }
+    ## woocommerce shoppers should always skip the cache
+    # if ($http_cookie ~* "cookie_woocommerce_items_in_cart") {
+    #    set $skip_cache 1;
+    # }
+    ## woocommerce shoppers should always skip the cache
+    # if ($cookie_woocommerce_items_in_cart != "0") {
+    #    set $skip_cache 1;
+    # }
 
     #### TRY FILES ####
     location / {
         ## first try physical files, then directories, otherwise query the wordpress php index
         try_files $uri $uri/ /index.php?$args;
-	      ## force trailing slashes on urls... do not enable for bbpress/buddypress
+	## force trailing slashes on urls... do not enable for bbpress/buddypress
         # rewrite ^([^.]*[^/])$ $1/ permanent;
     }
 
-    ### PHP-FPM REQUESTS ###
-    #### make sure PHP requests pass through FCGI for better performance
+    ### PHP-FPM ROUTING ###
     location ~ \.php$ {
+        set $rt_session "";
+        if ($http_cookie ~* "wp_woocommerce_session_[^=]*=([^%]+)%7C") {
+                set $rt_session wp_woocommerce_session_$1;
+        }	
+        if ($skip_cache = 0 ) {
+                more_clear_headers "Set-Cookie*";
+                set $rt_session "";
+        }
+
+        ## include /etc/nginx/fastcgi_params for older nginx versions
+        include /etc/nginx/fastcgi.conf;
         try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         fastcgi_index index.php;
-        ## older nginx versions use: include fastcgi_params
-        include fastcgi.conf;
+        fastcgi_cache WORDPRESS;
+        fastcgi_cache_valid 200 301 404 60m;
+        fastcgi_cache_bypass $skip_cache;
+        fastcgi_no_cache $skip_cache;
         ## below line should not be needed
         # include snippets/fastcgi-php.conf;
     }
@@ -74,6 +97,22 @@ server {
         deny all;
         access_log off;
         log_not_found off;
+    }
+
+    #### BRUTE FORCE PROTECTION ####
+    location = /wp-login.php {
+        ## limit access to only one request per second per ip address
+        limit_req zone=one burst=1 nodelay;
+        ## we must re-include this routing for php-fpm ##
+        include /etc/nginx/fastcgi.conf;
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_cache WORDPRESS;
+        fastcgi_cache_valid 200 301 404 60m;
+        fastcgi_cache_bypass $skip_cache;
+        fastcgi_no_cache $skip_cache;
     }
 
     #### FAVICON ####
@@ -130,7 +169,7 @@ server {
     }
 
     #### STATIC RESOURCES ####
-    location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$ {
+    location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|ppt|tar|mid|midi|wav|bmp|rtf)$ {
         expires max;
         log_not_found off;
         access_log off;
