@@ -1,61 +1,64 @@
 #!/bin/bash
 
-###########################################
-#### littlebizzy various regular tasks ####
-###########################################
 
-## server config variables ##
+###############################################################
+#### littlebizzy install or update lemp stack config files ####
+###############################################################
+
+## include server config variables ##
 source /var/www/config
 
-## delete tmp files ##
-rm -R -f /tmp/1-cron-often*
-rm -R -f /tmp/bash-check*
-rm -R -f /tmp/nginx.conf*
-rm -R -f /tmp/gai.conf*
-rm -R -f /tmp/php.ini*
-rm -R -f /tmp/php-fpm.conf*
-rm -R -f /tmp/www.conf*
+## delete previous tmp files ##
+rm -R -f /tmp/1-cron-often.txt* /tmp/1-cron-often*
+rm -R -f /tmp/bash-check.txt* /tmp/bash-check*
+rm -R -f /tmp/gai-conf.txt* /tmp/gai.conf*
+rm -R -f /tmp/monitrc.txt* /tmp/monitrc*
+rm -R -f /tmp/nginx-conf.txt* /tmp/nginx.conf*
 rm -R -f /tmp/nginx.crt* /tmp/nginx.key* /tmp/nginx.pem*
-rm -R -f /tmp/user.rules* /tmp/user-rules*
-rm -R -f /tmp/ufw.conf* /tmp/ufw-conf*
+rm -R -f /tmp/php-ini.txt* /tmp/php.ini*
+rm -R -f /tmp/php-fpm-conf.txt* /tmp/php-fpm.conf*
+rm -R -f /tmp/ufw-conf.txt* /tmp/ufw.conf*
+rm -R -f /tmp/user-rules.txt* /tmp/user.rules*
+rm -R -f /tmp/www-conf.txt* /tmp/www.conf*
 
 # download latest scripts and configs ##
 cd /tmp/
 wget --no-cache http://mirrors.littlebizzy.com/crons/1-cron-often.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/bash-check.txt
 wget --no-cache http://mirrors.littlebizzy.com/ubuntu/gai-conf.txt
-wget --no-cache http://mirrors.littlebizzy.com/ubuntu/user-rules.txt
-wget --no-cache http://mirrors.littlebizzy.com/ubuntu/ufw-conf.txt
+wget --no-cache http://mirrors.littlebizzy.com/monit/monitrc.txt
 wget --no-cache http://mirrors.littlebizzy.com/nginx/nginx-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/php/php-ini.txt
 wget --no-cache http://mirrors.littlebizzy.com/php/php-fpm-conf.txt
+wget --no-cache http://mirrors.littlebizzy.com/ubuntu/ufw-conf.txt
+wget --no-cache http://mirrors.littlebizzy.com/ubuntu/user-rules.txt
 wget --no-cache http://mirrors.littlebizzy.com/php/www-conf.txt
-# wget --no-cache http://mirrors.littlebizzy.com/monit/monitrc.txt
 
 ## rename scripts and configs ##
 cd /tmp/
 mv 1-cron-often.txt 1-cron-often
 mv bash-check.txt bash-check
 mv gai-conf.txt gai.conf
-mv user-rules.txt user.rules
-mv ufw-conf.txt ufw.conf
+mv monitrc.txt monitrc
 mv nginx-conf.txt nginx.conf
 mv php-ini.txt php.ini
 mv php-fpm-conf.txt php-fpm.conf
+mv ufw-conf.txt ufw.conf
+mv user-rules.txt user.rules
 mv www-conf.txt www.conf
 
 ## copy scripts and configs to their destinations ##
 cp -R -f -d --no-preserve=mode,ownership /tmp/1-cron-often /var/www/1-cron-often
 cp -R -f -d --no-preserve=mode,ownership /tmp/bash-check /var/www/bash-check
 cp -R -f -d --no-preserve=mode,ownership /tmp/gai.conf /etc/gai.conf
-cp -R -f -d --no-preserve=mode,ownership /tmp/user.rules /etc/ufw/user.rules
-cp -R -f -d --no-preserve=mode,ownership /tmp/ufw.conf /etc/ufw/ufw.conf
+cp -R -f -d --no-preserve=mode,ownership /tmp/monitrc /etc/monit/monitrc
 cp -R -f -d --no-preserve=mode,ownership /tmp/nginx.conf /etc/nginx/nginx.conf
-cp -R -f -d --no-preserve=mode,ownership /tmp/php.ini /etc/php/7.0/fpm/php.ini
 cp -R -f -d --no-preserve=mode,ownership /tmp/php.ini /etc/php/7.0/cli/php.ini
+cp -R -f -d --no-preserve=mode,ownership /tmp/php.ini /etc/php/7.0/fpm/php.ini
 cp -R -f -d --no-preserve=mode,ownership /tmp/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
+cp -R -f -d --no-preserve=mode,ownership /tmp/ufw.conf /etc/ufw/ufw.conf
+cp -R -f -d --no-preserve=mode,ownership /tmp/user.rules /etc/ufw/user.rules
 cp -R -f -d --no-preserve=mode,ownership /tmp/www.conf /etc/php/7.0/fpm/pool.d/www.conf
-# cp -R -f -d --no-preserve=mode,ownership /tmp/monitrc /etc/monit/monitrc
 
 ## generate pem file from openssl key and crt files ##
 cp -R -f -d --no-preserve=mode,ownership /etc/ssl/nginx.crt /tmp/nginx.crt
@@ -63,41 +66,39 @@ cp -R -f -d --no-preserve=mode,ownership /etc/ssl/nginx.key /tmp/nginx.key
 cat /tmp/nginx.crt /tmp/nginx.key > /tmp/nginx.pem
 cp -R -f -d --no-preserve=mode,ownership /tmp/nginx.pem /etc/ssl/nginx.pem
 
-## delete tmp files ##
-rm -R -f /tmp/1-cron-often*
-rm -R -f /tmp/bash-check*
-rm -R -f /tmp/nginx.conf*
-rm -R -f /tmp/gai.conf*
-rm -R -f /tmp/php.ini*
-rm -R -f /tmp/php-fpm.conf*
-rm -R -f /tmp/www.conf*
+## delete remaining tmp files ##
+rm -R -f /tmp/1-cron-often.txt* /tmp/1-cron-often*
+rm -R -f /tmp/bash-check.txt* /tmp/bash-check*
+rm -R -f /tmp/gai-conf.txt* /tmp/gai.conf*
+rm -R -f /tmp/monitrc.txt* /tmp/monitrc*
+rm -R -f /tmp/nginx-conf.txt* /tmp/nginx.conf*
 rm -R -f /tmp/nginx.crt* /tmp/nginx.key* /tmp/nginx.pem*
-rm -R -f /tmp/user.rules* /tmp/user-rules*
-rm -R -f /tmp/ufw.conf* /tmp/ufw-conf*
+rm -R -f /tmp/php-ini.txt* /tmp/php.ini*
+rm -R -f /tmp/php-fpm-conf.txt* /tmp/php-fpm.conf*
+rm -R -f /tmp/ufw-conf.txt* /tmp/ufw.conf*
+rm -R -f /tmp/user-rules.txt* /tmp/user.rules*
+rm -R -f /tmp/www-conf.txt* /tmp/www.conf*
 
-## fix permissions ##
+## reset file permissions ##
 chown root:root /var/www/1-cron-often
-chown root:root /var/www/bash-check
 chmod -R 700 /var/www/1-cron-often
+chown root:root /var/www/bash-check
 chmod -R 700 /var/www/bash-check
 chown root:root /etc/gai.conf
-chown root:root /etc/ufw/user.rules
-chown root:root /etc/ufw/ufw.conf
+chown root:root /etc/monitrc
 chown root:root /etc/nginx/nginx.conf
-chown root:root /etc/php/7.0/fpm/php.ini
+chown root:root /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
+chmod -R 700 /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 chown root:root /etc/php/7.0/cli/php.ini
+chown root:root /etc/php/7.0/fpm/php.ini
 chown root:root /etc/php/7.0/fpm/php-fpm.conf
+chown root:root /etc/ufw/ufw.conf
+chown root:root /etc/ufw/user.rules
 chown root:root /etc/php/7.0/fpm/pool.d/www.conf
-chown root:root /etc/ssl/nginx.crt
-chown root:root /etc/ssl/nginx.key
-chown root:root /etc/ssl/nginx.pem
-chmod -R 700 /etc/ssl/nginx.crt
-chmod -R 700 /etc/ssl/nginx.key
-chmod -R 700 /etc/ssl/nginx.pem
 
-#############################################
-#### littlebizzy various temporary tasks ####
-#############################################
+#####################################################
+#### littlebizzy perform various temporary tasks ####
+#####################################################
 
 ## TEMP change crontab ##
 # sed -i "s/ups-cron/lemp-updates/g" /var/spool/cron/crontabs/root
@@ -111,10 +112,6 @@ chmod -R 700 /etc/ssl/nginx.pem
 ## TEMP change error log path ##
 # sed -i "s#/var/log/nginx/error.log#/var/log/php-fpm/error.log#g" /var/www/html/wp-config.php
 
-## TEMP updates and reboot  ##
-# source /var/www/lemp-updates
-# /sbin/reboot
-
 ## TEMP remove nginx and install nginx-extras ##
 # DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" remove nginx
 # DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" update
@@ -125,12 +122,3 @@ chmod -R 700 /etc/ssl/nginx.pem
 # DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
 # /etc/init.d/php7.0-fpm restart
 # /etc/init.d/nginx restart
-
-## TEMP new nginx config ##
-# source /var/www/nginx-config
-
-
-## TEMP install redis ##
-# DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" update
-# DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install redis-server
-# DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php-redis
