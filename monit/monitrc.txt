@@ -1,10 +1,9 @@
-#### Monit config file that works with Version 5.16 ####
+###################################################
+#### littlebizzy production /etc/monit/monitrc ####
+###################################################
 
-## performance check intervals
-set daemon 120            # check services at 5-minute intervals
-with start delay 120    # optional: delay the first check by 4-minutes (by
-
-## log file location
+set daemon 300
+with start delay 240
 set logfile /var/log/monit.log
 
 ## files used by Monit
@@ -21,19 +20,16 @@ set statefile /var/lib/monit/state
 #     networkTimeout:    5 seconds # timeout for network I/O
 # }
 
-## mail server and email recipient
+## email alerts ##
 set mailserver smtp.sendgrid.net port 587
-   username "monit" password "bullet"
+username "monit" password "bullet"
 set alert info@littlebizzy.com
 
-## location to save a limited amount of undelivered alerts
+## undeliverable emails log ##
 set eventqueue
-basedir /var/lib/monit/events # set the base directory where events will be stored
-slots 100                     # optionally limit the queue size
+basedir /var/lib/monit/events
+slots 100
 
-## Monit by default uses the following format for alerts if the the mail-format
-## statement is missing::
-## --8<--
 ## set mail-format {
 ##   from:    monit@$HOST
 ##   subject: monit alert --  $EVENT $SERVICE
@@ -53,24 +49,16 @@ slots 100                     # optionally limit the queue size
 ## This filter is recommended to avoid getting alerts for trivial cases.
 #
 # set alert your-name@your.domain not on { instance, action }
-#
-#
-## Monit has an embedded HTTP interface which can be used to view status of
-## services monitored and manage services from a web interface. The HTTP
-## interface is also required if you want to issue Monit commands from the
-## command line, such as 'monit status' or 'monit restart service' The reason
-## for this is that the Monit client uses the HTTP interface to send these
-## commands to a running Monit daemon. See the Monit Wiki if you want to
-## enable SSL for the HTTP interface.
-#
-  SET HTTPD
-      PORT 2812
-      USE ADDRESS littlebizzy.com
-      SSL ENABLE
-      PEMFILE  /etc/ssl/nginx.pem
-      ALLOWSELFCERTIFICATION
-      ALLOW 0.0.0.0/0.0.0.0
-      ALLOW admin:monit
+  
+## web interface ##  
+SET HTTPD
+PORT 2812
+USE ADDRESS $HOST
+SSL ENABLE
+PEMFILE  /etc/ssl/nginx.pem
+ALLOWSELFCERTIFICATION
+ALLOW 0.0.0.0/0.0.0.0
+ALLOW admin:monit
 
 ## check system health
 check system localhost
