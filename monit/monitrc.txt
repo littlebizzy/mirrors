@@ -1,23 +1,33 @@
 ###################################################
 #### littlebizzy production /etc/monit/monitrc ####
 ###################################################
+
+## scheduling ##
 set daemon 300
     with start delay 240
-set logfile /var/log/monit.log
+    
+## file paths ##
 set pidfile /var/run/monit.pid
 set idfile /var/lib/monit/id
 set statefile /var/lib/monit/state
-set ssl {
-    verify     : disable,
-    selfsigned : allow
-}
+
+## mail settings ##
 set mailserver smtp.sendgrid.net port 587
     username "monit" password "bullet"
 set alert info@littlebizzy.com
+
+## log settings ##
+set logfile /var/log/monit.log
 set eventqueue
     basedir /var/lib/monit/events
     slots 100
-set httpd port 2812
+
+## web interface ##
+set httpd port 2812 address 0.0.0.0
+    ssl enable
+    pemfile  /etc/ssl/nginx.pem
+    allow 0.0.0.0/0.0.0.0
+
 # set limits {
 #     programOutput:     512 B,    # check program's output truncate limit
 #     sendExpectBuffer:  256 B,    # limit for send/expect protocol test
@@ -25,6 +35,7 @@ set httpd port 2812
 #     httpContentBuffer: 1 MB,     # limit for HTTP content test
 #     networkTimeout:    5 seconds # timeout for network I/O
 # }
+
 check system localhost
 if loadavg (1min) > 2 then alert
 if loadavg (5min) > 1 then alert
@@ -32,6 +43,7 @@ if cpu usage > 50% for 10 cycles then alert
 if memory usage > 75% then alert
 if swap usage > 25% then alert
 # if space usage is greater than 75% for 5 cycles then alert
+
 #  check process apache with pidfile /usr/local/apache/logs/httpd.pid
 #    start program = "/etc/init.d/httpd start" with timeout 60 seconds
 #    stop program  = "/etc/init.d/httpd stop"
@@ -47,6 +59,7 @@ if swap usage > 25% then alert
 #    if 3 restarts within 5 cycles then unmonitor
 #    depends on apache_bin
 #    group server
+
 #  check host myserver with address 192.168.1.1
 #    if failed ping then alert
 #    if failed port 3306 protocol mysql with timeout 15 seconds then alert
