@@ -9,8 +9,7 @@ set idfile /var/lib/monit/id
 set statefile /var/lib/monit/state
 set ssl {
     verify     : disable,
-    selfsigned : allow,
-    pemfile: /etc/ssl/nginx.pem
+    selfsigned : allow
 }
 set mailserver smtp.sendgrid.net port 587
     username "monit" password "bullet"
@@ -19,7 +18,6 @@ set eventqueue
     basedir /var/lib/monit/events
     slots 100
 set httpd port 2812
-    allow admin:monit
 # set limits {
 #     programOutput:     512 B,    # check program's output truncate limit
 #     sendExpectBuffer:  256 B,    # limit for send/expect protocol test
