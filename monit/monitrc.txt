@@ -1,18 +1,12 @@
 ###################################################
 #### littlebizzy production /etc/monit/monitrc ####
 ###################################################
-##
-#### monitoring schedule ####
 set daemon 300
     with start delay 240
-##
-#### log location ####
 set logfile /var/log/monit.log
-##
-#### files used by monit ####
+set pidfile /var/run/monit.pid
 set idfile /var/lib/monit/id
 set statefile /var/lib/monit/state
-##
 #### set various limits ####
 # set limits {
 #     programOutput:     512 B,    # check program's output truncate limit
