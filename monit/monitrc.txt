@@ -25,7 +25,6 @@ set alert info@littlebizzy.com
 set eventqueue
     basedir /var/lib/monit/events
     slots 100
-##
 ## set mail-format {
 ##   from:    monit@$HOST
 ##   subject: monit alert --  $EVENT $SERVICE
@@ -37,17 +36,9 @@ set eventqueue
 ##
 ##            Your faithful employee,
 ##            Monit
-## }
-##
-## web interface ##  
+## } 
 set httpd port 2812
-    with ssl {
-        pemfile: /etc/ssl/nginx.pem
-        selfsigned: allow
-     }
     allow admin:monit
-##
-#### check system health ####
 check system localhost
 if loadavg (1min) > 2 then alert
 if loadavg (5min) > 1 then alert
