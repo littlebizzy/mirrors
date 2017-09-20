@@ -4,7 +4,7 @@
 
 ## monitoring schedule ##
 set daemon 300
-with start delay 240
+    with start delay 240
 
 ## log location ##
 set logfile /var/log/monit.log
@@ -45,16 +45,14 @@ slots 100
 ##            Your faithful employee,
 ##            Monit
 ## }
-  
+
 ## web interface ##  
-SET HTTPD
-PORT 2812
-USE ADDRESS $HOST
-SSL ENABLE
-PEMFILE  /etc/ssl/nginx.pem
-ALLOWSELFCERTIFICATION
-ALLOW 0.0.0.0/0.0.0.0
-ALLOW admin:monit
+set httpd port 2812
+    with ssl {
+        pemfile: /etc/ssl/nginx.pem
+        selfsigned: allow
+     }
+    allow admin:monit
 
 ## check system health
 check system localhost
