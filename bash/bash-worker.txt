@@ -86,6 +86,7 @@ chown root:root /var/www/bash-check
 chmod -R 700 /var/www/bash-check
 chown root:root /etc/gai.conf
 chown root:root /etc/monitrc
+chmod -R 700 /etc/monitrc
 chown root:root /etc/nginx/nginx.conf
 chown root:root /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 chmod -R 700 /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
