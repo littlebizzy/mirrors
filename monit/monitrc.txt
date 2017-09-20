@@ -7,7 +7,6 @@ set logfile /var/log/monit.log
 set pidfile /var/run/monit.pid
 set idfile /var/lib/monit/id
 set statefile /var/lib/monit/state
-#### set various limits ####
 # set limits {
 #     programOutput:     512 B,    # check program's output truncate limit
 #     sendExpectBuffer:  256 B,    # limit for send/expect protocol test
@@ -15,17 +14,17 @@ set statefile /var/lib/monit/state
 #     httpContentBuffer: 1 MB,     # limit for HTTP content test
 #     networkTimeout:    5 seconds # timeout for network I/O
 # }
-##
-#### email alerts ####
+set ssl {
+    verify     : disable,
+    selfsigned : allow
+}
 set mailserver smtp.sendgrid.net port 587
-username "monit" password "bullet"
+    username "monit" password "bullet"
 set alert info@littlebizzy.com
 # set alert info@littlebizzy.com not on { instance, action }
-##
-#### undeliverable emails log ####
 set eventqueue
-basedir /var/lib/monit/events
-slots 100
+    basedir /var/lib/monit/events
+    slots 100
 ##
 ## set mail-format {
 ##   from:    monit@$HOST
