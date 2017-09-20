@@ -146,14 +146,3 @@ if space usage is greater than 75% for 5 cycles then alert
 #    if failed port 80 protocol http
 #       and request /some/path with content = "a string"
 #    then alert
-#
-#
-## Check a network link status (up/down), link capacity changes, saturation
-## and bandwidth usage.
-#
-#  check network public with interface eth0
-#    if failed link then alert
-#    if changed link then alert
-#    if saturation > 90% then alert
-#    if download > 10 MB/s then alert
-#    if total upload > 1 GB in last hour then alert
