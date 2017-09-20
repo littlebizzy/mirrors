@@ -60,3 +60,4 @@ DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/u
 ## restart services ##
 /etc/init.d/php7.0-fpm restart
 /etc/init.d/nginx restart
+/etc/init.d/monit restart
