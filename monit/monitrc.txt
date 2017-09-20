@@ -1,19 +1,19 @@
 ###################################################
 #### littlebizzy production /etc/monit/monitrc ####
 ###################################################
-
-## monitoring schedule ##
+##
+#### monitoring schedule ####
 set daemon 300
     with start delay 240
-
-## log location ##
+##
+#### log location ####
 set logfile /var/log/monit.log
-
-## files used by monit ##
+##
+#### files used by monit ####
 set idfile /var/lib/monit/id
 set statefile /var/lib/monit/state
-
-## set various limits ##
+##
+#### set various limits ####
 # set limits {
 #     programOutput:     512 B,    # check program's output truncate limit
 #     sendExpectBuffer:  256 B,    # limit for send/expect protocol test
@@ -21,18 +21,18 @@ set statefile /var/lib/monit/state
 #     httpContentBuffer: 1 MB,     # limit for HTTP content test
 #     networkTimeout:    5 seconds # timeout for network I/O
 # }
-
-## email alerts ##
+##
+#### email alerts ####
 set mailserver smtp.sendgrid.net port 587
 username "monit" password "bullet"
 set alert info@littlebizzy.com
 # set alert info@littlebizzy.com not on { instance, action }
-
-## undeliverable emails log ##
+##
+#### undeliverable emails log ####
 set eventqueue
 basedir /var/lib/monit/events
 slots 100
-
+##
 ## set mail-format {
 ##   from:    monit@$HOST
 ##   subject: monit alert --  $EVENT $SERVICE
@@ -45,7 +45,7 @@ slots 100
 ##            Your faithful employee,
 ##            Monit
 ## }
-
+##
 ## web interface ##  
 set httpd port 2812
     with ssl {
@@ -53,8 +53,8 @@ set httpd port 2812
         selfsigned: allow
      }
     allow admin:monit
-
-## check system health
+##
+#### check system health ####
 check system localhost
 if loadavg (1min) > 2 then alert
 if loadavg (5min) > 1 then alert
@@ -62,7 +62,7 @@ if cpu usage > 50% for 10 cycles then alert
 if memory usage > 75% then alert
 if swap usage > 25% then alert
 if space usage is greater than 75% for 5 cycles then alert
-
+##
 ## Check if a file exists, checksum, permissions, uid and gid. In addition
 ## to alert recipients in the global section, customized alert can be sent to
 ## additional recipients by specifying a local alert handler. The service may
