@@ -9,7 +9,8 @@ set idfile /var/lib/monit/id
 set statefile /var/lib/monit/state
 set ssl {
     verify     : disable,
-    selfsigned : allow
+    selfsigned : allow,
+    pemfile: /etc/ssl/nginx.pem
 }
 set mailserver smtp.sendgrid.net port 587
     username "monit" password "bullet"
