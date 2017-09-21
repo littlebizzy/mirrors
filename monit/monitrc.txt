@@ -25,7 +25,7 @@ set eventqueue
 ## web interface ##
 set httpd
     port 2812
-     with ssl {
+    with ssl {
         pemfile: /etc/ssl/nginx.pem
         selfsigned: allow
      }
