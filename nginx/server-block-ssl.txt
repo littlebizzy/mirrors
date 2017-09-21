@@ -146,11 +146,12 @@ server {
     
     #### MONIT ####
     location = /monit/ {
-    proxy_pass https://127.0.0.1:2812;
-    proxy_set_header Host $host;
-    rewrite ^/monit/(.*) /$1 break;
-    proxy_ignore_client_abort on;
-  }
+        rewrite ^/monit/(.*) /$1 break;
+        proxy_ignore_client_abort on;
+        proxy_pass https://127.0.0.1:2812;
+        proxy_set_header Host $host;
+	proxy_redirect https://127.0.0.1:2812 /monit;
+    }
 
     #### GIT CONFIG ####
     location = /.git/config {
