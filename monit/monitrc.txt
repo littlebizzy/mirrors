@@ -24,9 +24,13 @@ set eventqueue
 
 ## web interface ##
 set httpd port 2812 address 0.0.0.0
-    ssl enable
-    pemfile  /etc/ssl/nginx.pem
-    selfsigned allow
+    WITH SSL {
+        PEMFILE: /etc/ssl/nginx.pem
+        SELFSIGNED: ALLOW
+     }
+    # ssl enable
+    # pemfile  /etc/ssl/nginx.pem
+    # selfsigned allow
     allow 0.0.0.0/0.0.0.0
 
 # set limits {
