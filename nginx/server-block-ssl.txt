@@ -143,6 +143,12 @@ server {
         ## block any attempted attacks or access
         deny all;
     }
+    
+    #### MONIT ####
+    location = /monit/ {
+    proxy_pass https://127.0.0.1:2812;
+    proxy_set_header Host $host;
+  }
 
     #### GIT CONFIG ####
     location = /.git/config {
