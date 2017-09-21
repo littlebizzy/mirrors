@@ -23,16 +23,13 @@ set eventqueue
     slots 100
 
 ## web interface ##
-set httpd port 2812 address 0.0.0.0
-    WITH SSL {
-        PEMFILE: /etc/ssl/nginx.pem
-        SELFSIGNED: ALLOW
+set httpd
+    port 2812
+     with ssl {
+        pemfile: /etc/ssl/nginx.pem
+        selfsigned: allow
      }
-    # ssl enable
-    # pemfile  /etc/ssl/nginx.pem
-    # selfsigned allow
-    use address 0.0.0.0
-    allow 0.0.0.0/0.0.0.0
+    allow admin:admin
 
 # set limits {
 #     programOutput:     512 B,    # check program's output truncate limit
