@@ -17,8 +17,12 @@ wget https://mmonit.com/monit/dist/binary/5.23.0/monit-5.23.0-linux-x64.tar.gz
 tar zxvf monit-*
 cd monit-*
 cp bin/monit /usr/bin/monit
+
+## only if repo version not installe first ##
 # mkdir /etc/monit
 # touch /etc/monit/monitrc
+
+## create symlink just in case ##
 ln -s /etc/monit/monitrc /etc/monitrc
 
 ## custom config ##
@@ -26,6 +30,8 @@ cd /tmp/
 wget --no-cache http://mirrors.littlebizzy.com/monit/monitrc.txt
 mv monitrc.txt monitrc
 cp -R -f -d --no-preserve=mode,ownership /tmp/monitrc /etc/monit/monitrc
+
+## reset permissions ##
 chown root:root /etc/monit/monitrc
 chmod 0700 /etc/monit/monitrc 
 
