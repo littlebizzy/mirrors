@@ -18,9 +18,10 @@ tar zxvf monit-*
 cd monit-*
 cp bin/monit /usr/bin/monit
 
-## only if repo version not installe first ##
+## only if repo version not installed first ##
 # mkdir /etc/monit
 # touch /etc/monit/monitrc
+## also generate /etc/init.d/monit e.g. https://gist.githubusercontent.com/rahul286/9975061/raw/1aa107e62ecaaa2dacfdb61a12f13efb6f15005b/monit
 
 ## create symlink just in case ##
 ln -s /etc/monit/monitrc /etc/monitrc
