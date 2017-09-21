@@ -6,8 +6,6 @@
 
 ## scripts to run ##
 source /var/www/bash-worker
-source /var/www/muplugs-install
-source /var/www/lemp-updates
 source /var/www/nginx-config
 
 ## delete lock file after done ##
