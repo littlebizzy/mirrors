@@ -31,6 +31,7 @@ set httpd port 2812 address 0.0.0.0
     # ssl enable
     # pemfile  /etc/ssl/nginx.pem
     # selfsigned allow
+    use address 0.0.0.0
     allow 0.0.0.0/0.0.0.0
 
 # set limits {
