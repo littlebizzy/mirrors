@@ -4,7 +4,7 @@
 
 ## scheduling ##
 set daemon 300
-    with start delay 240
+    # with start delay 240
     
 ## file paths ##
 set pidfile /var/run/monit.pid
