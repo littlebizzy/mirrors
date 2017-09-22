@@ -1,6 +1,11 @@
-###################################################
-#### littlebizzy production /etc/monit/monitrc ####
-###################################################
+###########################################################
+#### author: @littlebizzy @slickstack
+#### link: http://mirrors.littlebizzy.com/monit/monitrc
+#### type: config file
+#### location: /etc/monit/monitrc
+#### version: Monit 5.23
+#### executable: no
+###########################################################
 
 ## scheduling ##
 set daemon 300
@@ -12,8 +17,8 @@ set idfile /var/lib/monit/id
 set statefile /var/lib/monit/state
 
 ## mail settings ##
-set mailserver smtp.sendgrid.net port 587
-    username "monit" password "bullet"
+set mailserver @mailsmtp port @mailport
+    username "@mailuser" password "@mailpass"
 set alert info@littlebizzy.com
 
 ## log settings ##
