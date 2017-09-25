@@ -110,6 +110,12 @@ chown root:root /etc/ufw/ufw.conf
 chown root:root /etc/ufw/user.rules
 chown root:root /etc/php/7.0/fpm/pool.d/www.conf
 
+## restart services ##
+/etc/init.d/nginx restart
+/etc/init.d/php7.0-fpm restart
+/etc/init.d/redis restart
+/etc/init.d/monit restart
+
 #####################################################
 #### littlebizzy perform various temporary tasks ####
 #####################################################
