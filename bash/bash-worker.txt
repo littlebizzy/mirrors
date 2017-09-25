@@ -37,7 +37,7 @@ wget --no-cache http://mirrors.littlebizzy.com/monit/monitrc.txt
 wget --no-cache http://mirrors.littlebizzy.com/nginx/nginx-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/php/php-ini.txt
 wget --no-cache http://mirrors.littlebizzy.com/php/php-fpm-conf.txt
-wget --no-cache http://mirrors.littlebizzy.com/php/redis-conf.txt
+wget --no-cache http://mirrors.littlebizzy.com/redis/redis-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/ubuntu/ufw-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/ubuntu/user-rules.txt
 wget --no-cache http://mirrors.littlebizzy.com/php/www-conf.txt
