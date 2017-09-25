@@ -5,7 +5,7 @@
 #### link: https://github.com/littlebizzy/slickstack ###################
 #### mirror: http://mirrors.littlebizzy.com/bash/monit-install.txt #####
 #### type: bash script #################################################
-#### purpose: install and config monit #################################
+#### purpose: install and configure monit ##############################
 #### location: /var/www/monit-install ##################################
 #### slug: monit-install ###############################################
 #### version: Monit 5.23 for Ubuntu 16.04 ##############################
