@@ -1,0 +1,22 @@
+#!/bin/bash
+
+##############################################################################
+#### author: @slickstack #####################################################
+#### link: https://github.com/littlebizzy/slickstack #########################
+#### mirror: http://mirrors.littlebizzy.com/bash/linux-utils-install.txt #####
+#### type: bash script #######################################################
+#### purpose: install various linux utilities ################################
+#### location: /var/www/linux-utils-install ##################################
+#### slug: monit-install #####################################################
+#### version: N/A ############################################################
+#### executable: yes #########################################################
+##############################################################################
+
+## server config variables ##
+source /var/www/config
+
+## update repo cache ##
+DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" update
+
+## install or upgrade linux utilities ##
+DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install zip unzip
