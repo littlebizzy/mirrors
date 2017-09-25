@@ -50,13 +50,13 @@ wget --no-cache http://mirrors.littlebizzy.com/monit/monitrc.txt
 mv monitrc.txt monitrc
 
 ## replace @DOMAIN placeholder with variable from config ##
-sed -i "s/@MAILSMTP/${domain}/g" /tmp/monitrc
-sed -i "s/@MAILPORT/${domain}/g" /tmp/monitrc
-sed -i "s/@MAILUSER/${domain}/g" /tmp/monitrc
-sed -i "s/@MAILPASS/${domain}/g" /tmp/monitrc
-sed -i "s/@MAILALERT/${domain}/g" /tmp/monitrc
-sed -i "s/@MONITUSER/${domain}/g" /tmp/monitrc
-sed -i "s/@MONITPASS/${domain}/g" /tmp/monitrc
+sed -i "s/@MAILSMTP/${mailsmtp}/g" /tmp/monitrc
+sed -i "s/@MAILPORT/${mailport}/g" /tmp/monitrc
+sed -i "s/@MAILUSER/${mailuser}/g" /tmp/monitrc
+sed -i "s/@MAILPASS/${mailpass}/g" /tmp/monitrc
+sed -i "s/@MAILALERT/${mailalert}/g" /tmp/monitrc
+sed -i "s/@MONITUSER/${monituser}/g" /tmp/monitrc
+sed -i "s/@MONITPASS/${monitpass}/g" /tmp/monitrc
 
 ## copy custom config to destination ##
 cp -R -f -d --no-preserve=mode,ownership /tmp/monitrc /etc/monit/monitrc
