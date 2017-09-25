@@ -13,6 +13,7 @@
 <a href="linux-sudo-config.txt">linux-sudo-config.txt</a><br>
 <a href="linux-time-config.txt">linux-time-config.txt</a><br>
 <a href="linux-users-config.txt">linux-users-config.txt</a><br>
+<a href="linux-utils-install.txt">linux-utils-install.txt</a><br>
 <a href="monit-install.txt">monit-install.txt</a><br>
 <a href="muplugs-install.txt">muplugs-install.txt</a><br>
 <a href="mysql-install.txt">mysql-install.txt</a><br>
