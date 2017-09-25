@@ -89,6 +89,8 @@ rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order*
 # rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
 
 ## delete do-everything plugins that cause performance and code conflict issues ##
+rm -R -f /var/www/html/wp-content/mu-plugins/p3-profiler.php
+rm -R -f /var/www/html/wp-content/plugins/p3-profiler*
 # rm -R -f /var/www/html/wp-content/plugins/woocommerce-jetpack*
 
 ## delete plugins with with an abusive amount of database queries ##
