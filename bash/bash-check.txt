@@ -44,6 +44,7 @@ rm -R -f /tmp/php-install*
 rm -R -f /tmp/ssl-install*
 rm -R -f /tmp/wp-clean*
 rm -R -f /tmp/wp-install*
+rm -R -f /tmp/wpcli-install*
 
 ## download latest scripts ##
 cd /tmp/
@@ -75,6 +76,7 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/php-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ssl-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/wp-clean.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/wp-install.txt
+wget --no-cache http://mirrors.littlebizzy.com/bash/wpcli-install.txt
 
 ## rename all scripts ##
 cd /tmp/
@@ -106,6 +108,7 @@ mv php-install.txt php-install
 mv ssl-install.txt ssl-install
 mv wp-clean.txt wp-clean
 mv wp-install.txt wp-install
+mv wpcli-install.txt wpcli-install
 
 # copy all scripts to destination ##
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/1-cron-often /var/www/1-cron-often
@@ -136,6 +139,7 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ssl-install /var/www/ssl-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/wp-clean /var/www/wp-clean
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/wp-install /var/www/wp-install
+cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/wpcli-install /var/www/wpcli-install
 
 ## chown all scripts ##
 chown root:root /var/www/1-cron-often
@@ -166,6 +170,7 @@ chown root:root /var/www/php-install
 chown root:root /var/www/ssl-install
 chown root:root /var/www/wp-clean
 chown root:root /var/www/wp-install
+chown root:root /var/www/wpcli-install
 
 ## chmod all scripts ##
 chmod 755 /var/www/1-cron-often
@@ -196,6 +201,7 @@ chmod 755 /var/www/php-install
 chmod 755 /var/www/ssl-install
 chmod 755 /var/www/wp-clean
 chmod 755 /var/www/wp-install
+chmod 755 /var/www/wpcli-install
 
 ## delete tmp files ##
 rm -R -f /tmp/1-cron-often*
@@ -226,3 +232,4 @@ rm -R -f /tmp/php-install*
 rm -R -f /tmp/ssl-install*
 rm -R -f /tmp/wp-clean*
 rm -R -f /tmp/wp-install*
+rm -R -f /tmp/wpcli-install*
