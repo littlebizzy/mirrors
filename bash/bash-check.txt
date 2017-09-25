@@ -1,8 +1,16 @@
 #!/bin/bash
 
-########################################################
-#### littlebizzy update bash scripts and cron files ####
-########################################################
+########################################################################
+#### author: @slickstack ###############################################
+#### link: https://github.com/littlebizzy/slickstack ###################
+#### mirror: http://mirrors.littlebizzy.com/bash/bash-check.txt ########
+#### type: bash script #################################################
+#### purpose: download various slickstack bash scripts #################
+#### location: /var/www/bash-check #####################################
+#### slug: bash-check ##################################################
+#### version: N/A ######################################################
+#### executable: yes ###################################################
+########################################################################
 
 ## server config variables ##
 source /var/www/config
@@ -25,6 +33,7 @@ rm -R -f /tmp/linux-sudo-config*
 rm -R -f /tmp/linux-time-config*
 rm -R -f /tmp/linux-users-config*
 rm -R -f /tmp/linux-utils-install*
+rm -R -f /tmp/monit-install*
 rm -R -f /tmp/muplugs-install*
 rm -R -f /tmp/mysql-install*
 rm -R -f /tmp/mysql-secure*
@@ -55,6 +64,7 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/linux-sudo-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-time-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-users-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-utils-install.txt
+wget --no-cache http://mirrors.littlebizzy.com/bash/monit-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/muplugs-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/mysql-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/mysql-secure.txt
@@ -85,6 +95,7 @@ mv linux-sudo-config.txt linux-sudo-config
 mv linux-time-config.txt linux-time-config
 mv linux-users-config.txt linux-users-config
 mv linux-utils-install.txt linux-utils-install
+mv monit-install.txt monit-install
 mv muplugs-install.txt muplugs-install
 mv mysql-install.txt mysql-install
 mv mysql-secure.txt mysql-secure
@@ -114,6 +125,7 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-time-config /var/www/linux-time-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-users-config /var/www/linux-users-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-utils-install /var/www/linux-utils-install
+cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/monit-install /var/www/monit-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/muplugs-install /var/www/muplugs-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/mysql-install /var/www/mysql-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/mysql-secure /var/www/mysql-secure
@@ -143,6 +155,7 @@ chown root:root /var/www/linux-sudo-config
 chown root:root /var/www/linux-time-config
 chown root:root /var/www/linux-users-config
 chown root:root /var/www/linux-utils-install
+chown root:root /var/www/monit-install
 chown root:root /var/www/muplugs-install
 chown root:root /var/www/mysql-install
 chown root:root /var/www/mysql-secure
@@ -172,6 +185,7 @@ chmod 755 /var/www/linux-sudo-config
 chmod 755 /var/www/linux-time-config
 chmod 755 /var/www/linux-users-config
 chmod 755 /var/www/linux-utils-install
+chmod 755 /var/www/monit-install
 chmod 755 /var/www/muplugs-install
 chmod 755 /var/www/mysql-install
 chmod 755 /var/www/mysql-secure
@@ -201,6 +215,7 @@ rm -R -f /tmp/linux-sudo-config*
 rm -R -f /tmp/linux-time-config*
 rm -R -f /tmp/linux-users-config*
 rm -R -f /tmp/linux-utils-install*
+rm -R -f /tmp/monit-install*
 rm -R -f /tmp/muplugs-install*
 rm -R -f /tmp/mysql-install*
 rm -R -f /tmp/mysql-secure*
