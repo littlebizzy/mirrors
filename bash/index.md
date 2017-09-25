@@ -25,3 +25,4 @@
 <a href="temp-varmove.txt">temp-varmove.txt</a><br>
 <a href="wp-clean.txt">wp-clean.txt</a><br>
 <a href="wp-install.txt">wp-install.txt</a><br>
+<a href="wpcli-install.txt">wpcli-install.txt</a><br>
