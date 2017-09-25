@@ -1,14 +1,15 @@
 #!/bin/bash
 
-###########################################################
+#################################################################
 #### author: @slickstack
-#### link: http://mirrors.littlebizzy.com/bash/bash-worker
+#### link: https://github.com/littlebizzy/slickstack
+#### mirror: http://mirrors.littlebizzy.com/bash/bash-worker
 #### type: bash script
 #### purpose: updates all server config files
 #### location: /var/www/bash-worker
 #### version: master
 #### executable: yes
-###########################################################
+#################################################################
 
 ## include server config variables ##
 source /var/www/config
