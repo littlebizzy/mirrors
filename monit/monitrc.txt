@@ -17,9 +17,9 @@ set idfile /var/lib/monit/id
 set statefile /var/lib/monit/state
 
 ## mail settings ##
-set mailserver @mailsmtp port @mailport
-    username "@mailuser" password "@mailpass"
-set alert info@littlebizzy.com
+set mailserver @MAILSMTP port @MAILPORT
+    username "@MAILUSER" password "@MAILPASS"
+set alert @MAILALERT
 
 ## log settings ##
 set logfile /var/log/monit.log
@@ -34,7 +34,7 @@ set httpd
         pemfile: /etc/ssl/nginx.pem
         selfsigned: allow
      }
-    allow admin:admin
+    allow @MONITUSER:@MONITPASS
 
 # set limits {
 #     programOutput:     512 B,    # check program's output truncate limit
