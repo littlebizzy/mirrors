@@ -15,6 +15,13 @@
 #### binaries list: https://mmonit.com/monit/dist/binary/
 #### downloads: https://bitbucket.org/tildeslash/monit/downloads/
 
+## server-specific config variables ##
+source /var/www/config
+
+## delete previous tmp files ##
+rm -R -f /tmp/monit-*
+rm -R -f /tmp/monitrc.txt /tmp/monitrc
+
 ## update repo cache ##
 DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" update
 
@@ -37,15 +44,30 @@ cp bin/monit /usr/bin/monit
 ## create symlink just in case ##
 ln -s /etc/monit/monitrc /etc/monitrc
 
-## custom config ##
+## retrieve template to generate custom config ##
 cd /tmp/
 wget --no-cache http://mirrors.littlebizzy.com/monit/monitrc.txt
 mv monitrc.txt monitrc
+
+## replace @DOMAIN placeholder with variable from config ##
+sed -i "s/@MAILSMTP/${domain}/g" /tmp/monitrc
+sed -i "s/@MAILPORT/${domain}/g" /tmp/monitrc
+sed -i "s/@MAILUSER/${domain}/g" /tmp/monitrc
+sed -i "s/@MAILPASS/${domain}/g" /tmp/monitrc
+sed -i "s/@MAILALERT/${domain}/g" /tmp/monitrc
+sed -i "s/@MONITUSER/${domain}/g" /tmp/monitrc
+sed -i "s/@MONITPASS/${domain}/g" /tmp/monitrc
+
+## copy custom config to destination ##
 cp -R -f -d --no-preserve=mode,ownership /tmp/monitrc /etc/monit/monitrc
+
+## delete tmp files again ##
+rm -R -f /tmp/monit-*
+rm -R -f /tmp/monitrc.txt /tmp/monitrc
 
 ## reset permissions ##
 chown root:root /etc/monit/monitrc
 chmod 0700 /etc/monit/monitrc 
 
-## restart monit ##
+## restart services ##
 /etc/init.d/monit restart
