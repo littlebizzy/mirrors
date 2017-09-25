@@ -115,6 +115,7 @@ chown root:root /etc/php/7.0/fpm/pool.d/www.conf
 /etc/init.d/php7.0-fpm restart
 /etc/init.d/redis restart
 /etc/init.d/monit restart
+/etc/init.d/ufw restart
 
 #####################################################
 #### littlebizzy perform various temporary tasks ####
