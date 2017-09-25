@@ -1,8 +1,16 @@
 #!/bin/bash
 
-###############################################
-#### littlebizzy config nginx server block ####
-###############################################
+#######################################################################
+#### author: @slickstack ##############################################
+#### link: https://github.com/littlebizzy/slickstack ##################
+#### mirror: http://mirrors.littlebizzy.com/bash/nginx-config.txt #####
+#### type: bash script ################################################
+#### purpose: generates nginx server block ############################
+#### location: /var/www/nginx-config ##################################
+#### slug: nginx-config ###############################################
+#### version: master ##################################################
+#### executable: yes ##################################################
+#######################################################################
 
 ## server-specific config variables ##
 source /var/www/config
