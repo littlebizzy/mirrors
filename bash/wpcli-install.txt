@@ -1,0 +1,26 @@
+#!/bin/bash
+
+########################################################################
+#### author: @slickstack ###############################################
+#### link: https://github.com/littlebizzy/slickstack ###################
+#### mirror: http://mirrors.littlebizzy.com/bash/wpcli-install.txt #####
+#### type: bash script #################################################
+#### purpose: install and configure WP-CLI 1.3.0 #######################
+#### location: /var/www/wpcli-install ##################################
+#### slug: wpcli-install ###############################################
+#### version: N/A ######################################################
+#### executable: yes ###################################################
+########################################################################
+
+## server config variables ##
+source /var/www/config
+
+## retrieve latest wp-cli version ##
+cd /tmp/
+wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+## rename and move phar ##
+mv wp-cli.phar /usr/local/bin/wp
+
+## reset permissions ##
+chmod +x wp-cli.phar
