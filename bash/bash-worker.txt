@@ -21,7 +21,6 @@ rm -R -f /tmp/bash-check.txt* /tmp/bash-check*
 rm -R -f /tmp/gai-conf.txt* /tmp/gai.conf*
 rm -R -f /tmp/nginx-conf.txt* /tmp/nginx.conf*
 rm -R -f /tmp/nginx.crt* /tmp/nginx.key* /tmp/nginx.pem*
-rm -R -f /tmp/redis-conf.txt* /tmp/redis.conf*
 
 # download latest scripts and configs ##
 cd /tmp/
@@ -29,7 +28,6 @@ wget --no-cache http://mirrors.littlebizzy.com/crons/1-cron-often.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/bash-check.txt
 wget --no-cache http://mirrors.littlebizzy.com/ubuntu/gai-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/nginx/nginx-conf.txt
-wget --no-cache http://mirrors.littlebizzy.com/redis/redis-conf.txt
 
 ## rename scripts and configs ##
 cd /tmp/
@@ -37,14 +35,12 @@ mv 1-cron-often.txt 1-cron-often
 mv bash-check.txt bash-check
 mv gai-conf.txt gai.conf
 mv nginx-conf.txt nginx.conf
-mv redis-conf.txt redis.conf
 
 ## copy scripts and configs to their destinations ##
 cp -R -f -d --no-preserve=mode,ownership /tmp/1-cron-often /var/www/1-cron-often
 cp -R -f -d --no-preserve=mode,ownership /tmp/bash-check /var/www/bash-check
 cp -R -f -d --no-preserve=mode,ownership /tmp/gai.conf /etc/gai.conf
 cp -R -f -d --no-preserve=mode,ownership /tmp/nginx.conf /etc/nginx/nginx.conf
-cp -R -f -d --no-preserve=mode,ownership /tmp/redis.conf /etc/redis/redis.conf
 
 ## generate pem file from openssl key and crt files ##
 cp -R -f -d --no-preserve=mode,ownership /etc/ssl/nginx.crt /tmp/nginx.crt
@@ -58,7 +54,6 @@ rm -R -f /tmp/bash-check.txt* /tmp/bash-check*
 rm -R -f /tmp/gai-conf.txt* /tmp/gai.conf*
 rm -R -f /tmp/nginx-conf.txt* /tmp/nginx.conf*
 rm -R -f /tmp/nginx.crt* /tmp/nginx.key* /tmp/nginx.pem*
-rm -R -f /tmp/redis-conf.txt* /tmp/redis.conf*
 
 ## reset file permissions ##
 chown root:root /var/www/1-cron-often
@@ -69,11 +64,9 @@ chown root:root /etc/gai.conf
 chown root:root /etc/nginx/nginx.conf
 chown root:root /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 chmod -R 700 /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
-chown root:root /etc/redis/redis.conf
 
 ## restart services ##
 /etc/init.d/nginx restart
-/etc/init.d/redis-server restart
 
 #####################################################
 #### littlebizzy perform various temporary tasks ####
