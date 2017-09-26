@@ -1,41 +1,50 @@
 #!/bin/bash
 
-#################################
-#### littlebizzy install php ####
-#################################
+#####################################################################
+#### author: @slickstack ############################################
+#### link: https://github.com/littlebizzy/slickstack ################
+#### mirror: http://mirrors.littlebizzy.com/php/php-install.txt #####
+#### type: bash script ##############################################
+#### purpose: install and configure PHP 7.0 #########################
+#### slug: php-install ##############################################
+#### executable: no #################################################
+#####################################################################
 
-## install php and preferred extensions ##
-apt-get install -y php7.0 php7.0-fpm php7.0-mysql php7.0-gd php7.0-curl php7.0-zip php7.0-mcrypt php7.0-mbstring php7.0-xml php7.0-json php7.0-soap
+## update repo cache ##
+source /var/www/apt-update
 
-## delete any tmp files before begin ##
-rm -R -f /tmp/php.ini /tmp/php-ini.txt
-rm -R -f /tmp/php-fpm.conf /tmp/php-fpm-conf.txt
-rm -R -f /tmp/www.conf /tmp/www-conf.txt
+## install php and extensions ##
+DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php7.0 php7.0-fpm php7.0-mysql php7.0-curl php7.0-zip php7.0-gd php7.0-mcrypt php7.0-mbstring php7.0-bcmath php7.0-xml php7.0-json php7.0-soap
 
-# download various files latest versions ##
+## delete previous tmp files ##
+rm -R -f /tmp/php-ini.txt* /tmp/php.ini*
+rm -R -f /tmp/php-fpm-conf.txt* /tmp/php-fpm.conf*
+rm -R -f /tmp/www-conf.txt* /tmp/www.conf*
+
+# retrieve custom config files ##
 cd /tmp/
 wget --no-cache http://mirrors.littlebizzy.com/php/php-ini.txt
 wget --no-cache http://mirrors.littlebizzy.com/php/php-fpm-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/php/www-conf.txt
 
-## rename all txt files to no extension ##
+## rename txt files ##
 mv php-ini.txt php.ini
 mv php-fpm-conf.txt php-fpm.conf
 mv www-conf.txt www.conf
 
-## copy all files to their various locations ##
+## copy custom config files to their destinations ##
 cp -R -f --no-preserve=mode,ownership /tmp/php.ini /etc/php/7.0/fpm/php.ini
 cp -R -f --no-preserve=mode,ownership /tmp/php.ini /etc/php/7.0/cli/php.ini
 cp -R -f --no-preserve=mode,ownership /tmp/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 cp -R -f --no-preserve=mode,ownership /tmp/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
-## delete any tmp files after done ##
-rm -R -f /tmp/php.ini /tmp/php-ini.txt
-rm -R -f /tmp/php-fpm.conf /tmp/php-fpm-conf.txt
-rm -R -f /tmp/www.conf /tmp/www-conf.txt
+## delete remaining tmp files ##
+rm -R -f /tmp/php-ini.txt* /tmp/php.ini*
+rm -R -f /tmp/php-fpm-conf.txt* /tmp/php-fpm.conf*
+rm -R -f /tmp/www-conf.txt* /tmp/www.conf*
 
-## few quick permission fixes ##
-chown root:root /etc/php/7.0/fpm/php.ini
+## reset permissions ##
 chown root:root /etc/php/7.0/cli/php.ini
+chown root:root /etc/php/7.0/fpm/php.ini
 chown root:root /etc/php/7.0/fpm/php-fpm.conf
 chown root:root /etc/php/7.0/fpm/pool.d/www.conf
