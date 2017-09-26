@@ -2,6 +2,8 @@
 
 <h3>mirrors / bash</h3>
 
+<a href="apt-update.txt">apt-update.txt</a><br>
+<a href="apt-upgrade.txt">apt-upgrade.txt</a><br>
 <a href="bash-check.txt">bash-check.txt</a><br>
 <a href="bash-worker.txt">bash-worker.txt</a><br>
 <a href="config.txt">config.txt</a><br>
