@@ -1,8 +1,15 @@
 #!/bin/bash
 
-#############################################
-#### littlebizzy server config variables ####
-#############################################
+########################################################################
+#### author: @slickstack ###############################################
+#### link: https://github.com/littlebizzy/slickstack ###################
+#### mirror: http://mirrors.littlebizzy.com/bash/config.txt ############
+#### type: bash script #################################################
+#### purpose: server specific variables (private) ######################
+#### location: /var/www/config #########################################
+#### slug: config ######################################################
+#### executable: no ####################################################
+########################################################################
 
 ## sftp ##
 user="example"
@@ -28,3 +35,14 @@ state="Nevada"
 city="Las Vegas"
 company="Acme Company"
 dept=""
+
+## mail ##
+mailserv="sendgrid"
+mailsmtp="smtp.sendgrid.net"
+mailport="587"
+mailuser="example"
+mailpass="password"
+
+## monit ##
+monituser="admin"
+monitpass="password"
