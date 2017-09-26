@@ -48,3 +48,6 @@ chown root:root /etc/php/7.0/cli/php.ini
 chown root:root /etc/php/7.0/fpm/php.ini
 chown root:root /etc/php/7.0/fpm/php-fpm.conf
 chown root:root /etc/php/7.0/fpm/pool.d/www.conf
+
+## restart services ##
+/etc/init.d/php7.0-fpm restart
