@@ -26,6 +26,7 @@
 <a href="php-install.txt">php-install.txt</a><br>
 <a href="ssl-install.txt">ssl-install.txt</a><br>
 <a href="temp-varmove.txt">temp-varmove.txt</a><br>
+<a href="ufw-install.txt">ufw-install.txt</a><br>
 <a href="wp-clean.txt">wp-clean.txt</a><br>
 <a href="wp-install.txt">wp-install.txt</a><br>
 <a href="wpcli-install.txt">wpcli-install.txt</a><br>
