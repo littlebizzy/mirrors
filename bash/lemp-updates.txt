@@ -20,6 +20,9 @@ source /var/www/linux-utils-install
 ## install or upgrade php and extensions ##
 source /var/www/php-install
 
+## install redis ##
+source /var/www/redis-install
+
 ## install or upgrade git ##
 DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install git
 
@@ -28,9 +31,6 @@ source /var/www/monit-install
 
 ## install wp-cli ##
 source /var/www/wpcli-install
-
-## install redis ##
-source /var/www/redis-install
 
 ## install ufw ##
 source /var/www/ufw-install
@@ -47,6 +47,4 @@ DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/u
 DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" autoclean
 
 ## restart services ##
-/etc/init.d/php7.0-fpm restart
 /etc/init.d/nginx restart
-/etc/init.d/monit restart
