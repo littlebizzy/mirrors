@@ -1,0 +1,44 @@
+#!/bin/bash
+
+########################################################################
+#### author: @slickstack ###############################################
+#### link: https://github.com/littlebizzy/slickstack ###################
+#### mirror: http://mirrors.littlebizzy.com/bash/redis-install.txt #####
+#### type: bash script #################################################
+#### purpose: install and configure Redis 3.0.6 ########################
+#### slug: redis-install ###############################################
+#### executable: yes ###################################################
+########################################################################
+
+## server config variables ##
+source /var/www/config
+
+## update repo cache ##
+source /var/www/apt-update
+
+## install redis server and php redis ##
+DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install redis-server
+DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' /usr/bin/apt-get -q --yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php-redis
+
+## delete previous tmp files ##
+rm -R -f /tmp/redis-conf.txt* /tmp/redis.conf*
+
+# download custom config ##
+cd /tmp/
+wget --no-cache http://mirrors.littlebizzy.com/redis/redis-conf.txt
+
+## rename txt files ##
+cd /tmp/
+mv redis-conf.txt redis.conf
+
+## copy custom config files to their destinations ##
+cp -R -f -d --no-preserve=mode,ownership /tmp/redis.conf /etc/redis/redis.conf
+
+## delete remaining tmp files ##
+rm -R -f /tmp/redis-conf.txt* /tmp/redis.conf*
+
+## reset file permissions ##
+chown root:root /etc/redis/redis.conf
+
+## restart services ##
+/etc/init.d/redis-server restart
