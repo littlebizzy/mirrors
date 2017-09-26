@@ -22,12 +22,9 @@ rm -R -f /tmp/gai-conf.txt* /tmp/gai.conf*
 rm -R -f /tmp/monitrc.txt* /tmp/monitrc*
 rm -R -f /tmp/nginx-conf.txt* /tmp/nginx.conf*
 rm -R -f /tmp/nginx.crt* /tmp/nginx.key* /tmp/nginx.pem*
-rm -R -f /tmp/php-ini.txt* /tmp/php.ini*
-rm -R -f /tmp/php-fpm-conf.txt* /tmp/php-fpm.conf*
 rm -R -f /tmp/redis-conf.txt* /tmp/redis.conf*
 rm -R -f /tmp/ufw-conf.txt* /tmp/ufw.conf*
 rm -R -f /tmp/user-rules.txt* /tmp/user.rules*
-rm -R -f /tmp/www-conf.txt* /tmp/www.conf*
 
 # download latest scripts and configs ##
 cd /tmp/
@@ -36,12 +33,9 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/bash-check.txt
 wget --no-cache http://mirrors.littlebizzy.com/ubuntu/gai-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/monit/monitrc.txt
 wget --no-cache http://mirrors.littlebizzy.com/nginx/nginx-conf.txt
-wget --no-cache http://mirrors.littlebizzy.com/php/php-ini.txt
-wget --no-cache http://mirrors.littlebizzy.com/php/php-fpm-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/redis/redis-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/ubuntu/ufw-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/ubuntu/user-rules.txt
-wget --no-cache http://mirrors.littlebizzy.com/php/www-conf.txt
 
 ## rename scripts and configs ##
 cd /tmp/
@@ -63,13 +57,9 @@ cp -R -f -d --no-preserve=mode,ownership /tmp/bash-check /var/www/bash-check
 cp -R -f -d --no-preserve=mode,ownership /tmp/gai.conf /etc/gai.conf
 cp -R -f -d --no-preserve=mode,ownership /tmp/monitrc /etc/monit/monitrc
 cp -R -f -d --no-preserve=mode,ownership /tmp/nginx.conf /etc/nginx/nginx.conf
-cp -R -f -d --no-preserve=mode,ownership /tmp/php.ini /etc/php/7.0/cli/php.ini
-cp -R -f -d --no-preserve=mode,ownership /tmp/php.ini /etc/php/7.0/fpm/php.ini
-cp -R -f -d --no-preserve=mode,ownership /tmp/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 cp -R -f -d --no-preserve=mode,ownership /tmp/redis.conf /etc/redis/redis.conf
 cp -R -f -d --no-preserve=mode,ownership /tmp/ufw.conf /etc/ufw/ufw.conf
 cp -R -f -d --no-preserve=mode,ownership /tmp/user.rules /etc/ufw/user.rules
-cp -R -f -d --no-preserve=mode,ownership /tmp/www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 ## generate pem file from openssl key and crt files ##
 cp -R -f -d --no-preserve=mode,ownership /etc/ssl/nginx.crt /tmp/nginx.crt
@@ -84,12 +74,9 @@ rm -R -f /tmp/gai-conf.txt* /tmp/gai.conf*
 rm -R -f /tmp/monitrc.txt* /tmp/monitrc*
 rm -R -f /tmp/nginx-conf.txt* /tmp/nginx.conf*
 rm -R -f /tmp/nginx.crt* /tmp/nginx.key* /tmp/nginx.pem*
-rm -R -f /tmp/php-ini.txt* /tmp/php.ini*
-rm -R -f /tmp/php-fpm-conf.txt* /tmp/php-fpm.conf*
 rm -R -f /tmp/redis-conf.txt* /tmp/redis.conf*
 rm -R -f /tmp/ufw-conf.txt* /tmp/ufw.conf*
 rm -R -f /tmp/user-rules.txt* /tmp/user.rules*
-rm -R -f /tmp/www-conf.txt* /tmp/www.conf*
 
 ## reset file permissions ##
 chown root:root /var/www/1-cron-often
@@ -102,17 +89,12 @@ chmod -R 700 /etc/monit/monitrc
 chown root:root /etc/nginx/nginx.conf
 chown root:root /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 chmod -R 700 /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
-chown root:root /etc/php/7.0/cli/php.ini
-chown root:root /etc/php/7.0/fpm/php.ini
-chown root:root /etc/php/7.0/fpm/php-fpm.conf
 chown root:root /etc/redis/redis.conf
 chown root:root /etc/ufw/ufw.conf
 chown root:root /etc/ufw/user.rules
-chown root:root /etc/php/7.0/fpm/pool.d/www.conf
 
 ## restart services ##
 /etc/init.d/nginx restart
-/etc/init.d/php7.0-fpm restart
 /etc/init.d/redis-server restart
 /etc/init.d/monit restart
 /etc/init.d/ufw restart
