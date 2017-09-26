@@ -1,0 +1,23 @@
+#!/bin/bash
+
+######################################################################
+#### author: @slickstack #############################################
+#### link: https://github.com/littlebizzy/slickstack #################
+#### mirror: http://mirrors.littlebizzy.com/bash/ufw-install.txt #####
+#### type: bash script ###############################################
+#### purpose: activate and configure UFW for Ubuntu 16.04 ############
+#### slug: php-install ###############################################
+#### executable: no ##################################################
+######################################################################
+
+## configure ufw rules ##
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow 6969
+ufw allow 80
+ufw allow 443
+ufw --force disable
+ufw --force enable
+echo "y" | ufw enable
+/etc/init.d/ufw force-reload
+/etc/init.d/ufw restart
