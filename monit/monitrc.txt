@@ -38,6 +38,14 @@ set httpd
         selfsigned: allow
      }
     allow @MONITUSER:@MONITPASS
+    
+## nginx monitor ##
+check process nginx with pidfile /var/run/nginx.pid
+	if cpu > 80% for 2 cycles then alert
+    
+## php-fpm monitor ##
+check process php7.0-fpm with pidfile /var/run/php/php7.0-fpm.pid
+	if cpu > 80% for 2 cycles then alert
 
 # set limits {
 #     programOutput:     512 B,    # check program's output truncate limit
