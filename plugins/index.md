@@ -2,6 +2,10 @@
 
 <h3>mirrors / plugins</h3>
 
+(no scripts)<br>
+
+<h5>Related files:</h5>
+
 <a href="404-to-homepage-littlebizzy.zip">404-to-homepage-littlebizzy.zip</a><br>
 <a href="disable-author-pages-littlebizzy.zip">disable-author-pages-littlebizzy.zip</a><br>
 <a href="disable-cart-fragments-littlebizzy.zip">disable-cart-fragments-littlebizzy.zip</a><br>
