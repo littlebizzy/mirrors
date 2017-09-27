@@ -51,6 +51,17 @@ check process php7.0-fpm with pidfile /var/run/php/php7.0-fpm.pid
 check process mysqld with pidfile /var/run/mysqld/mysqld.pid			
     if cpu > 80% for 2 cycles then alert
     if failed unixsocket /var/run/mysqld/mysqld.sock then restart
+    
+## check disk space ##
+check filesystem rootfs with path /
+    if space usage > 80% then alert
+
+## check system health ##
+check system localhost
+if loadavg (1min) > 2 then alert
+if loadavg (5min) > 1 then alert
+if cpu usage > 50% for 10 cycles then alert
+if memory usage > 75% then alert
 
 # set limits {
 #     programOutput:     512 B,    # check program's output truncate limit
@@ -59,14 +70,6 @@ check process mysqld with pidfile /var/run/mysqld/mysqld.pid
 #     httpContentBuffer: 1 MB,     # limit for HTTP content test
 #     networkTimeout:    5 seconds # timeout for network I/O
 # }
-
-check system localhost
-if loadavg (1min) > 2 then alert
-if loadavg (5min) > 1 then alert
-if cpu usage > 50% for 10 cycles then alert
-if memory usage > 75% then alert
-if swap usage > 25% then alert
-# if space usage is greater than 75% for 5 cycles then alert
 
 #  check process apache with pidfile /usr/local/apache/logs/httpd.pid
 #    start program = "/etc/init.d/httpd start" with timeout 60 seconds
