@@ -4,3 +4,7 @@
 
 <a href="monitrc-5.16-default.txt">monitrc-5.16-default.txt</a><br>
 <a href="monitrc.txt">monitrc.txt</a><br>
+
+<h5>Related files:</h5>
+
+<a href="monit-5.23.0-linux-x64.tar.gz">monit-5.23.0-linux-x64.tar.gz</a><br>
