@@ -27,7 +27,7 @@ set alert @MAILALERT
 ## log settings ##
 set logfile /var/log/monit.log
 set eventqueue
-    basedir /var/lib/monit/events
+    basedir /var/monit
     slots 100
 
 ## web interface ##
