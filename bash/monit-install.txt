@@ -32,6 +32,7 @@ DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/u
 /etc/init.d/monit stop
 cd /tmp/
 wget https://mmonit.com/monit/dist/binary/5.23.0/monit-5.23.0-linux-x64.tar.gz
+# wget http://mirrors.littlebizzy.com/monit/monit-5.23.0-linux-x64.tar.gz
 tar zxvf monit-*
 cd monit-*
 cp bin/monit /usr/bin/monit
