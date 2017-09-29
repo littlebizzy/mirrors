@@ -67,6 +67,9 @@ sed -i '/wp_cache/d' /var/www/html/wp-config.php
 ## delete useless stock plugins ##
 rm -R -f /var/www/html/wp-content/plugins/hello.php
 
+## delete abandoned or deprecated plugins ##
+rm -R -f /var/www/html/wp-content/plugins/wp-no-category-base*
+
 ## delete plugins who add malware or spam ##
 rm -R -f /var/www/html/wp-content/plugins/display-widgets
 
