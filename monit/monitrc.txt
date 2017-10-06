@@ -2,11 +2,8 @@
 #### author: @slickstack ##########################################
 #### link: https://github.com/littlebizzy/slickstack ##############
 #### mirror: http://mirrors.littlebizzy.com/monit/monitrc.txt #####
-#### type: template ###############################################
-#### purpose: template for /etc/monit/monitrc #####################
-#### location: remote mirror ######################################
+#### type: template for /etc/monit/monitrc (5.23) #################
 #### slug: monitrc ################################################
-#### version: template for Monit 5.23 #############################
 #### executable: no ###############################################
 ###################################################################
 
