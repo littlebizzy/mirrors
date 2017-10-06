@@ -1,8 +1,13 @@
 #!/bin/bash
 
-#######################################
-#### littlebizzy permissions reset ####
-#######################################
+######################################################################
+#### author: @slickstack #############################################
+#### link: https://github.com/littlebizzy/slickstack #################
+#### mirror: http://mirrors.littlebizzy.com/bash/perms-reset.txt #####
+#### purpose: bash script to reset all permissions ###################
+#### slug: perms-reset ###############################################
+#### executable: yes #################################################
+######################################################################
 
 ## server config variables ##
 source /var/www/config
@@ -14,9 +19,7 @@ addgroup wordpress
 adduser $user wordpress
 adduser www-data wordpress
 
-## chown all bash scripts ##
-chown root:root /var/www/temp-varmove
-
+## reset permissions for @slickstack bash scripts ##
 chown root:root /var/www/1-cron-often
 chown root:root /var/www/2-cron-regular
 chown root:root /var/www/3-cron-hourly
@@ -24,7 +27,6 @@ chown root:root /var/www/4-cron-daily
 chown root:root /var/www/5-cron-weekly
 chown root:root /var/www/6-cron-monthly
 chown root:root /var/www/7-cron-sometimes
-
 chown root:root /var/www/bash-worker
 chown root:root /var/www/lemp-install
 chown root:root /var/www/lemp-updates
@@ -44,8 +46,6 @@ chown root:root /var/www/perms-reset
 chown root:root /var/www/php-install
 chown root:root /var/www/wp-clean
 chown root:root /var/www/wp-install
-
-## chmod all bash scripts ##
 chmod +x /var/www/1-cron-often
 chmod +x /var/www/2-cron-regular
 chmod +x /var/www/3-cron-hourly
@@ -53,7 +53,6 @@ chmod +x /var/www/4-cron-daily
 chmod +x /var/www/5-cron-weekly
 chmod +x /var/www/6-cron-monthly
 chmod +x /var/www/7-cron-sometimes
-
 chmod +x /var/www/bash-worker
 chmod +x /var/www/lemp-install
 chmod +x /var/www/lemp-updates
@@ -97,10 +96,8 @@ find /var/www/html/wp-content/cache/ -type f -exec chmod 777 {} \;
 chmod 660 /var/www/html/wp-config.php
 chmod -R g+s /var/www/html/
 
-## chown nginx fastcgi cache ##
+## reset permissions for nginx fastcgi cache files ##
 chown www-data:root /etc/nginx/cache
-
-## chmod nginx fastcgi cache ##
 chmod 775 /etc/nginx/cache
 find /etc/nginx/cache/ -type d -exec chmod 777 {} \;
 find /etc/nginx/cache/ -type f -exec chmod 777 {} \;
@@ -113,24 +110,22 @@ mkdir -p /var/log/mysql
 ## make log files if do not exist ##
 if [ ! -f "/var/log/php-fpm/error.log" ]; then touch "/var/log/php-fpm/error.log"; fi
 
-## chown all logs ##
+## reset permissions for log files ##
 chown -R www-data:www-data /var/log/nginx/access.log
 chown -R www-data:www-data /var/log/nginx/error.log
 chown -R www-data:www-data /var/log/php7.0-fpm.log
 chown -R www-data:www-data /var/log/php-fpm/error.log
-
-## chmod all logs ##
+chown -R www-data:www-data /var/log/monit.log
 chmod -R 755 /var/log/nginx/access.log
 chmod -R 755 /var/log/nginx/error.log
 chmod -R 755 /var/log/php7.0-fpm.log
 chmod -R 755 /var/log/php-fpm/error.log
+chmod -R 755 /var/log/monit.log
 
-## chown all ssl certs ##
+## reset permissions for ssl certificates ##
 chown root:root /etc/ssl/nginx.crt
 chown root:root /etc/ssl/nginx.key
 chown root:root /etc/ssl/nginx.pem
-
-## chmod all ssl certs ##
 chmod -R 700 /etc/ssl/nginx.crt
 chmod -R 700 /etc/ssl/nginx.key
 chmod -R 700 /etc/ssl/nginx.pem
