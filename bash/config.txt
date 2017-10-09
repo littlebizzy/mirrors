@@ -1,12 +1,10 @@
-########################################################################
-#### author: @slickstack ###############################################
-#### link: https://github.com/littlebizzy/slickstack ###################
-#### mirror: http://mirrors.littlebizzy.com/bash/config.txt ############
-#### type: config file #################################################
-#### purpose: server specific variables (private) ######################
-#### location: /var/www/config #########################################
-#### executable: no ####################################################
-########################################################################
+#################################################################
+#### author: @slickstack ########################################
+#### link: https://github.com/littlebizzy/slickstack ############
+#### mirror: http://mirrors.littlebizzy.com/bash/config.txt #####
+#### purpose: server specific variables (private) ###############
+#### executable: no #############################################
+#################################################################
 
 ## sftp ##
 user="example"
