@@ -76,34 +76,33 @@ rm -R -f /var/www/html/wp-content/plugins/display-widgets
 ## delete codeguard related plugins that conflict with codeguard service ##
 rm -R -f /var/www/html/wp-content/plugins/codeguard*
 
-## delete remote management plugins that cause performance issues ##
-rm -R -f /var/www/html/wp-content/plugins/worker
+## delete remote management plugins ##
 rm -R -f /var/www/html/wp-content/mu-plugins/0-worker.php
+rm -R -f /var/www/html/wp-content/plugins/worker
 rm -R -f /var/www/html/wp-content/plugins/iwp-client*
 rm -R -f /var/www/html/wp-content/plugins/wpremote*
 rm -R -f /var/www/html/wp-content/plugins/mainwp*
 rm -R -f /var/www/html/wp-content/plugins/mainwp-child*
+rm -R -f /var/www/html/wp-content/plugins/wpmudev-updates*
 
-## delete plugins that cause cpu or mysql load to spike ##
+## delete plugins that cause crashes ##
+rm -R -f /var/www/html/wp-content/mu-plugins/p3-profiler.php
+rm -R -f /var/www/html/wp-content/plugins/p3-profiler*
 rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order*
 
 ## delete janky backup plugins ##
 # rm -R -f /var/www/html/wp-content/plugins/updraftplus*
 # rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
 
-## delete do-everything plugins that cause performance and code conflict issues ##
-rm -R -f /var/www/html/wp-content/mu-plugins/p3-profiler.php
-rm -R -f /var/www/html/wp-content/plugins/p3-profiler*
+## delete severely bloated plugins ##
 # rm -R -f /var/www/html/wp-content/plugins/woocommerce-jetpack*
-
-## delete plugins with with an abusive amount of database queries ##
 # rm -R -f /var/www/html/wp-content/plugins/icegram
 
-## delete firewall plugins that conflict with cloudflare and nginx config ##
+## delete conflicting firewall plugins ##
 rm -R -f /var/www/html/wp-content/plugins/wordpress-firewall-2*
 rm -R -f /var/www/html/wp-content/plugins/bad-behavior*
 
-## delete self-hosted analytics plugins that cause performance issues ##
+## delete traffic logging plugins ##
 rm -R -f /var/www/html/wp-content/plugins/wp-statistics*
 
 ## delete cache config files that conflict with fastcgi cache and redis object cache ##
