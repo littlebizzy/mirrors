@@ -1,8 +1,13 @@
 #!/bin/bash
 
-################################################
-#### littlebizzy clean wordpress and server ####
-################################################
+###################################################################
+#### author: @slickstack ##########################################
+#### link: https://github.com/littlebizzy/slickstack ##############
+#### mirror: http://mirrors.littlebizzy.com/bash/wp-clean.txt #####
+#### purpose: cleanup lemp server and wordpress  ##################
+#### slug: wp-clean ###############################################
+#### executable: yes ##############################################
+###################################################################
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
