@@ -3,6 +3,7 @@
 #### link: https://github.com/littlebizzy/slickstack ############
 #### mirror: http://mirrors.littlebizzy.com/bash/config.txt #####
 #### purpose: server specific variables (private) ###############
+#### slug: config ###############################################
 #### executable: no #############################################
 #################################################################
 
