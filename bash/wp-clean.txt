@@ -72,7 +72,9 @@ sed -i '/wp_cache/d' /var/www/html/wp-config.php
 ## delete useless stock plugins ##
 rm -R -f /var/www/html/wp-content/plugins/hello.php
 
-## delete abandoned or deprecated plugins ##
+## delete deprecated plugins ##
+rm -R -f /var/www/html/wp-content/plugins/adminer*
+rm -R -f /var/www/html/wp-content/plugins/miwoftp*
 rm -R -f /var/www/html/wp-content/plugins/wp-no-category-base*
 rm -R -f /var/www/html/wp-content/plugins/woodojo*
 
@@ -91,15 +93,17 @@ rm -R -f /var/www/html/wp-content/plugins/mainwp*
 rm -R -f /var/www/html/wp-content/plugins/mainwp-child*
 rm -R -f /var/www/html/wp-content/plugins/wpmudev-updates*
 
-## delete plugins that cause crashes ##
+## delete plugins that cause crashes or errors ##
 rm -R -f /var/www/html/wp-content/mu-plugins/p3-profiler.php
 rm -R -f /var/www/html/wp-content/plugins/p3-profiler*
 rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order*
-
-## delete plugins with serious PHP/MySQL errors ##
 rm -R -f /var/www/html/wp-content/plugins/wp-database-backup*
 
-## delete janky backup plugins ##
+## delete plugins that cause poor performance ##
+rm -R -f /var/www/html/wp-content/plugins/simple-share-buttons-adder*
+rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
+
+## delete backup plugins ##
 # rm -R -f /var/www/html/wp-content/plugins/updraftplus*
 # rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
 
@@ -157,19 +161,9 @@ rm -R -f /var/www/html/wp-content/plugins/preload-fullpage-cache*
 rm -R -f /var/www/html/wp-content/plugins/cache-performance*
 rm -R -f /var/www/html/wp-content/plugins/wp-rocket*
 
-## delete any poor performance social sharing plugins ##
-rm -R -f /var/www/html/wp-content/plugins/simple-share-buttons-adder*
-
-## delete any poor performance SMTP plugins ##
-rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
-
-## delete any risky file management plugins ##
-rm -R -f /var/www/html/wp-content/plugins/miwoftp*
-
 ## delete any database unsafe admin plugins ##
-rm -R -f /var/www/html/wp-content/plugins/adminer*
 rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
-# rm -R -f /var/www/html/wp-content/plugins/wp-database-admin
+# rm -R -f /var/www/html/wp-content/plugins/wp-database-admin*
 
 ## delete any query strings related plugins (mu conflict) ##
 rm -R -f /var/www/html/wp-content/plugins/query-strings-remover
