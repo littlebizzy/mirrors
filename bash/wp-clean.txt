@@ -74,6 +74,7 @@ rm -R -f /var/www/html/wp-content/plugins/hello.php
 
 ## delete abandoned or deprecated plugins ##
 rm -R -f /var/www/html/wp-content/plugins/wp-no-category-base*
+rm -R -f /var/www/html/wp-content/plugins/woodojo*
 
 ## delete plugins who add malware or spam ##
 rm -R -f /var/www/html/wp-content/plugins/display-widgets
