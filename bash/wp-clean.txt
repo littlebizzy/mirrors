@@ -96,6 +96,9 @@ rm -R -f /var/www/html/wp-content/mu-plugins/p3-profiler.php
 rm -R -f /var/www/html/wp-content/plugins/p3-profiler*
 rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order*
 
+## delete plugins with serious PHP/MySQL errors ##
+rm -R -f /var/www/html/wp-content/plugins/wp-database-backup*
+
 ## delete janky backup plugins ##
 # rm -R -f /var/www/html/wp-content/plugins/updraftplus*
 # rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
