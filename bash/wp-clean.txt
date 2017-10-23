@@ -124,6 +124,7 @@ rm -R -f /var/www/html/wp-content/plugins/bad-behavior*
 
 ## delete traffic logging plugins ##
 rm -R -f /var/www/html/wp-content/plugins/wp-statistics*
+rm -R -f /var/www/html/wp-content/plugins/wp-slimstat*
 
 ## delete cache config files that conflict with fastcgi cache and redis object cache ##
 rm -R -f /var/www/html/wp-content/cache*
