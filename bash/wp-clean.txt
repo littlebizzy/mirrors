@@ -100,13 +100,11 @@ rm -R -f /var/www/html/wp-content/plugins/mainwp*
 rm -R -f /var/www/html/wp-content/plugins/mainwp-child*
 rm -R -f /var/www/html/wp-content/plugins/wpmudev-updates*
 
-## delete plugins that cause crashes or errors ##
+## delete plugins that cause thrashing/errors ##
 rm -R -f /var/www/html/wp-content/mu-plugins/p3-profiler.php
 rm -R -f /var/www/html/wp-content/plugins/p3-profiler*
 rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order*
 rm -R -f /var/www/html/wp-content/plugins/wp-database-backup*
-
-## delete plugins that cause poor performance ##
 rm -R -f /var/www/html/wp-content/plugins/simple-share-buttons-adder*
 rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
 
@@ -125,14 +123,17 @@ rm -R -f /var/www/html/wp-content/plugins/bad-behavior*
 ## delete traffic logging plugins ##
 rm -R -f /var/www/html/wp-content/plugins/wp-statistics*
 rm -R -f /var/www/html/wp-content/plugins/wp-slimstat*
+rm -R -f /var/www/html/wp-content/plugins/wp-rankie*
 
-## delete cache config files that conflict with fastcgi cache and redis object cache ##
+## delete database admin plugins ##
+rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
+# rm -R -f /var/www/html/wp-content/plugins/wp-database-admin*
+
+## delete cache plugins that conflict with @littlebizzy @slickstack @purgethemall ##
 rm -R -f /var/www/html/wp-content/cache*
 rm -R -f /var/www/html/wp-content/advanced-cache.php
 rm -R -f /var/www/html/wp-content/w3tc-config*
 rm -R -f /var/www/html/wp-content/wp-rocket-config*
-
-## delete any redis plugins that conflict with /wp-content/plugins/redis-cache/ plugin ##
 rm -R -f /var/www/html/wp-content/plugins/wp-redis*
 rm -R -f /var/www/html/wp-content/plugins/pj-page-cache-red*
 rm -R -f /var/www/html/wp-content/plugins/redis-object-cache*
@@ -141,8 +142,6 @@ rm -R -f /var/www/html/wp-content/plugins/simple-cache*
 rm -R -f /var/www/html/wp-content/plugins/wp-object-cache*
 rm -R -f /var/www/html/wp-content/plugins/apcu*
 rm -R -f /var/www/html/wp-content/plugins/gator-cache*
-
-## remove cache plugins that conflict with fastcgi cache and redis object cache ##
 rm -R -f /var/www/html/wp-content/plugins/comet-cache*
 rm -R -f /var/www/html/wp-content/plugins/w3-total-cache*
 rm -R -f /var/www/html/wp-content/plugins/wp-fastest-cache*
@@ -169,19 +168,13 @@ rm -R -f /var/www/html/wp-content/plugins/preload-fullpage-cache*
 rm -R -f /var/www/html/wp-content/plugins/cache-performance*
 rm -R -f /var/www/html/wp-content/plugins/wp-rocket*
 
-## delete any database unsafe admin plugins ##
-rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
-# rm -R -f /var/www/html/wp-content/plugins/wp-database-admin*
-
-## delete any query strings related plugins (mu conflict) ##
+## delete performance plugins that conflict with @littlebizzy @slickstack @speeddemon ##
 rm -R -f /var/www/html/wp-content/plugins/query-strings-remover
 rm -R -f /var/www/html/wp-content/plugins/zendy-speed-query-strings
 rm -R -f /var/www/html/wp-content/plugins/wp-version-in-query-string-modifier
 rm -R -f /var/www/html/wp-content/plugins/remove-query-strings
 rm -R -f /var/www/html/wp-content/plugins/remove-query-strings-from-static-resources
 rm -R -f /var/www/html/wp-content/plugins/remove-query-arg-from-media
-
-## delete any cloudflare related plugins besides cloudflare analytics (mu conflict) ##
 rm -R -f /var/www/html/wp-content/plugins/cloudflare-cache-purge
 rm -R -f /var/www/html/wp-content/plugins/cloudflare-flexible-ssl
 rm -R -f /var/www/html/wp-content/plugins/supersonic
@@ -193,8 +186,6 @@ rm -R -f /var/www/html/wp-content/plugins/wp-cloudflare
 rm -R -f /var/www/html/wp-content/plugins/purge-cloud-flare
 rm -R -f /var/www/html/wp-content/plugins/cloudguard
 rm -R -f /var/www/html/wp-content/plugins/wp-denyhost
-
-## delete any optimization related plugins (cloudflare conflict) ##
 rm -R -f /var/www/html/wp-content/plugins/wp-speed-booster
 rm -R -f /var/www/html/wp-content/plugins/easy-pagespeed
 rm -R -f /var/www/html/wp-content/plugins/speed-booster-pack
@@ -209,7 +200,7 @@ rm -R -f /var/www/html/wp-content/plugins/knapsack
 rm -R -f /var/www/html/wp-content/plugins/yablog
 rm -R -f /var/www/html/wp-content/plugins/remove-wp-overhead
 
-##  delete any emoji plugins that conflict with our Must-Use plugins (or slow down sites) ##
+##  delete emoji plugins ##
 rm -R -f /var/www/html/wp-content/plugins/emoji-settings
 rm -R -f /var/www/html/wp-content/plugins/emoji-reactions
 rm -R -f /var/www/html/wp-content/plugins/wp-disable-emjoi
