@@ -108,9 +108,14 @@ rm -R -f /var/www/html/wp-content/plugins/wp-database-backup*
 rm -R -f /var/www/html/wp-content/plugins/simple-share-buttons-adder*
 rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
 
-## delete backup plugins ##
+## delete local backups and related plugins ##
+rm -R -f /var/www/html/wp-content/backups*
+rm -R -f /var/www/html/wp-content/plugins/wp-db-backup*
+rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
+rm -R -f /var/www/html/wp-content/plugins/backupwordpress*
+rm -R -f /var/www/html/wp-content/plugins/wp-backitup*
+rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
 # rm -R -f /var/www/html/wp-content/plugins/updraftplus*
-# rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
 
 ## delete severely bloated plugins ##
 # rm -R -f /var/www/html/wp-content/plugins/woocommerce-jetpack*
@@ -120,10 +125,13 @@ rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
 rm -R -f /var/www/html/wp-content/plugins/wordpress-firewall-2*
 rm -R -f /var/www/html/wp-content/plugins/bad-behavior*
 
-## delete traffic logging plugins ##
+## delete logging plugins ##
 rm -R -f /var/www/html/wp-content/plugins/wp-statistics*
 rm -R -f /var/www/html/wp-content/plugins/wp-slimstat*
 rm -R -f /var/www/html/wp-content/plugins/wp-rankie*
+rm -R -f /var/www/html/wp-content/plugins/visitors-traffic-real-time-statistics*
+rm -R -f /var/www/html/wp-content/plugins/wassup*
+rm -R -f /var/www/html/wp-content/plugins/hotspots*
 
 ## delete database admin plugins ##
 rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
