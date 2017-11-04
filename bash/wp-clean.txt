@@ -79,16 +79,34 @@ rm -R -f /var/www/html/wp-content/plugins/htaccess-site-access-control*
 rm -R -f /var/www/html/wp-content/plugins/browser-caching-with-htaccess*
 rm -R -f /var/www/html/wp-content/plugins/wp-htaccess-control*
 
-## delete deprecated plugins ##
+## delete insecure/deprecated plugins ##
+rm -R -f /var/www/html/wp-content/mu-plugins/adminer*
 rm -R -f /var/www/html/wp-content/plugins/adminer*
+rm -R -f /var/www/html/wp-content/mu-plugins/miwoftp*
 rm -R -f /var/www/html/wp-content/plugins/miwoftp*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-no-category-base*
 rm -R -f /var/www/html/wp-content/plugins/wp-no-category-base*
+rm -R -f /var/www/html/wp-content/mu-plugins/woodojo*
 rm -R -f /var/www/html/wp-content/plugins/woodojo*
+rm -R -f /var/www/html/wp-content/mu-plugins/timthumb*
+rm -R -f /var/www/html/wp-content/plugins/timthumb*
+rm -R -f /var/www/html/wp-content/mu-plugins/uploadify*
+rm -R -f /var/www/html/wp-content/plugins/uploadify*
 
-## delete plugins who add malware or spam ##
-rm -R -f /var/www/html/wp-content/plugins/display-widgets
+## delete plugins containing malware ##
+rm -R -f /var/www/html/wp-content/mu-plugins/display-widgets*
+rm -R -f /var/www/html/wp-content/plugins/display-widgets*
+rm -R -f /var/www/html/wp-content/mu-plugins/sweetcaptcha-revolutionary-free-captcha-service*
+rm -R -f /var/www/html/wp-content/plugins/sweetcaptcha-revolutionary-free-captcha-service*
+rm -R -f /var/www/html/wp-content/mu-plugins/sweetcaptcha*
+rm -R -f /var/www/html/wp-content/plugins/sweetcaptcha*
+
+## delete image compression plugins ##
+rm -R -f /var/www/html/wp-content/mu-plugins/ewww-image-optimizer*
+rm -R -f /var/www/html/wp-content/plugins/ewww-image-optimizer*
 
 ## delete codeguard related plugins that conflict with codeguard service ##
+rm -R -f /var/www/html/wp-content/mu-plugins/codeguard*
 rm -R -f /var/www/html/wp-content/plugins/codeguard*
 
 ## delete remote management plugins ##
@@ -100,21 +118,43 @@ rm -R -f /var/www/html/wp-content/plugins/mainwp*
 rm -R -f /var/www/html/wp-content/plugins/mainwp-child*
 rm -R -f /var/www/html/wp-content/plugins/wpmudev-updates*
 
-## delete plugins that cause thrashing/errors ##
-rm -R -f /var/www/html/wp-content/mu-plugins/p3-profiler.php
+## delete plugins that cause errors ##
+rm -R -f /var/www/html/wp-content/mu-plugins/p3-profiler*
 rm -R -f /var/www/html/wp-content/plugins/p3-profiler*
-rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order*
-rm -R -f /var/www/html/wp-content/plugins/wp-database-backup*
+rm -R -f /var/www/html/wp-content/mu-plugins/simple-share-buttons-adder*
 rm -R -f /var/www/html/wp-content/plugins/simple-share-buttons-adder*
+rm -R -f /var/www/html/wp-content/mu-plugins/easy-wp-smtp*
 rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
+
+## delete plugins that cause thrashing ##
+rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order*
+rm -R -f /var/www/html/wp-content/plugins/broken-link-checker*
+rm -R -f /var/www/html/wp-content/plugins/myrp*
+rm -R -f /var/www/html/wp-content/plugins/linkman*
+rm -R -f /var/www/html/wp-content/plugins/fuzzy-seo-booster*
+rm -R -f /var/www/html/wp-content/plugins/wp-postviews*
+rm -R -f /var/www/html/wp-content/plugins/tweet-blender*
+rm -R -f /var/www/html/wp-content/plugins/dynamic-related-posts*
+rm -R -f /var/www/html/wp-content/plugins/seo-alrp*
+rm -R -f /var/www/html/wp-content/plugins/similar-posts*
+# rm -R -f /var/www/html/wp-content/plugins/yet-another-related-posts-plugin*
+# rm -R -f /var/www/html/wp-content/plugins/contextual-related-posts*
 
 ## delete local backups and related plugins ##
 rm -R -f /var/www/html/wp-content/backups*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-db-backup*
 rm -R -f /var/www/html/wp-content/plugins/wp-db-backup*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-database-backup*
+rm -R -f /var/www/html/wp-content/plugins/wp-database-backup*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-dbmanager*
 rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
+rm -R -f /var/www/html/wp-content/mu-plugins/backupwordpress*
 rm -R -f /var/www/html/wp-content/plugins/backupwordpress*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-backitup*
 rm -R -f /var/www/html/wp-content/plugins/wp-backitup*
+rm -R -f /var/www/html/wp-content/mu-plugins/akeebabackupwp*
 rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
+# rm -R -f /var/www/html/wp-content/mu-plugins/updraftplus*
 # rm -R -f /var/www/html/wp-content/plugins/updraftplus*
 
 ## delete severely bloated plugins ##
@@ -122,20 +162,36 @@ rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
 # rm -R -f /var/www/html/wp-content/plugins/icegram
 
 ## delete conflicting firewall plugins ##
+rm -R -f /var/www/html/wp-content/mu-plugins/wordpress-firewall-2*
 rm -R -f /var/www/html/wp-content/plugins/wordpress-firewall-2*
+rm -R -f /var/www/html/wp-content/mu-plugins/bad-behavior*
 rm -R -f /var/www/html/wp-content/plugins/bad-behavior*
 
-## delete logging plugins ##
+## delete extensive logging plugins ##
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-statistics*
 rm -R -f /var/www/html/wp-content/plugins/wp-statistics*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-slimstat*
 rm -R -f /var/www/html/wp-content/plugins/wp-slimstat*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-rankie*
 rm -R -f /var/www/html/wp-content/plugins/wp-rankie*
+rm -R -f /var/www/html/wp-content/mu-plugins/visitors-traffic-real-time-statistics*
 rm -R -f /var/www/html/wp-content/plugins/visitors-traffic-real-time-statistics*
+rm -R -f /var/www/html/wp-content/mu-plugins/wassup*
 rm -R -f /var/www/html/wp-content/plugins/wassup*
+rm -R -f /var/www/html/wp-content/mu-plugins/hotspots*
 rm -R -f /var/www/html/wp-content/plugins/hotspots*
 
 ## delete database admin plugins ##
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-phpmyadmin*
+rm -R -f /var/www/html/wp-content/plugins/wp-phpmyadmin*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-dbmanager*
 rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
+# rm -R -f /var/www/html/wp-content/mu-plugins/wp-database-admin*
 # rm -R -f /var/www/html/wp-content/plugins/wp-database-admin*
+
+## delete faulty email plugins ##
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-mailing-list*
+rm -R -f /var/www/html/wp-content/plugins/wp-mailing-list*
 
 ## delete cache plugins that conflict with @littlebizzy @slickstack @purgethemall ##
 rm -R -f /var/www/html/wp-content/cache*
