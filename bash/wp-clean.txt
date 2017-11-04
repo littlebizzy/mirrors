@@ -70,18 +70,24 @@ sed -i '/WP_CACHE/d' /var/www/html/wp-config.php
 sed -i '/wp_cache/d' /var/www/html/wp-config.php
 
 ## delete useless stock plugins ##
+rm -R -f /var/www/html/wp-content/mu-plugins/hello.php
 rm -R -f /var/www/html/wp-content/plugins/hello.php
 
-## delete plugins not compatible with lemp stack ##
-rm -R -f /var/www/html/wp-content/plugins/htaccess-login-block*
+## delete plugins not compatible with lemp/slickstack ##
+rm -R -f /var/www/html/wp-content/mu-plugins/htaccess*
 rm -R -f /var/www/html/wp-content/plugins/htaccess*
+rm -R -f /var/www/html/wp-content/mu-plugins/htaccess-login-block*
+rm -R -f /var/www/html/wp-content/plugins/htaccess-login-block*
+rm -R -f /var/www/html/wp-content/mu-plugins/htaccess-site-access-control*
 rm -R -f /var/www/html/wp-content/plugins/htaccess-site-access-control*
+rm -R -f /var/www/html/wp-content/mu-plugins/browser-caching-with-htaccess*
 rm -R -f /var/www/html/wp-content/plugins/browser-caching-with-htaccess*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-htaccess-control*
 rm -R -f /var/www/html/wp-content/plugins/wp-htaccess-control*
 
 ## delete insecure/deprecated plugins ##
-rm -R -f /var/www/html/wp-content/mu-plugins/adminer*
-rm -R -f /var/www/html/wp-content/plugins/adminer*
+rm -R -f /var/www/html/wp-content/mu-plugins/adminer
+rm -R -f /var/www/html/wp-content/plugins/adminer
 rm -R -f /var/www/html/wp-content/mu-plugins/miwoftp*
 rm -R -f /var/www/html/wp-content/plugins/miwoftp*
 rm -R -f /var/www/html/wp-content/mu-plugins/wp-no-category-base*
@@ -93,13 +99,15 @@ rm -R -f /var/www/html/wp-content/plugins/timthumb*
 rm -R -f /var/www/html/wp-content/mu-plugins/uploadify*
 rm -R -f /var/www/html/wp-content/plugins/uploadify*
 
-## delete plugins containing malware ##
-rm -R -f /var/www/html/wp-content/mu-plugins/display-widgets*
-rm -R -f /var/www/html/wp-content/plugins/display-widgets*
+## delete plugins containing malware/spyware ##
+rm -R -f /var/www/html/wp-content/mu-plugins/display-widgets
+rm -R -f /var/www/html/wp-content/plugins/display-widgets
 rm -R -f /var/www/html/wp-content/mu-plugins/sweetcaptcha-revolutionary-free-captcha-service*
 rm -R -f /var/www/html/wp-content/plugins/sweetcaptcha-revolutionary-free-captcha-service*
 rm -R -f /var/www/html/wp-content/mu-plugins/sweetcaptcha*
 rm -R -f /var/www/html/wp-content/plugins/sweetcaptcha*
+rm -R -f /var/www/html/wp-content/mu-plugins/googleanalytics
+rm -R -f /var/www/html/wp-content/plugins/googleanalytics
 
 ## delete image compression plugins ##
 rm -R -f /var/www/html/wp-content/mu-plugins/ewww-image-optimizer*
@@ -110,12 +118,19 @@ rm -R -f /var/www/html/wp-content/mu-plugins/codeguard*
 rm -R -f /var/www/html/wp-content/plugins/codeguard*
 
 ## delete remote management plugins ##
-rm -R -f /var/www/html/wp-content/mu-plugins/0-worker.php
+rm -R -f /var/www/html/wp-content/mu-plugins/0-worker*
+rm -R -f /var/www/html/wp-content/plugins/0-worker*
+rm -R -f /var/www/html/wp-content/mu-plugins/worker
 rm -R -f /var/www/html/wp-content/plugins/worker
+rm -R -f /var/www/html/wp-content/mu-plugins/iwp-client*
 rm -R -f /var/www/html/wp-content/plugins/iwp-client*
+rm -R -f /var/www/html/wp-content/mu-plugins/wpremote*
 rm -R -f /var/www/html/wp-content/plugins/wpremote*
+rm -R -f /var/www/html/wp-content/mu-plugins/mainwp*
 rm -R -f /var/www/html/wp-content/plugins/mainwp*
+rm -R -f /var/www/html/wp-content/mu-plugins/mainwp-child*
 rm -R -f /var/www/html/wp-content/plugins/mainwp-child*
+rm -R -f /var/www/html/wp-content/mu-plugins/wpmudev-updates*
 rm -R -f /var/www/html/wp-content/plugins/wpmudev-updates*
 
 ## delete plugins that cause errors ##
@@ -189,7 +204,7 @@ rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
 # rm -R -f /var/www/html/wp-content/mu-plugins/wp-database-admin*
 # rm -R -f /var/www/html/wp-content/plugins/wp-database-admin*
 
-## delete faulty email plugins ##
+## delete insecure/faulty email plugins ##
 rm -R -f /var/www/html/wp-content/mu-plugins/wp-mailing-list*
 rm -R -f /var/www/html/wp-content/plugins/wp-mailing-list*
 
