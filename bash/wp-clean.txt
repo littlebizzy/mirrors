@@ -102,6 +102,16 @@ rm -R -f /var/www/html/wp-content/plugins/uploadify*
 ## delete plugins that contain cryptomining ##
 rm -R -f /var/www/html/wp-content/mu-plugins/weather-for-us-widget*
 rm -R -f /var/www/html/wp-content/plugins/weather-for-us-widget*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-monero-miner-using-coin-hive*
+rm -R -f /var/www/html/wp-content/plugins/wp-monero-miner-using-coin-hive*
+rm -R -f /var/www/html/wp-content/mu-plugins/simple-monero-miner-coin-hive*
+rm -R -f /var/www/html/wp-content/plugins/simple-monero-miner-coin-hive*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-coinhive*
+rm -R -f /var/www/html/wp-content/plugins/wp-coinhive*
+rm -R -f /var/www/html/wp-content/mu-plugins/integrate-monero-miner*
+rm -R -f /var/www/html/wp-content/plugins/integrate-monero-miner*
+rm -R -f /var/www/html/wp-content/mu-plugins/bitcoin-plus-miner*
+rm -R -f /var/www/html/wp-content/plugins/bitcoin-plus-miner*
 
 ## delete plugins containing malware/spyware ##
 rm -R -f /var/www/html/wp-content/mu-plugins/display-widgets
