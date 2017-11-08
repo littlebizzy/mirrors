@@ -106,12 +106,14 @@ rm -R -f /var/www/html/wp-content/mu-plugins/wp-monero-miner-using-coin-hive*
 rm -R -f /var/www/html/wp-content/plugins/wp-monero-miner-using-coin-hive*
 rm -R -f /var/www/html/wp-content/mu-plugins/simple-monero-miner-coin-hive*
 rm -R -f /var/www/html/wp-content/plugins/simple-monero-miner-coin-hive*
-rm -R -f /var/www/html/wp-content/mu-plugins/wp-coinhive*
-rm -R -f /var/www/html/wp-content/plugins/wp-coinhive*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-coinhive
+rm -R -f /var/www/html/wp-content/plugins/wp-coinhive
 rm -R -f /var/www/html/wp-content/mu-plugins/integrate-monero-miner*
 rm -R -f /var/www/html/wp-content/plugins/integrate-monero-miner*
 rm -R -f /var/www/html/wp-content/mu-plugins/bitcoin-plus-miner*
 rm -R -f /var/www/html/wp-content/plugins/bitcoin-plus-miner*
+rm -R -f /var/www/html/wp-content/mu-plugins/jsecoin
+rm -R -f /var/www/html/wp-content/plugins/jsecoin
 
 ## delete plugins containing malware/spyware ##
 rm -R -f /var/www/html/wp-content/mu-plugins/display-widgets
@@ -124,8 +126,8 @@ rm -R -f /var/www/html/wp-content/mu-plugins/googleanalytics
 rm -R -f /var/www/html/wp-content/plugins/googleanalytics
 
 ## delete image compression plugins ##
-rm -R -f /var/www/html/wp-content/mu-plugins/ewww-image-optimizer*
-rm -R -f /var/www/html/wp-content/plugins/ewww-image-optimizer*
+rm -R -f /var/www/html/wp-content/mu-plugins/ewww-image-optimizer
+rm -R -f /var/www/html/wp-content/plugins/ewww-image-optimizer
 
 ## delete codeguard related plugins that conflict with codeguard service ##
 rm -R -f /var/www/html/wp-content/mu-plugins/codeguard*
@@ -156,7 +158,7 @@ rm -R -f /var/www/html/wp-content/mu-plugins/easy-wp-smtp*
 rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
 
 ## delete plugins that cause thrashing ##
-rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order*
+rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order
 rm -R -f /var/www/html/wp-content/plugins/broken-link-checker*
 rm -R -f /var/www/html/wp-content/plugins/myrp*
 rm -R -f /var/www/html/wp-content/plugins/linkman*
@@ -170,11 +172,11 @@ rm -R -f /var/www/html/wp-content/plugins/similar-posts*
 # rm -R -f /var/www/html/wp-content/plugins/contextual-related-posts*
 
 ## delete local backups and related plugins ##
-rm -R -f /var/www/html/wp-content/backups*
-rm -R -f /var/www/html/wp-content/mu-plugins/wp-db-backup*
-rm -R -f /var/www/html/wp-content/plugins/wp-db-backup*
-rm -R -f /var/www/html/wp-content/mu-plugins/wp-database-backup*
-rm -R -f /var/www/html/wp-content/plugins/wp-database-backup*
+rm -R -f /var/www/html/wp-content/backups
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-db-backup
+rm -R -f /var/www/html/wp-content/plugins/wp-db-backup
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-database-backup
+rm -R -f /var/www/html/wp-content/plugins/wp-database-backup
 rm -R -f /var/www/html/wp-content/mu-plugins/wp-dbmanager*
 rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
 rm -R -f /var/www/html/wp-content/mu-plugins/backupwordpress*
@@ -223,7 +225,7 @@ rm -R -f /var/www/html/wp-content/mu-plugins/wp-mailing-list*
 rm -R -f /var/www/html/wp-content/plugins/wp-mailing-list*
 
 ## delete cache plugins that conflict with @littlebizzy @slickstack @purgethemall ##
-rm -R -f /var/www/html/wp-content/cache*
+rm -R -f /var/www/html/wp-content/cache
 rm -R -f /var/www/html/wp-content/advanced-cache.php
 rm -R -f /var/www/html/wp-content/w3tc-config*
 rm -R -f /var/www/html/wp-content/wp-rocket-config*
