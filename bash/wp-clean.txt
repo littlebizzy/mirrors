@@ -99,6 +99,10 @@ rm -R -f /var/www/html/wp-content/plugins/timthumb*
 rm -R -f /var/www/html/wp-content/mu-plugins/uploadify*
 rm -R -f /var/www/html/wp-content/plugins/uploadify*
 
+## delete plugins that contain cryptomining ##
+rm -R -f /var/www/html/wp-content/mu-plugins/weather-for-us-widget*
+rm -R -f /var/www/html/wp-content/plugins/weather-for-us-widget*
+
 ## delete plugins containing malware/spyware ##
 rm -R -f /var/www/html/wp-content/mu-plugins/display-widgets
 rm -R -f /var/www/html/wp-content/plugins/display-widgets
