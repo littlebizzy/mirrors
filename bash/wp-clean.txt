@@ -88,6 +88,8 @@ rm -R -f /var/www/html/wp-content/plugins/wp-htaccess-control*
 ## delete insecure/deprecated plugins ##
 rm -R -f /var/www/html/wp-content/mu-plugins/adminer
 rm -R -f /var/www/html/wp-content/plugins/adminer
+rm -R -f /var/www/html/wp-content/mu-plugins/disable-rss
+rm -R -f /var/www/html/wp-content/plugins/disable-rss
 rm -R -f /var/www/html/wp-content/mu-plugins/miwoftp*
 rm -R -f /var/www/html/wp-content/plugins/miwoftp*
 rm -R -f /var/www/html/wp-content/mu-plugins/wp-no-category-base*
