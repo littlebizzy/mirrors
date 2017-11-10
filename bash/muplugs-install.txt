@@ -77,7 +77,7 @@ unzip /tmp/virtual-robotstxt-littlebizzy.zip
 
 ## delete plugins instances ##
 rm -R -f /var/www/html/wp-content/plugins/autoloader*
-rm -R -f /var/www/html/wp-content/plugins/cloudflare
+rm -R -f /var/www/html/wp-content/plugins/cloudflare*
 rm -R -f /var/www/html/wp-content/plugins/disable-embeds*
 rm -R -f /var/www/html/wp-content/plugins/disable-embeds-littlebizzy*
 rm -R -f /var/www/html/wp-content/plugins/disable-emojis*
