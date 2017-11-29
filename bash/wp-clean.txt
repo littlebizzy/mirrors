@@ -200,6 +200,13 @@ rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
 # rm -R -f /var/www/html/wp-content/mu-plugins/updraftplus*
 # rm -R -f /var/www/html/wp-content/plugins/updraftplus*
 
+## delete unsafe/unstable sync/staging plugins ##
+# rm -R -f /var/www/html/wp-content/mu-plugins/wp-sync-db-master
+# rm -R -f /var/www/html/wp-content/plugins/wp-sync-db-master
+# rm -R -f /var/www/html/wp-content/mu-plugins/wp-sync-db-master
+# rm -R -f /var/www/html/wp-content/mu-plugins/wp-sync-db-media-files-master
+# rm -R -f /var/www/html/wp-content/plugins/wp-sync-db-media-files-master
+
 ## delete severely bloated plugins ##
 # rm -R -f /var/www/html/wp-content/plugins/woocommerce-jetpack*
 # rm -R -f /var/www/html/wp-content/plugins/icegram
