@@ -130,6 +130,16 @@ rm -R -f /var/www/html/wp-content/plugins/googleanalytics
 ## delete image compression plugins ##
 rm -R -f /var/www/html/wp-content/mu-plugins/ewww-image-optimizer
 rm -R -f /var/www/html/wp-content/plugins/ewww-image-optimizer
+# rm -R -f /var/www/html/wp-content/mu-plugins/ewww-image-optimizer-cloud
+# rm -R -f /var/www/html/wp-content/plugins/ewww-image-optimizer-cloud
+# rm -R -f /var/www/html/wp-content/mu-plugins/wp-smushit
+# rm -R -f /var/www/html/wp-content/plugins/wp-smushit
+# rm -R -f /var/www/html/wp-content/mu-plugins/optimus
+# rm -R -f /var/www/html/wp-content/plugins/optimus
+# rm -R -f /var/www/html/wp-content/mu-plugins/way2enjoy-compress-images
+# rm -R -f /var/www/html/wp-content/plugins/way2enjoy-compress-images
+# rm -R -f /var/www/html/wp-content/mu-plugins/shortpixel-image-optimiser
+# rm -R -f /var/www/html/wp-content/plugins/shortpixel-image-optimiser
 
 ## delete codeguard related plugins that conflict with codeguard service ##
 rm -R -f /var/www/html/wp-content/mu-plugins/codeguard*
