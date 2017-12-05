@@ -180,8 +180,6 @@ rm -R -f /var/www/html/wp-content/mu-plugins/easy-wp-smtp*
 rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
 # rm -R -f /var/www/html/wp-content/mu-plugins/leadpages
 # rm -R -f /var/www/html/wp-content/plugins/leadpages
-rm -R -f /var/www/html/wp-content/mu-plugins/ajax-thumbnail-rebuild
-rm -R -f /var/www/html/wp-content/plugins/ajax-thumbnail-rebuild
 
 ## delete plugins that cause thrashing ##
 rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order
@@ -194,6 +192,8 @@ rm -R -f /var/www/html/wp-content/plugins/tweet-blender*
 rm -R -f /var/www/html/wp-content/plugins/dynamic-related-posts*
 rm -R -f /var/www/html/wp-content/plugins/seo-alrp*
 rm -R -f /var/www/html/wp-content/plugins/similar-posts*
+rm -R -f /var/www/html/wp-content/mu-plugins/ajax-thumbnail-rebuild*
+rm -R -f /var/www/html/wp-content/plugins/ajax-thumbnail-rebuild*
 # rm -R -f /var/www/html/wp-content/plugins/yet-another-related-posts-plugin*
 # rm -R -f /var/www/html/wp-content/plugins/contextual-related-posts*
 
