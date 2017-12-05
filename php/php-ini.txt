@@ -46,7 +46,7 @@ expose_php = Off
 ; Resource Limits ;
 ;;;;;;;;;;;;;;;;;;;
 
-max_execution_time = 30
+max_execution_time = 60
 max_input_time = 60
 max_input_nesting_level = 64
 max_input_vars = 3000
