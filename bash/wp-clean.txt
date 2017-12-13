@@ -211,6 +211,10 @@ rm -R -f /var/www/html/wp-content/mu-plugins/wp-backitup*
 rm -R -f /var/www/html/wp-content/plugins/wp-backitup*
 rm -R -f /var/www/html/wp-content/mu-plugins/akeebabackupwp*
 rm -R -f /var/www/html/wp-content/plugins/akeebabackupwp*
+rm -R -f /var/www/html/wp-content/mu-plugins/wordpress-backup-to-dropbox*
+rm -R -f /var/www/html/wp-content/plugins/wordpress-backup-to-dropbox*
+rm -R -f /var/www/html/wp-content/mu-plugins/dropbox-backup*
+rm -R -f /var/www/html/wp-content/plugins/dropbox-backup*
 # rm -R -f /var/www/html/wp-content/mu-plugins/updraftplus*
 # rm -R -f /var/www/html/wp-content/plugins/updraftplus*
 
