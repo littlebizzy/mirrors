@@ -111,6 +111,10 @@ rm -R -f /var/www/html/wp-content/plugins/timthumb*
 rm -R -f /var/www/html/wp-content/mu-plugins/uploadify*
 rm -R -f /var/www/html/wp-content/plugins/uploadify*
 
+## delete plugins bad for SEO ##
+rm -R -f /var/www/html/wp-content/mu-plugins/periods-in-titles*
+rm -R -f /var/www/html/wp-content/plugins/periods-in-titles*
+
 ## delete plugins that alter WP Admin to become unstable or hurt firewall security
 rm -R -f /var/www/html/wp-content/mu-plugins/hide-my-wp*
 rm -R -f /var/www/html/wp-content/plugins/hide-my-wp*
