@@ -273,6 +273,7 @@ rm -R -f /var/www/html/wp-content/plugins/wp-mailing-list*
 
 ## delete cache plugins that conflict with @littlebizzy @slickstack @purgethemall ##
 rm -R -f /var/www/html/wp-content/cache
+rm -R -f /var/www/html/wp-content/db.php
 rm -R -f /var/www/html/wp-content/advanced-cache.php
 rm -R -f /var/www/html/wp-content/w3tc-config*
 rm -R -f /var/www/html/wp-content/wp-rocket-config*
