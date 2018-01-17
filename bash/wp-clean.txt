@@ -164,6 +164,7 @@ rm -R -f /var/www/html/wp-content/mu-plugins/codeguard*
 rm -R -f /var/www/html/wp-content/plugins/codeguard*
 
 ## delete remote management plugins ##
+rm -R -f /var/www/html/wp-content/managewp*
 rm -R -f /var/www/html/wp-content/mu-plugins/0-worker*
 rm -R -f /var/www/html/wp-content/plugins/0-worker*
 rm -R -f /var/www/html/wp-content/mu-plugins/worker
