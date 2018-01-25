@@ -18,8 +18,9 @@ mkdir /var/www/html/wp-content/mu-plugins
 
 ## delete tmp files ##
 rm -R -f /tmp/autoloader*
-rm -R -f /tmp/cloudflare*
 rm -R -f /tmp/cf-littlebizzy*
+rm -R -f /tmp/delete-expired-transients*
+rm -R -f /tmp/delete-expired-transients-littlebizzy*
 rm -R -f /tmp/disable-embeds*
 rm -R -f /tmp/disable-embeds-littlebizzy*
 rm -R -f /tmp/disable-emojis*
@@ -45,6 +46,7 @@ rm -R -f /tmp/virtual-robotstxt-littlebizzy*
 cd /tmp/
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/autoloader.txt
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/cf-littlebizzy.zip
+wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/delete-expired-transients-littlebizzy.zip
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/disable-embeds-littlebizzy.zip
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/disable-emojis-littlebizzy.zip
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/disable-empty-trash-littlebizzy.zip
@@ -64,6 +66,7 @@ mv autoloader.txt autoloader.php
 ## unzip mu-plugins ##
 cd /tmp/
 unzip /tmp/cf-littlebizzy.zip
+unzip /tmp/delete-expired-transients-littlebizzy.zip
 unzip /tmp/disable-embeds-littlebizzy.zip
 unzip /tmp/disable-emojis-littlebizzy.zip
 unzip /tmp/disable-empty-trash-littlebizzy.zip
@@ -78,8 +81,9 @@ unzip /tmp/virtual-robotstxt-littlebizzy.zip
 
 ## delete plugins instances ##
 rm -R -f /var/www/html/wp-content/plugins/autoloader*
-rm -R -f /var/www/html/wp-content/plugins/cloudflare*
 rm -R -f /var/www/html/wp-content/plugins/cf-littlebizzy*
+rm -R -f /var/www/html/wp-content/plugins/delete-expired-transients*
+rm -R -f /var/www/html/wp-content/plugins/delete-expired-transients-littlebizzy*
 rm -R -f /var/www/html/wp-content/plugins/disable-embeds*
 rm -R -f /var/www/html/wp-content/plugins/disable-embeds-littlebizzy*
 rm -R -f /var/www/html/wp-content/plugins/disable-emojis*
@@ -103,8 +107,9 @@ rm -R -f /var/www/html/wp-content/plugins/virtual-robotstxt-littlebizzy*
 
 ## delete mu-plugins instances ##
 rm -R -f /var/www/html/wp-content/mu-plugins/autoloader*
-rm -R -f /var/www/html/wp-content/mu-plugins/cloudflare*
 rm -R -f /var/www/html/wp-content/mu-plugins/cf-littlebizzy*
+rm -R -f /var/www/html/wp-content/mu-plugins/delete-expired-transients*
+rm -R -f /var/www/html/wp-content/mu-plugins/delete-expired-transients-littlebizzy*
 rm -R -f /var/www/html/wp-content/mu-plugins/disable-embeds*
 rm -R -f /var/www/html/wp-content/mu-plugins/disable-embeds-littlebizzy*
 rm -R -f /var/www/html/wp-content/mu-plugins/disable-emojis*
@@ -129,6 +134,7 @@ rm -R -f /var/www/html/wp-content/mu-plugins/virtual-robotstxt-littlebizzy*
 ## copy mu-plugins to the mu-plugins directory ##
 cp -R -f -d --no-preserve=mode,ownership /tmp/autoloader.php /var/www/html/wp-content/mu-plugins/autoloader.php
 cp -R -f -d --no-preserve=mode,ownership /tmp/cf-littlebizzy /var/www/html/wp-content/mu-plugins/cf-littlebizzy
+cp -R -f -d --no-preserve=mode,ownership /tmp/delete-expired-transients-littlebizzy /var/www/html/wp-content/mu-plugins/delete-expired-transients-littlebizzy
 cp -R -f -d --no-preserve=mode,ownership /tmp/disable-embeds-littlebizzy /var/www/html/wp-content/mu-plugins/disable-embeds-littlebizzy
 cp -R -f -d --no-preserve=mode,ownership /tmp/disable-emojis-littlebizzy /var/www/html/wp-content/mu-plugins/disable-emojis-littlebizzy
 cp -R -f -d --no-preserve=mode,ownership /tmp/disable-empty-trash-littlebizzy /var/www/html/wp-content/mu-plugins/disable-empty-trash-littlebizzy
@@ -143,8 +149,9 @@ cp -R -f -d --no-preserve=mode,ownership /tmp/virtual-robotstxt-littlebizzy /var
 
 ## delete tmp files ##
 rm -R -f /tmp/autoloader*
-rm -R -f /tmp/cloudflare*
 rm -R -f /tmp/cf-littlebizzy*
+rm -R -f /tmp/delete-expired-transients*
+rm -R -f /tmp/delete-expired-transients-littlebizzy*
 rm -R -f /tmp/disable-embeds*
 rm -R -f /tmp/disable-embeds-littlebizzy*
 rm -R -f /tmp/disable-emojis*
