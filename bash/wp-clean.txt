@@ -272,7 +272,7 @@ rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
 rm -R -f /var/www/html/wp-content/mu-plugins/wp-mailing-list*
 rm -R -f /var/www/html/wp-content/plugins/wp-mailing-list*
 
-## delete cache plugins that conflict with @littlebizzy @slickstack @purgethemall ##
+## delete cache plugins that conflict with @littlebizzy @slickstack @speeddemon ##
 rm -R -f /var/www/html/wp-content/cache
 rm -R -f /var/www/html/wp-content/db.php
 rm -R -f /var/www/html/wp-content/advanced-cache.php
@@ -312,22 +312,41 @@ rm -R -f /var/www/html/wp-content/plugins/preload-fullpage-cache*
 rm -R -f /var/www/html/wp-content/plugins/cache-performance*
 rm -R -f /var/www/html/wp-content/plugins/wp-rocket*
 
-## delete performance plugins that conflict with @littlebizzy @slickstack @speeddemon ##
-rm -R -f /var/www/html/wp-content/plugins/query-strings-remover
-rm -R -f /var/www/html/wp-content/plugins/zendy-speed-query-strings
-rm -R -f /var/www/html/wp-content/plugins/wp-version-in-query-string-modifier
+## delete conflicts with: remove-query-strings-littlebizzy ##
+rm -R -f /var/www/html/wp-content/mu-plugins/query-strings-remover*
+rm -R -f /var/www/html/wp-content/plugins/query-strings-remover*
+rm -R -f /var/www/html/wp-content/mu-plugins/zendy-speed-query-strings*
+rm -R -f /var/www/html/wp-content/plugins/zendy-speed-query-strings*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-version-in-query-string-modifier*
+rm -R -f /var/www/html/wp-content/plugins/wp-version-in-query-string-modifier*
+rm -R -f /var/www/html/wp-content/mu-plugins/remove-query-strings-from-static-resources*
+rm -R -f /var/www/html/wp-content/plugins/remove-query-strings-from-static-resources*
+rm -R -f /var/www/html/wp-content/mu-plugins/remove-query-arg-from-media*
+rm -R -f /var/www/html/wp-content/plugins/remove-query-arg-from-media*
+rm -R -f /var/www/html/wp-content/mu-plugins/remove-query-strings
 rm -R -f /var/www/html/wp-content/plugins/remove-query-strings
-rm -R -f /var/www/html/wp-content/plugins/remove-query-strings-from-static-resources
-rm -R -f /var/www/html/wp-content/plugins/remove-query-arg-from-media
-rm -R -f /var/www/html/wp-content/plugins/cloudflare-cache-purge
-rm -R -f /var/www/html/wp-content/plugins/cloudflare-flexible-ssl
+
+## delete conflicts with: cf-littlebizzy | speed-demon-littlebizzy ##
+rm -R -f /var/www/html/wp-content/mu-plugins/cloudflare-cache-purge*
+rm -R -f /var/www/html/wp-content/plugins/cloudflare-cache-purge*
+rm -R -f /var/www/html/wp-content/mu-plugins/cloudflare-flexible-ssl*
+rm -R -f /var/www/html/wp-content/plugins/cloudflare-flexible-ssl*
+rm -R -f /var/www/html/wp-content/mu-plugins/purge-cache-for-cloudflare*
+rm -R -f /var/www/html/wp-content/plugins/purge-cache-for-cloudflare*
+rm -R -f /var/www/html/wp-content/mu-plugins/ec-developer-mode-integration-for-cloudflare*
+rm -R -f /var/www/html/wp-content/plugins/ec-developer-mode-integration-for-cloudflare*
+rm -R -f /var/www/html/wp-content/mu-plugins/ctw-ssl-for-cloudflare*
+rm -R -f /var/www/html/wp-content/plugins/ctw-ssl-for-cloudflare*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-cloudflare*
+rm -R -f /var/www/html/wp-content/plugins/wp-cloudflare*
+rm -R -f /var/www/html/wp-content/mu-plugins/purge-cloud-flare*
+rm -R -f /var/www/html/wp-content/plugins/purge-cloud-flare*
+rm -R -f /var/www/html/wp-content/mu-plugins/supersonic
 rm -R -f /var/www/html/wp-content/plugins/supersonic
+rm -R -f /var/www/html/wp-content/mu-plugins/sunny
 rm -R -f /var/www/html/wp-content/plugins/sunny
-rm -R -f /var/www/html/wp-content/plugins/purge-cache-for-cloudflare
-rm -R -f /var/www/html/wp-content/plugins/ec-developer-mode-integration-for-cloudflare
-rm -R -f /var/www/html/wp-content/plugins/ctw-ssl-for-cloudflare
-rm -R -f /var/www/html/wp-content/plugins/wp-cloudflare
-rm -R -f /var/www/html/wp-content/plugins/purge-cloud-flare
+
+## delete conflicts with @slickstack @speeddemon ##
 rm -R -f /var/www/html/wp-content/plugins/cloudguard
 rm -R -f /var/www/html/wp-content/plugins/wp-denyhost
 rm -R -f /var/www/html/wp-content/plugins/wp-speed-booster
@@ -344,7 +363,24 @@ rm -R -f /var/www/html/wp-content/plugins/knapsack
 rm -R -f /var/www/html/wp-content/plugins/yablog
 rm -R -f /var/www/html/wp-content/plugins/remove-wp-overhead
 
-##  delete emoji plugins ##
+## delete conflicts with: delete-expired-transients-littlebizzy ##
+rm -R -f /var/www/html/wp-content/mu-plugins/artiss-transient-cleaner*
+rm -R -f /var/www/html/wp-content/plugins/artiss-transient-cleaner*
+rm -R -f /var/www/html/wp-content/mu-plugins/delete-expired-transients
+rm -R -f /var/www/html/wp-content/plugins/delete-expired-transients
+rm -R -f /var/www/html/wp-content/mu-plugins/clean-expired-transients*
+rm -R -f /var/www/html/wp-content/plugins/clean-expired-transients*
+
+## delete undesired plugins re: transients ##
+rm -R -f /var/www/html/wp-content/mu-plugins/dedicated-transients*
+rm -R -f /var/www/html/wp-content/plugins/dedicated-transients*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-cleanfix*
+rm -R -f /var/www/html/wp-content/plugins/wp-cleanfix*
+rm -R -f /var/www/html/wp-content/mu-plugins/force-transient-refresh*
+rm -R -f /var/www/html/wp-content/plugins/force-transient-refresh*
+
+## delete conflicts with: disable-emojis-littlebizzy ##
+## delete undesired plugins re: emojis ##
 rm -R -f /var/www/html/wp-content/plugins/emoji-settings
 rm -R -f /var/www/html/wp-content/plugins/emoji-reactions
 rm -R -f /var/www/html/wp-content/plugins/wp-disable-emjoi
@@ -375,3 +411,7 @@ rm -R -f /var/www/html/wp-content/plugins/fl3r-feelbox
 rm -R -f /var/www/html/wp-content/plugins/classic-smilies
 rm -R -f /var/www/html/wp-content/plugins/wp-reactions-box
 rm -R -f /var/www/html/wp-content/plugins/voting-platform-feelbacks
+
+## delete multisite plugins ##
+rm -R -f /var/www/html/wp-content/mu-plugins/surbma-multisite-transient-cleaner*
+rm -R -f /var/www/html/wp-content/plugins/surbma-multisite-transient-cleaner*
