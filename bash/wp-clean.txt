@@ -31,7 +31,7 @@ rm -R -f /var/www/html/nginx.conf
 ## find and delete irrelevant file extensions ##
 find /var/www/html/ -name "*.htaccess" -type f -delete
 
-## find and delete unsafe file extensions ##
+## delete unsafe file extensions ##
 find /var/www/html/ -name "*.exe" -type f -delete
 find /var/www/html/ -name "*.cmd" -type f -delete
 find /var/www/html/ -name "*.asp" -type f -delete
@@ -73,7 +73,7 @@ sed -i '/wp_cache/d' /var/www/html/wp-config.php
 rm -R -f /var/www/html/wp-content/mu-plugins/hello.php
 rm -R -f /var/www/html/wp-content/plugins/hello.php
 
-## delete plugins not compatible with lemp/slickstack ##
+## delete plugins not compatible with slickstack ##
 rm -R -f /var/www/html/wp-content/mu-plugins/askapache-debug-viewer*
 rm -R -f /var/www/html/wp-content/plugins/askapache-debug-viewer*
 rm -R -f /var/www/html/wp-content/mu-plugins/htaccess*
@@ -197,20 +197,32 @@ rm -R -f /var/www/html/wp-content/plugins/divi-booster*
 # rm -R -f /var/www/html/wp-content/plugins/leadpages
 
 ## delete plugins that cause thrashing ##
+rm -R -f /var/www/html/wp-content/mu-plugins/wc-cancel-order
 rm -R -f /var/www/html/wp-content/plugins/wc-cancel-order
+rm -R -f /var/www/html/wp-content/mu-plugins/broken-link-checker*
 rm -R -f /var/www/html/wp-content/plugins/broken-link-checker*
+rm -R -f /var/www/html/wp-content/mu-plugins/myrp*
 rm -R -f /var/www/html/wp-content/plugins/myrp*
+rm -R -f /var/www/html/wp-content/mu-plugins/linkman*
 rm -R -f /var/www/html/wp-content/plugins/linkman*
+rm -R -f /var/www/html/wp-content/mu-plugins/fuzzy-seo-booster*
 rm -R -f /var/www/html/wp-content/plugins/fuzzy-seo-booster*
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-postviews*
 rm -R -f /var/www/html/wp-content/plugins/wp-postviews*
+rm -R -f /var/www/html/wp-content/mu-plugins/tweet-blender*
 rm -R -f /var/www/html/wp-content/plugins/tweet-blender*
+rm -R -f /var/www/html/wp-content/mu-plugins/dynamic-related-posts*
 rm -R -f /var/www/html/wp-content/plugins/dynamic-related-posts*
+rm -R -f /var/www/html/wp-content/mu-plugins/seo-alrp*
 rm -R -f /var/www/html/wp-content/plugins/seo-alrp*
+rm -R -f /var/www/html/wp-content/mu-plugins/similar-posts*
 rm -R -f /var/www/html/wp-content/plugins/similar-posts*
 rm -R -f /var/www/html/wp-content/mu-plugins/ajax-thumbnail-rebuild*
 rm -R -f /var/www/html/wp-content/plugins/ajax-thumbnail-rebuild*
-# rm -R -f /var/www/html/wp-content/plugins/yet-another-related-posts-plugin*
-# rm -R -f /var/www/html/wp-content/plugins/contextual-related-posts*
+rm -R -f /var/www/html/wp-content/mu-plugins/yet-another-related-posts-plugin*
+rm -R -f /var/www/html/wp-content/plugins/yet-another-related-posts-plugin*
+rm -R -f /var/www/html/wp-content/mu-plugins/contextual-related-posts*
+rm -R -f /var/www/html/wp-content/plugins/contextual-related-posts*
 
 ## delete local backups and related plugins ##
 rm -R -f /var/www/html/wp-snapshots
