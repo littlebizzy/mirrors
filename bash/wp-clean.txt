@@ -187,6 +187,8 @@ rm -R -f /var/www/html/wp-content/mu-plugins/simple-share-buttons-adder*
 rm -R -f /var/www/html/wp-content/plugins/simple-share-buttons-adder*
 rm -R -f /var/www/html/wp-content/mu-plugins/easy-wp-smtp*
 rm -R -f /var/www/html/wp-content/plugins/easy-wp-smtp*
+rm -R -f /var/www/html/wp-content/mu-plugins/divi-booster*
+rm -R -f /var/www/html/wp-content/plugins/divi-booster*
 # rm -R -f /var/www/html/wp-content/mu-plugins/leadpages
 # rm -R -f /var/www/html/wp-content/plugins/leadpages
 
