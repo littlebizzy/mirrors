@@ -163,10 +163,6 @@ rm -R -f /var/www/html/wp-content/plugins/wp-smushit
 # rm -R -f /var/www/html/wp-content/mu-plugins/shortpixel-image-optimiser
 # rm -R -f /var/www/html/wp-content/plugins/shortpixel-image-optimiser
 
-## delete codeguard related plugins that conflict with codeguard service ##
-rm -R -f /var/www/html/wp-content/mu-plugins/codeguard*
-rm -R -f /var/www/html/wp-content/plugins/codeguard*
-
 ## delete remote management plugins ##
 rm -R -f /var/www/html/wp-content/managewp*
 rm -R -f /var/www/html/wp-content/mu-plugins/0-worker*
@@ -224,15 +220,27 @@ rm -R -f /var/www/html/wp-content/plugins/yet-another-related-posts-plugin*
 rm -R -f /var/www/html/wp-content/mu-plugins/contextual-related-posts*
 rm -R -f /var/www/html/wp-content/plugins/contextual-related-posts*
 
-## delete local backups and related plugins ##
-rm -R -f /var/www/html/wp-snapshots
+## delete unsafe local backups ##
+rm -R -f /var/www/html/wp-snapshots*
+rm -R -f /var/www/html/wp-content/ai1wm-backups*
+rm -R -f /var/www/html/wp-content/backup-*
 rm -R -f /var/www/html/wp-content/backups
-rm -R -f /var/www/html/wp-content/updraft
-# BulletProof Security #
-rm -R -f /var/www/html/wp-content/bps-backup
-# WordFence Security #
-rm -R -f /var/www/html/wp-content/wflogs
-rm -R -f /var/www/html/wp-content/ai1wm-backups
+rm -R -f /var/www/html/wp-content/updraft*
+rm -R -f /var/www/html/wp-content/codeguard_backups*
+rm -R -f /var/www/html/wp-content/Dropbox_Backup*
+rm -R -f /var/www/html/wp-content/bps-backup*
+rm -R -f /var/www/html/wp-content/wflogs*
+
+## delete CodeGuard related plugins (already provided by LittleBizzy) ##
+rm -R -f /var/www/html/wp-content/mu-plugins/codeguard*
+rm -R -f /var/www/html/wp-content/plugins/codeguard*
+rm -R -f /var/www/html/wp-content/codeguard_backups*
+
+# delete other backup plugins #
+rm -R -f /var/www/html/wp-content/mu-plugins/blogvault-real-time-backup*
+rm -R -f /var/www/html/wp-content/plugins/blogvault-real-time-backup*
+rm -R -f /var/www/html/wp-content/mu-plugins/blogvault*
+rm -R -f /var/www/html/wp-content/plugins/blogvault*
 rm -R -f /var/www/html/wp-content/mu-plugins/wp-db-backup
 rm -R -f /var/www/html/wp-content/plugins/wp-db-backup
 rm -R -f /var/www/html/wp-content/mu-plugins/wp-database-backup
