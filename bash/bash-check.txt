@@ -1,14 +1,12 @@
 #!/bin/bash
 
-########################################################################
-#### author: @slickstack ###############################################
-#### link: https://github.com/littlebizzy/slickstack ###################
-#### mirror: http://mirrors.littlebizzy.com/bash/bash-check.txt ########
-#### type: bash script #################################################
-#### purpose: retrieve various slickstack bash scripts #################
-#### slug: bash-check ##################################################
-#### executable: yes ###################################################
-########################################################################
+####################################################################
+#### author: slickstack ############################################
+#### link: https://slickstack.io ###################################
+#### mirror: http://mirrors.littlebizzy.com/bash/bash-check.txt ####
+#### path: /var/www/bash-check #####################################
+#### purpose: retrieve various slickstack scripts ##################
+####################################################################
 
 ## server config variables ##
 source /var/www/config
