@@ -1,12 +1,12 @@
 #!/bin/bash
 
-###############################################
-#### littlebizzy lemp updates and upgrades ####
-###############################################
-
-#########################################
-#### DO NOT CALL DIRECTLY IN CRONTAB ####
-#########################################
+######################################################################
+#### author: slickstack ##############################################
+#### link: https://slickstack.io #####################################
+#### mirror: http://mirrors.littlebizzy.com/bash/lemp-updates.txt ####
+#### path: /var/www/lemp-updates #####################################
+#### purpose: updates the entire slickstack installation #############
+######################################################################
 
 ## fix dpkg ##
 DEBIAN_FRONTEND=noninteractive dpkg --configure -a --force-confold
