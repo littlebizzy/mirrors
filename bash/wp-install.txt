@@ -1,13 +1,17 @@
 #!/bin/bash
 
-#######################################
-#### littlebizzy install wordpress ####
-#######################################
+####################################################################
+#### author: slickstack ############################################
+#### link: https://slickstack.io ###################################
+#### mirror: http://mirrors.littlebizzy.com/bash/wp-install.txt ####
+#### path: /var/www/wp-install #####################################
+#### purpose: install wordpress on slickstack ######################
+####################################################################
 
-## server-specific config variables ##
-source config
+## server config variables ##
+source /var/www/config
 
-## download latest wordpress version and untar ##
+## download and unzip latest wordpress version ##
 cd /var/www/html/
 wget http://wordpress.org/latest.tar.gz
 tar xfz latest.tar.gz
@@ -15,12 +19,7 @@ rsync -raqIp wordpress/* ./
 rm -rf wordpress
 rm -f latest.tar.gz
 
-cd /home/$user/www/
-wget http://wordpress.org/latest.tar.gz
-tar xfz latest.tar.gz
-rsync -raqIp wordpress/* ./
-rm -rf wordpress
-rm -f latest.tar.gz
-
-## reset permissions after done ##
-source perms-reset
+## reset permissions ##
+chown -R www-data:wordpress /var/www/html
+find /var/www/html/ -type d -exec chmod 775 {} \;
+find /var/www/html/ -type f -exec chmod 664 {} \;
