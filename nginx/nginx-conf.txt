@@ -85,11 +85,15 @@ http {
     # server_names_hash_bucket_size 64;
     # server_name_in_redirect off;
     ## prevent clickjacking
+    
+     #### SECURITY HEADERS ####
     add_header X-Frame-Options SAMEORIGIN;
     ## prevent MIME type sniffing
     add_header X-Content-Type-Options nosniff;
     ## guard against XSS attacks
     add_header X-XSS-Protection "1; mode=block";
+    ## referrer policy
+    add_header Referrer-Policy "strict-origin-when-cross-origin";
 
     #### MIME ####
     include /etc/nginx/mime.types;
