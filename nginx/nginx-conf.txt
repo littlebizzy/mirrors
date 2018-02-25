@@ -67,15 +67,14 @@ http {
 
     #### TIMEOUT LIMITS FASTCGI ####
     fastcgi_read_timeout 60;
+    
+    #### MAX FILE SIZE (FRONTEND UPLOADS)
+    client_max_body_size 512M;
 
-    ## useful nginx settings
+    #### MISC NGINX SETTINGS
     sendfile on;
     tcp_nopush on;
     tcp_nodelay on;
-
-    ## allow large post sizes and frontend uploads
-    client_max_body_size 512M;
-
     ## errors may occur without this on
     types_hash_max_size 2048;
 
@@ -84,15 +83,11 @@ http {
     server_tokens off;
     # server_names_hash_bucket_size 64;
     # server_name_in_redirect off;
-    ## prevent clickjacking
     
      #### SECURITY HEADERS ####
     add_header X-Frame-Options SAMEORIGIN;
-    ## prevent MIME type sniffing
     add_header X-Content-Type-Options nosniff;
-    ## guard against XSS attacks
     add_header X-XSS-Protection "1; mode=block";
-    ## referrer policy
     add_header Referrer-Policy "strict-origin-when-cross-origin";
 
     #### MIME ####
