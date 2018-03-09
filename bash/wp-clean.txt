@@ -23,6 +23,8 @@ rm -R -f /var/www/html/info.php
 rm -R -f /var/www/html/phpinfo.php
 
 ## delete wordpress xml-rpc file ##
+rm -R -f /var/www/html/wp-links-opml.php
+rm -R -f /var/www/html/wp-trackback.php
 rm -R -f /var/www/html/xmlrpc.php
 
 ## delete redundant nginx config files ##
