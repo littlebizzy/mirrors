@@ -304,6 +304,10 @@ rm -R -f /var/www/html/wp-content/plugins/wp-dbmanager*
 rm -R -f /var/www/html/wp-content/mu-plugins/wp-mailing-list*
 rm -R -f /var/www/html/wp-content/plugins/wp-mailing-list*
 
+## delete unnecessary minify/async/concatenate/compression plugins that conflict with cloudflare/nginx ##
+rm -R -f /var/www/html/wp-content/mu-plugins/wp-async-css*
+rm -R -f /var/www/html/wp-content/plugins/wp-async-css*
+
 ## delete cache plugins that conflict with @littlebizzy @slickstack @speeddemon ##
 rm -R -f /var/www/html/wp-content/cache
 rm -R -f /var/www/html/wp-content/db.php
