@@ -6,7 +6,7 @@
 
 ## scripts to run ##
 source /var/www/bash-worker
-source /var/www/lemp-updates
+source /var/www/muplugs-install
 
 ## delete lock file after done ##
 rm -R -f /tmp/2-cron-regular.lock
