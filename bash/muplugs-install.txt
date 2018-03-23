@@ -1,14 +1,12 @@
 #!/bin/bash
 
-##########################################################################
-#### author: @slickstack #################################################
-#### link: https://github.com/littlebizzy/slickstack #####################
-#### mirror: http://mirrors.littlebizzy.com/bash/muplugs-install.txt #####
-#### type: bash script ###################################################
-#### purpose: install various slickstack mu-plugins ######################
-#### slug: muplugs-install ###############################################
-#### executable: yes #####################################################
-##########################################################################
+#########################################################################
+#### author: slickstack #################################################
+#### link: https://slickstack.io ########################################
+#### mirror: http://mirrors.littlebizzy.com/bash/muplugs-install.txt ####
+#### path: /var/www/muplugs-install #####################################
+#### purpose: install various mu-plugins ################################
+#########################################################################
 
 ## server config variables ##
 source /var/www/config
@@ -36,6 +34,8 @@ rm -R -f /tmp/force-strong-hashing*
 rm -R -f /tmp/force-strong-hashing-littlebizzy*
 rm -R -f /tmp/header-cleanup*
 rm -R -f /tmp/header-cleanup-littlebizzy*
+rm -R -f /tmp/index-autoload*
+rm -R -f /tmp/index-autoload-littlebizzy*
 rm -R -f /tmp/nginx-cache*
 rm -R -f /tmp/remove-query-strings*
 rm -R -f /tmp/remove-query-strings-littlebizzy*
@@ -57,6 +57,7 @@ wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/disable-xml-rpc-little
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/error-log-monitor.zip
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/force-strong-hashing-littlebizzy.zip
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/header-cleanup-littlebizzy.zip
+wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/index-autoload-littlebizzy.zip
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/nginx-cache.zip
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/remove-query-strings-littlebizzy.zip
 wget --no-cache http://mirrors.littlebizzy.com/mu-plugins/server-status-littlebizzy.zip
@@ -78,6 +79,7 @@ unzip /tmp/disable-xml-rpc-littlebizzy.zip
 unzip /tmp/error-log-monitor.zip
 unzip /tmp/force-strong-hashing-littlebizzy.zip
 unzip /tmp/header-cleanup-littlebizzy.zip
+unzip /tmp/index-autoload-littlebizzy.zip
 unzip /tmp/nginx-cache.zip
 unzip /tmp/remove-query-strings-littlebizzy.zip
 unzip /tmp/server-status-littlebizzy.zip
@@ -103,6 +105,8 @@ rm -R -f /var/www/html/wp-content/plugins/force-strong-hashing*
 rm -R -f /var/www/html/wp-content/plugins/force-strong-hashing-littlebizzy*
 rm -R -f /var/www/html/wp-content/plugins/header-cleanup*
 rm -R -f /var/www/html/wp-content/plugins/header-cleanup-littlebizzy*
+rm -R -f /var/www/html/wp-content/plugins/index-autoload*
+rm -R -f /var/www/html/wp-content/plugins/index-autoload-littlebizzy*
 rm -R -f /var/www/html/wp-content/plugins/nginx-cache*
 rm -R -f /var/www/html/wp-content/plugins/remove-query-strings*
 rm -R -f /var/www/html/wp-content/plugins/remove-query-strings-littlebizzy*
@@ -131,6 +135,8 @@ rm -R -f /var/www/html/wp-content/mu-plugins/force-strong-hashing*
 rm -R -f /var/www/html/wp-content/mu-plugins/force-strong-hashing-littlebizzy*
 rm -R -f /var/www/html/wp-content/mu-plugins/header-cleanup*
 rm -R -f /var/www/html/wp-content/mu-plugins/header-cleanup-littlebizzy*
+rm -R -f /var/www/html/wp-content/mu-plugins/index-autoload*
+rm -R -f /var/www/html/wp-content/mu-plugins/index-autoload-littlebizzy*
 rm -R -f /var/www/html/wp-content/mu-plugins/nginx-cache*
 rm -R -f /var/www/html/wp-content/mu-plugins/remove-query-strings*
 rm -R -f /var/www/html/wp-content/mu-plugins/remove-query-strings-littlebizzy*
@@ -151,6 +157,7 @@ cp -R -f -d --no-preserve=mode,ownership /tmp/disable-xml-rpc-littlebizzy /var/w
 cp -R -f -d --no-preserve=mode,ownership /tmp/error-log-monitor /var/www/html/wp-content/mu-plugins/error-log-monitor
 cp -R -f -d --no-preserve=mode,ownership /tmp/force-strong-hashing-littlebizzy /var/www/html/wp-content/mu-plugins/force-strong-hashing-littlebizzy
 cp -R -f -d --no-preserve=mode,ownership /tmp/header-cleanup-littlebizzy /var/www/html/wp-content/mu-plugins/header-cleanup-littlebizzy
+cp -R -f -d --no-preserve=mode,ownership /tmp/index-autoload-littlebizzy /var/www/html/wp-content/mu-plugins/index-autoload-littlebizzy
 cp -R -f -d --no-preserve=mode,ownership /tmp/nginx-cache /var/www/html/wp-content/mu-plugins/nginx-cache
 cp -R -f -d --no-preserve=mode,ownership /tmp/remove-query-strings-littlebizzy /var/www/html/wp-content/mu-plugins/remove-query-strings-littlebizzy
 cp -R -f -d --no-preserve=mode,ownership /tmp/server-status-littlebizzy /var/www/html/wp-content/mu-plugins/server-status-littlebizzy
@@ -176,6 +183,8 @@ rm -R -f /tmp/force-strong-hashing*
 rm -R -f /tmp/force-strong-hashing-littlebizzy*
 rm -R -f /tmp/header-cleanup*
 rm -R -f /tmp/header-cleanup-littlebizzy*
+rm -R -f /tmp/index-autoload*
+rm -R -f /tmp/index-autoload-littlebizzy*
 rm -R -f /tmp/nginx-cache*
 rm -R -f /tmp/remove-query-strings*
 rm -R -f /tmp/remove-query-strings-littlebizzy*
