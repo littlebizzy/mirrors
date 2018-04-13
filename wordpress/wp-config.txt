@@ -22,6 +22,9 @@ define('WP_CRON_LOCK_TIMEOUT', 300);
 /* extend trash life to avoid data loss (a backup function in case Disable Empty Trash plugin not installed) */
 define('EMPTY_TRASH_DAYS', 9999999999);
 
+/* disable annoying nag notices in WP Admin */
+define('DISABLE_NAG_NOTICES', true);
+
 /* future: require_once( dirname( __FILE__ ) . '/lb-config.php' ); */
 
 /* LITTLEBIZZY CONFIG -- DO NOT DELETE ABOVE LINES */
