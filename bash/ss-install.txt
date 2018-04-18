@@ -14,6 +14,16 @@
 source /var/www/bash-setup-users.txt
 source /var/www/bash-secure-root.txt
 
+
+### wpcli install ####
+## retrieve latest wp-cli version ##
+## cd /tmp/
+## wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+## rename and move phar ##
+## mv wp-cli.phar /usr/local/bin/wp
+## reset permissions ##
+## chmod +x wp-cli.phar
+
 ## install littlebizzy sudoers file ##
 cd /tmp/
 wget --timestamping http://mirrors.littlebizzy.com/linux/sudoers.txt
