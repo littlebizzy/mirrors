@@ -1,0 +1,81 @@
+#!/bin/bash
+
+###################################################################
+#### author: slickstack ###########################################
+#### link: https://slickstack.io ##################################
+#### mirror: http://mirrors.littlebizzy.com/bash/ss-worker.txt ####
+#### path: /var/www/ss-worker #####################################
+#### purpose: updates various slickstack config files #############
+###################################################################
+
+## server config variables ##
+source /var/www/config
+
+## delete previous tmp files ##
+rm -R -f /tmp/1-cron-often.txt* /tmp/1-cron-often*
+rm -R -f /tmp/bash-check.txt* /tmp/bash-check*
+rm -R -f /tmp/gai-conf.txt* /tmp/gai.conf*
+rm -R -f /tmp/nginx-conf.txt* /tmp/nginx.conf*
+rm -R -f /tmp/nginx.crt* /tmp/nginx.key* /tmp/nginx.pem*
+
+# download latest scripts and configs ##
+cd /tmp/
+wget --no-cache http://mirrors.littlebizzy.com/crons/1-cron-often.txt
+wget --no-cache http://mirrors.littlebizzy.com/bash/bash-check.txt
+wget --no-cache http://mirrors.littlebizzy.com/ubuntu/gai-conf.txt
+wget --no-cache http://mirrors.littlebizzy.com/nginx/nginx-conf.txt
+
+## rename scripts and configs ##
+cd /tmp/
+mv 1-cron-often.txt 1-cron-often
+mv bash-check.txt bash-check
+mv gai-conf.txt gai.conf
+mv nginx-conf.txt nginx.conf
+
+## copy scripts and configs to their destinations ##
+cp -R -f -d --no-preserve=mode,ownership /tmp/1-cron-often /var/www/1-cron-often
+cp -R -f -d --no-preserve=mode,ownership /tmp/bash-check /var/www/bash-check
+cp -R -f -d --no-preserve=mode,ownership /tmp/gai.conf /etc/gai.conf
+cp -R -f -d --no-preserve=mode,ownership /tmp/nginx.conf /etc/nginx/nginx.conf
+
+## generate pem file from openssl key and crt files ##
+cp -R -f -d --no-preserve=mode,ownership /etc/ssl/nginx.crt /tmp/nginx.crt
+cp -R -f -d --no-preserve=mode,ownership /etc/ssl/nginx.key /tmp/nginx.key
+cat /tmp/nginx.crt /tmp/nginx.key > /tmp/nginx.pem
+cp -R -f -d --no-preserve=mode,ownership /tmp/nginx.pem /etc/ssl/nginx.pem
+
+## delete remaining tmp files ##
+rm -R -f /tmp/1-cron-often.txt* /tmp/1-cron-often*
+rm -R -f /tmp/bash-check.txt* /tmp/bash-check*
+rm -R -f /tmp/gai-conf.txt* /tmp/gai.conf*
+rm -R -f /tmp/nginx-conf.txt* /tmp/nginx.conf*
+rm -R -f /tmp/nginx.crt* /tmp/nginx.key* /tmp/nginx.pem*
+
+## reset file permissions ##
+chown root:root /var/www/1-cron-often
+chmod -R 700 /var/www/1-cron-often
+chown root:root /var/www/bash-check
+chmod -R 700 /var/www/bash-check
+chown root:root /etc/gai.conf
+chown root:root /etc/nginx/nginx.conf
+chown root:root /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
+chmod -R 700 /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
+
+## restart services ##
+/etc/init.d/nginx restart
+
+#####################################################
+#### littlebizzy perform various temporary tasks ####
+#####################################################
+
+## TEMP change crontab ##
+# sed -i "s/ups-cron/lemp-updates/g" /var/spool/cron/crontabs/root
+# sed -i "s/perms-cron/perms-reset/g" /var/spool/cron/crontabs/root
+# sed -i "s/permissions-reset/perms-reset/g" /var/spool/cron/crontabs/root
+# sed -i "s/worker-cron/bash-worker/g" /var/spool/cron/crontabs/root
+# sed -i "s/check-cron/bash-check/g" /var/spool/cron/crontabs/root
+# sed -i "s/muplugs-cron/muplugs-install/g" /var/spool/cron/crontabs/root
+# sed -i "s/wordpress-muplugins-install/muplugs-install/g" /var/spool/cron/crontabs/root
+
+## TEMP change error log path ##
+# sed -i "s#/var/log/nginx/error.log#/var/log/php-fpm/error.log#g" /var/www/html/wp-config.php
