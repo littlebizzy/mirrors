@@ -20,6 +20,7 @@ rm -R -f /var/www/mysql-secure
 rm -R -f /var/www/mysql-install
 rm -R -f /var/www/linux-time-config
 rm -R -f /var/www/temp-varmove
+rm -R -f /var/www/linux-users-config
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
