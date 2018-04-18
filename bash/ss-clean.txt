@@ -17,6 +17,7 @@ rm -R -f /var/www/wpcli-install
 rm -R -f /var/www/lemp-install
 rm -R -f /var/www/linux-utils-install
 rm -R -f /var/www/mysql-secure
+rm -R -f /var/www/mysql-install
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
