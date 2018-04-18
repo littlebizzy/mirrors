@@ -41,6 +41,7 @@ rm -R -f /tmp/perms-reset*
 rm -R -f /tmp/php-install*
 rm -R -f /tmp/ss-clean*
 rm -R -f /tmp/ss-install*
+rm -R -f /tmp/ss-muplugs*
 rm -R -f /tmp/ss-perms*
 rm -R -f /tmp/ss-update*
 rm -R -f /tmp/ssl-install*
@@ -80,6 +81,7 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/perms-reset.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/php-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-clean.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-install.txt
+wget --no-cache http://mirrors.littlebizzy.com/bash/ss-muplugs.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-perms.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-update.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ssl-install.txt
@@ -119,6 +121,7 @@ mv perms-reset.txt perms-reset
 mv php-install.txt php-install
 mv ss-clean.txt ss-clean
 mv ss-install.txt ss-install
+mv ss-muplugs.txt ss-muplugs
 mv ss-perms.txt ss-perms
 mv ss-update.txt ss-update
 mv ssl-install.txt ssl-install
@@ -157,6 +160,7 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/php-install /var/www/php-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-clean /var/www/ss-clean
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-install /var/www/ss-install
+cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-muplugs /var/www/ss-muplugs
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-perms /var/www/ss-perms
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-update /var/www/ss-update
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ssl-install /var/www/ssl-install
@@ -195,6 +199,7 @@ chown root:root /var/www/perms-reset
 chown root:root /var/www/php-install
 chown root:root /var/www/ss-clean
 chown root:root /var/www/ss-install
+chown root:root /var/www/ss-muplugs
 chown root:root /var/www/ss-perms
 chown root:root /var/www/ss-update
 chown root:root /var/www/ssl-install
@@ -233,6 +238,7 @@ chmod 755 /var/www/perms-reset
 chmod 755 /var/www/php-install
 chmod 755 /var/www/ss-clean
 chmod 755 /var/www/ss-install
+chmod 755 /var/www/ss-muplugs
 chmod 755 /var/www/ss-perms
 chmod 755 /var/www/ss-update
 chmod 755 /var/www/ssl-install
@@ -271,6 +277,7 @@ rm -R -f /tmp/perms-reset*
 rm -R -f /tmp/php-install*
 rm -R -f /tmp/ss-clean*
 rm -R -f /tmp/ss-install*
+rm -R -f /tmp/ss-muplugs*
 rm -R -f /tmp/ss-perms*
 rm -R -f /tmp/ss-update*
 rm -R -f /tmp/ssl-install*
