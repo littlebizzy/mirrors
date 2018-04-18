@@ -8,6 +8,10 @@
 #### purpose: cleanup slickstack junk and unsafe files ###########
 ##################################################################
 
+## TEMP clean ##
+rm -R -f /var/www/wp-clean
+rm -R -f /var/www/muplugs-install
+
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
 
