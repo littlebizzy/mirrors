@@ -14,6 +14,9 @@
 source /var/www/bash-setup-users.txt
 source /var/www/bash-secure-root.txt
 
+## server config details ##
+source /var/www/bash-config
+
 
 ### wpcli install ####
 ## retrieve latest wp-cli version ##
@@ -23,6 +26,17 @@ source /var/www/bash-secure-root.txt
 ## mv wp-cli.phar /usr/local/bin/wp
 ## reset permissions ##
 ## chmod +x wp-cli.phar
+
+## mysql install ##
+## set noninteractive ##
+## export DEBIAN_FRONTEND=noninteractive
+## store mysql root password prior to installation ##
+## echo "mysql-server mysql-server/root_password password "$dbpassroot"" | debconf-set-selections
+## echo "mysql-server mysql-server/root_password_again password "$dbpassroot"" | debconf-set-selections
+## debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_password password "$dbpassroot""
+## debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_password_again password "$dbpassroot""
+## continue with the mysql installation ##
+## DEBIAN_FRONTEND=noninteractive apt-get --yes --option Dpkg::Options::="--force-confold" install mysql-server
 
 ## install littlebizzy sudoers file ##
 cd /tmp/
