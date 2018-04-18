@@ -69,7 +69,6 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/linux-time-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-users-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/monit-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/muplugs-install.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/mysql-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/nginx-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/nginx-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/perms-reset.txt
@@ -134,7 +133,6 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-users-config /var/www/linux-users-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/monit-install /var/www/monit-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/muplugs-install /var/www/muplugs-install
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/mysql-install /var/www/mysql-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/nginx-install /var/www/nginx-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/nginx-config /var/www/nginx-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/perms-reset /var/www/perms-reset
