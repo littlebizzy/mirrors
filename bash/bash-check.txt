@@ -67,7 +67,6 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/linux-ssh-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-sudo-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-time-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-users-config.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/linux-utils-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/monit-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/muplugs-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/mysql-install.txt
@@ -102,7 +101,6 @@ mv linux-ssh-config.txt linux-ssh-config
 mv linux-sudo-config.txt linux-sudo-config
 mv linux-time-config.txt linux-time-config
 mv linux-users-config.txt linux-users-config
-mv linux-utils-install.txt linux-utils-install
 mv monit-install.txt monit-install
 mv muplugs-install.txt muplugs-install
 mv mysql-install.txt mysql-install
@@ -136,7 +134,6 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-sudo-config /var/www/linux-sudo-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-time-config /var/www/linux-time-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-users-config /var/www/linux-users-config
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-utils-install /var/www/linux-utils-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/monit-install /var/www/monit-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/muplugs-install /var/www/muplugs-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/mysql-install /var/www/mysql-install
@@ -173,7 +170,6 @@ chown root:root /var/www/linux-ssh-config
 chown root:root /var/www/linux-sudo-config
 chown root:root /var/www/linux-time-config
 chown root:root /var/www/linux-users-config
-chown root:root /var/www/linux-utils-install
 chown root:root /var/www/monit-install
 chown root:root /var/www/muplugs-install
 chown root:root /var/www/mysql-install
