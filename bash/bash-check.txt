@@ -59,8 +59,6 @@ wget --no-cache http://mirrors.littlebizzy.com/crons/4-cron-daily.txt
 wget --no-cache http://mirrors.littlebizzy.com/crons/5-cron-weekly.txt
 wget --no-cache http://mirrors.littlebizzy.com/crons/6-cron-monthly.txt
 wget --no-cache http://mirrors.littlebizzy.com/crons/7-cron-sometimes.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/apt-update.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/apt-upgrade.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/bash-worker.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/lemp-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/lemp-updates.txt
@@ -86,9 +84,7 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/ss-perms.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-update.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ssl-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ufw-install.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/wp-clean.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/wp-install.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/wpcli-install.txt
 
 ## rename all scripts ##
 cd /tmp/
@@ -99,8 +95,6 @@ mv 4-cron-daily.txt 4-cron-daily
 mv 5-cron-weekly.txt 5-cron-weekly
 mv 6-cron-monthly.txt 6-cron-monthly
 mv 7-cron-sometimes.txt 7-cron-sometimes
-mv apt-update.txt apt-update
-mv apt-upgrade.txt apt-upgrade
 mv bash-worker.txt bash-worker
 mv lemp-install.txt lemp-install
 mv lemp-updates.txt lemp-updates
@@ -126,9 +120,7 @@ mv ss-perms.txt ss-perms
 mv ss-update.txt ss-update
 mv ssl-install.txt ssl-install
 mv ufw-install.txt ufw-install
-mv wp-clean.txt wp-clean
 mv wp-install.txt wp-install
-mv wpcli-install.txt wpcli-install
 
 # copy all scripts to destination ##
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/1-cron-often /var/www/1-cron-often
@@ -138,8 +130,6 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/5-cron-weekly /var/www/5-cron-weekly
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/6-cron-monthly /var/www/6-cron-monthly
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/7-cron-sometimes /var/www/7-cron-sometimes
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/apt-update /var/www/apt-update
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/apt-upgrade /var/www/apt-upgrade
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/bash-worker /var/www/bash-worker
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/lemp-install /var/www/lemp-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/lemp-updates /var/www/lemp-updates
@@ -165,9 +155,7 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-update /var/www/ss-update
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ssl-install /var/www/ssl-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ufw-install /var/www/ufw-install
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/wp-clean /var/www/wp-clean
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/wp-install /var/www/wp-install
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/wpcli-install /var/www/wpcli-install
 
 ## chown all scripts ##
 chown root:root /var/www/1-cron-often
