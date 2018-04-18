@@ -39,7 +39,10 @@ rm -R -f /tmp/nginx-install*
 rm -R -f /tmp/nginx-config*
 rm -R -f /tmp/perms-reset*
 rm -R -f /tmp/php-install*
+rm -R -f /tmp/ss-clean*
+rm -R -f /tmp/ss-install*
 rm -R -f /tmp/ss-perms*
+rm -R -f /tmp/ss-update*
 rm -R -f /tmp/ssl-install*
 rm -R -f /tmp/ufw-install*
 rm -R -f /tmp/wp-clean*
@@ -75,7 +78,10 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/nginx-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/nginx-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/perms-reset.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/php-install.txt
+wget --no-cache http://mirrors.littlebizzy.com/bash/ss-clean.txt
+wget --no-cache http://mirrors.littlebizzy.com/bash/ss-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-perms.txt
+wget --no-cache http://mirrors.littlebizzy.com/bash/ss-update.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ssl-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ufw-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/wp-clean.txt
@@ -111,7 +117,10 @@ mv nginx-install.txt nginx-install
 mv nginx-config.txt nginx-config
 mv perms-reset.txt perms-reset
 mv php-install.txt php-install
+mv ss-clean.txt ss-clean
+mv ss-install.txt ss-install
 mv ss-perms.txt ss-perms
+mv ss-update.txt ss-update
 mv ssl-install.txt ssl-install
 mv ufw-install.txt ufw-install
 mv wp-clean.txt wp-clean
@@ -146,7 +155,10 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/nginx-config /var/www/nginx-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/perms-reset /var/www/perms-reset
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/php-install /var/www/php-install
+cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-clean /var/www/ss-clean
+cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-install /var/www/ss-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-perms /var/www/ss-perms
+cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-update /var/www/ss-update
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ssl-install /var/www/ssl-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ufw-install /var/www/ufw-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/wp-clean /var/www/wp-clean
@@ -181,7 +193,10 @@ chown root:root /var/www/nginx-install
 chown root:root /var/www/nginx-config
 chown root:root /var/www/perms-reset
 chown root:root /var/www/php-install
+chown root:root /var/www/ss-clean
+chown root:root /var/www/ss-install
 chown root:root /var/www/ss-perms
+chown root:root /var/www/ss-update
 chown root:root /var/www/ssl-install
 chown root:root /var/www/ufw-install
 chown root:root /var/www/wp-clean
@@ -216,7 +231,10 @@ chmod 755 /var/www/nginx-install
 chmod 755 /var/www/nginx-config
 chmod 755 /var/www/perms-reset
 chmod 755 /var/www/php-install
+chmod 755 /var/www/ss-clean
+chmod 755 /var/www/ss-install
 chmod 755 /var/www/ss-perms
+chmod 755 /var/www/ss-update
 chmod 755 /var/www/ssl-install
 chmod 755 /var/www/ufw-install
 chmod 755 /var/www/wp-clean
@@ -251,7 +269,10 @@ rm -R -f /tmp/nginx-install*
 rm -R -f /tmp/nginx-config*
 rm -R -f /tmp/perms-reset*
 rm -R -f /tmp/php-install*
+rm -R -f /tmp/ss-clean*
+rm -R -f /tmp/ss-install*
 rm -R -f /tmp/ss-perms*
+rm -R -f /tmp/ss-update*
 rm -R -f /tmp/ssl-install*
 rm -R -f /tmp/ufw-install*
 rm -R -f /tmp/wp-clean*
