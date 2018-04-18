@@ -9,6 +9,8 @@
 ##################################################################
 
 ## TEMP clean ##
+rm -R -f /var/www/apt-update
+rm -R -f /var/www/apt-upgrade
 rm -R -f /var/www/wp-clean
 rm -R -f /var/www/muplugs-install
 rm -R -f /var/www/wpcli-install
