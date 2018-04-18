@@ -5,8 +5,8 @@
 #################################
 
 ## scripts to run ##
-source /var/www/wp-clean
-source /var/www/perms-reset
+source /var/www/ss-clean
+source /var/www/ss-perms
 
 ## delete lock file after done ##
 rm -R -f /tmp/3-cron-hourly.lock
