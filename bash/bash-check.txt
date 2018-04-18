@@ -65,7 +65,6 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/linux-crontab-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-root-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-ssh-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-sudo-config.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/linux-time-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-users-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/monit-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/nginx-config.txt
@@ -96,7 +95,6 @@ mv linux-crontab-config.txt linux-crontab-config
 mv linux-root-config.txt linux-root-config
 mv linux-ssh-config.txt linux-ssh-config
 mv linux-sudo-config.txt linux-sudo-config
-mv linux-time-config.txt linux-time-config
 mv linux-users-config.txt linux-users-config
 mv monit-install.txt monit-install
 mv nginx-install.txt nginx-install
@@ -126,7 +124,6 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-root-config /var/www/linux-root-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-ssh-config /var/www/linux-ssh-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-sudo-config /var/www/linux-sudo-config
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-time-config /var/www/linux-time-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-users-config /var/www/linux-users-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/monit-install /var/www/monit-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/nginx-install /var/www/nginx-install
