@@ -5,7 +5,7 @@
 ################################
 
 ## scripts to run ##
-source /var/www/muplugs-install
+source /var/www/ss-muplugs
 # source /var/www/nginx-config
 # source /var/www/linux-time-config
 # source /var/www/linux-root-config
