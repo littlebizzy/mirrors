@@ -21,6 +21,7 @@ rm -R -f /var/www/mysql-install
 rm -R -f /var/www/linux-time-config
 rm -R -f /var/www/temp-varmove
 rm -R -f /var/www/linux-users-config
+rm -R -f /var/www/lemp-updates
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
