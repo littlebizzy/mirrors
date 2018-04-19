@@ -26,6 +26,7 @@ rm -R -f /var/www/bash-worker
 rm -R -f /var/www/monit-install
 rm -R -f /var/www/nginx-install
 rm -R -f /var/www/linux-root-config
+rm -R -f /var/www/ufw-install
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
