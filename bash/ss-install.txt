@@ -17,6 +17,11 @@ source /var/www/bash-secure-root.txt
 ## server config details ##
 source /var/www/bash-config
 
+## root config ##
+## reset root password ##
+# echo root:$passroot | /usr/sbin/chpasswd
+## ensure root user and password never expire ##
+## chage -E -1 -m 0 -M -1 -I -1 -W 99999 root
 
 ### wpcli install ####
 ## retrieve latest wp-cli version ##
