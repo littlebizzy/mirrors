@@ -23,6 +23,7 @@ rm -R -f /var/www/temp-varmove
 rm -R -f /var/www/linux-users-config
 rm -R -f /var/www/lemp-updates
 rm -R -f /var/www/bash-worker
+rm -R -f /var/www/monit-install
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
