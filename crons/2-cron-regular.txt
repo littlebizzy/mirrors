@@ -1,8 +1,12 @@
 #!/bin/bash
 
-##################################
-#### littlebizzy cron regular ####
-##################################
+#########################################################################
+#### author: slickstack #################################################
+#### link: https://slickstack.io ########################################
+#### mirror: http://mirrors.littlebizzy.com/crons/2-cron-regular.txt ####
+#### path: /var/www/2-cron-regular ######################################
+#### purpose: #2 (2/7) priority slickstack cron jobs ####################
+#########################################################################
 
 ## scripts to run ##
 source /var/www/ss-worker
