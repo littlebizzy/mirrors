@@ -31,6 +31,8 @@ rm -R -f /var/www/bash-config
 rm -R -f /var/www/perms-reset
 rm -R -f /var/www/php-install
 rm -R -f /var/www/ssl-install
+rm -R -f /var/www/linux-ssh-config
+rm -R -f /var/www/linux-sudo-config
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
