@@ -5,7 +5,7 @@
 #### link: https://slickstack.io ######################################
 #### mirror: http://mirrors.littlebizzy.com/crons/1-cron-often.txt ####
 #### path: /var/www/1-cron-often ######################################
-#### purpose: #1 (1/7) priority slickstack cron jobs #################
+#### purpose: #1 (1/7) priority slickstack cron jobs ##################
 #######################################################################
 
 ## scripts to run ##
