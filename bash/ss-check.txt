@@ -64,15 +64,12 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/linux-crontab-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-ssh-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-sudo-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/nginx-config.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/perms-reset.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/php-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-clean.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-muplugs.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-perms.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-update.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-worker.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/ssl-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/wp-install.txt
 
 ## rename all scripts ##
@@ -88,15 +85,12 @@ mv linux-crontab-config.txt linux-crontab-config
 mv linux-ssh-config.txt linux-ssh-config
 mv linux-sudo-config.txt linux-sudo-config
 mv nginx-config.txt nginx-config
-mv perms-reset.txt perms-reset
-mv php-install.txt php-install
 mv ss-clean.txt ss-clean
 mv ss-install.txt ss-install
 mv ss-muplugs.txt ss-muplugs
 mv ss-perms.txt ss-perms
 mv ss-update.txt ss-update
 mv ss-worker.txt ss-worker
-mv ssl-install.txt ssl-install
 mv wp-install.txt wp-install
 
 # copy all scripts to destination ##
@@ -111,15 +105,12 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-ssh-config /var/www/linux-ssh-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-sudo-config /var/www/linux-sudo-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/nginx-config /var/www/nginx-config
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/perms-reset /var/www/perms-reset
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/php-install /var/www/php-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-clean /var/www/ss-clean
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-install /var/www/ss-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-muplugs /var/www/ss-muplugs
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-perms /var/www/ss-perms
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-update /var/www/ss-update
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-worker /var/www/ss-worker
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ssl-install /var/www/ssl-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/wp-install /var/www/wp-install
 
 ## chown all scripts ##
