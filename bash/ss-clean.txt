@@ -28,6 +28,7 @@ rm -R -f /var/www/nginx-install
 rm -R -f /var/www/linux-root-config
 rm -R -f /var/www/ufw-install
 rm -R -f /var/www/bash-config
+rm -R -f /var/www/perms-reset
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
