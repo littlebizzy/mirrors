@@ -83,7 +83,12 @@ source /var/www/bash-config
 ## /usr/sbin/useradd client
 ## echo client:$pass | /usr/sbin/chpasswd
 
-## install littlebizzy sudoers file ##
+
+
+#########################
+#### install sudoers ####
+#########################
+
 cd /tmp/
 wget --timestamping http://mirrors.littlebizzy.com/linux/sudoers.txt
 mv bash-sudoers.txt sudoers
@@ -91,7 +96,12 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 chown root:root /etc/sudoers
 rm -R -f /tmp/sudoers.txt sudoers
 
-## install littlebizzy sshd config file ##
+
+
+#####################
+#### install ssh ####
+#####################
+
 cd /tmp/
 wget --timestamping http://mirrors.littlebizzy.com/ssh/sshd-config.txt
 mv sshd-config.txt sshd_config
@@ -99,7 +109,12 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 chown root:root /etc/ssh/sshd_config
 rm -R -f /tmp/sshd-config.txt sshd_config
 
-## set server time zone to utc ##
+
+
+##########################
+#### set UTC timezone ####
+##########################
+
 timedatectl set-timezone UTC
 
 ## update repos and install lemp depencies ##
@@ -112,7 +127,12 @@ DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical PATH='/usr/local/sbin:/u
 apt-get install -y php7.0 php7.0-fpm php7.0-mysql php7.0-gd php7.0-curl php7.0-zip php7.0-mcrypt php7.0-mbstring php7.0-xml php7.0-json php7.0-soap
 apt-get upgrade
 
-## install littlebizzy nginx file ##
+
+
+##############################
+#### install nginx config ####
+##############################
+
 cd /tmp/
 wget --timestamping http://mirrors.littlebizzy.com/nginx/nginx-conf.txt
 mv nginx-conf.txt nginx.conf
@@ -120,7 +140,12 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 rm -R -f /tmp/nginx.conf /tmp/nginx-conf.txt
 chown root:root /etc/nginx/nginx.conf
 
-## install littlebizzy php config files ##
+
+
+############################
+#### install php config ####
+############################
+
 cd /tmp/
 wget --timestamping http://mirrors.littlebizzy.com/php/php-ini.txt
 wget --timestamping http://mirrors.littlebizzy.com/php/php-fpm-conf.txt
@@ -136,7 +161,11 @@ rm -R -f /tmp/php.ini /tmp/php-ini.txt
 rm -R -f /tmp/php-fpm.conf /tmp/php-fpm-conf.txt
 
 
-## install mysql 5.7 ##
+
+#######################
+#### install mysql ####
+#######################
+
 echo "mysql-server mysql-server/root_password password "$dbpassroot"" | debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password "$dbpassroot"" | debconf-set-selections
 apt-get install -y mysql-server
@@ -144,6 +173,25 @@ apt-get install -y mysql-server
 ## secure mysql 5.7 ##
 source /var/www/mysql-secure
 
+
+
+#####################
+#### install ssl ####
+#####################
+
+## generate ssl certificate ##
+# openssl req -new -x509 -nodes -days 730 -newkey rsa:2048 -keyout /etc/ssl/nginx.key -out /etc/ssl/nginx.crt -subj "/C=${country}/ST=${state}/L=${city}/O=${company}/OU=${dept}/CN=${domain}"
+
+## quick permissions reset ##
+# chown root:root /etc/ssl/nginx.key
+# chown root:root /etc/ssl/nginx.crt
+
+## restart services ##
+# /etc/init.d/nginx restart
+
+##########################
+#### restart services ####
+##########################
 
 service nginx restart
 service php5-fpm restart
