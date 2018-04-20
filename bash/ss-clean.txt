@@ -33,6 +33,7 @@ rm -R -f /var/www/php-install
 rm -R -f /var/www/ssl-install
 rm -R -f /var/www/linux-ssh-config
 rm -R -f /var/www/linux-sudo-config
+rm -R -f /var/www/wp-install
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
