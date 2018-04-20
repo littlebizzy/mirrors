@@ -1,8 +1,12 @@
 #!/bin/bash
 
-#################################
-#### littlebizzy cron weekly ####
-#################################
+########################################################################
+#### author: slickstack ################################################
+#### link: https://slickstack.io #######################################
+#### mirror: http://mirrors.littlebizzy.com/crons/5-cron-weekly.txt ####
+#### path: /var/www/5-cron-weekly ######################################
+#### purpose: #5 (5/7) priority slickstack cron jobs ###################
+########################################################################
 
 ## scripts to run ##
 # source /var/www/lemp-updates
