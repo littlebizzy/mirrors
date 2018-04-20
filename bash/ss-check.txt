@@ -63,7 +63,6 @@ wget --no-cache http://mirrors.littlebizzy.com/crons/7-cron-sometimes.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-crontab-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-ssh-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-sudo-config.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/nginx-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-clean.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-install.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-muplugs.txt
@@ -84,7 +83,6 @@ mv 7-cron-sometimes.txt 7-cron-sometimes
 mv linux-crontab-config.txt linux-crontab-config
 mv linux-ssh-config.txt linux-ssh-config
 mv linux-sudo-config.txt linux-sudo-config
-mv nginx-config.txt nginx-config
 mv ss-clean.txt ss-clean
 mv ss-install.txt ss-install
 mv ss-muplugs.txt ss-muplugs
@@ -104,7 +102,6 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-crontab-config /var/www/linux-crontab-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-ssh-config /var/www/linux-ssh-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-sudo-config /var/www/linux-sudo-config
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/nginx-config /var/www/nginx-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-clean /var/www/ss-clean
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-install /var/www/ss-install
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-muplugs /var/www/ss-muplugs
