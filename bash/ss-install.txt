@@ -143,6 +143,51 @@ chown root:root /etc/nginx/nginx.conf
 
 
 ############################
+#### setup nginx server ####
+############################
+
+## delete all tmp files before we begin ##
+# rm -R -f /tmp/nginx.conf /tmp/nginx-conf /tmp/nginx-conf.txt
+# rm -R -f /tmp/default /tmp/default.txt /tmp/server-block /tmp/server-block.txt /tmp/server-block-ssl /tmp/server-block-ssl.txt
+
+## download nginx.conf (production) file ##
+# cd /tmp/
+# wget --no-cache http://mirrors.littlebizzy.com/nginx/nginx-conf.txt
+
+## download correct template for building nginx server block ##
+# cd /tmp/
+# if [[ "$ssl" == "yes" ]]
+# then wget --no-cache http://mirrors.littlebizzy.com/nginx/server-block-ssl.txt
+# mv /tmp/server-block-ssl.txt /tmp/default.txt
+# else wget --no-cache http://mirrors.littlebizzy.com/nginx/server-block.txt
+# mv /tmp/server-block.txt /tmp/default.txt
+# fi
+
+## replace @DOMAIN placeholder with variable from config ##
+# sed -i "s/@DOMAIN/${domain}/g" /tmp/default.txt
+
+## rename all txt files to no extension ##
+# mv /tmp/nginx-conf.txt /tmp/nginx.conf
+# mv /tmp/default.txt /tmp/default
+
+## overwrite all files to their various destinations ##
+# cp -R -f --no-preserve=mode,ownership /tmp/nginx.conf /etc/nginx/nginx.conf
+# cp -R -f --no-preserve=mode,ownership /tmp/default /etc/nginx/sites-available/default
+
+## delete all tmp files after we finish ##
+# rm -R -f /tmp/nginx.conf /tmp/nginx-conf /tmp/nginx-conf.txt
+# rm -R -f /tmp/default /tmp/default.txt /tmp/server-block /tmp/server-block.txt /tmp/server-block-ssl /tmp/server-block-ssl.txt
+
+## quick permissions reset ##
+# chown root:root /etc/nginx/nginx.conf
+# chown root:root /etc/nginx/sites-available/default
+
+## restart nginx ##
+# /etc/init.d/nginx restart
+
+
+
+############################
 #### install php config ####
 ############################
 
