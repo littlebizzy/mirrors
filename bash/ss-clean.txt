@@ -30,6 +30,7 @@ rm -R -f /var/www/ufw-install
 rm -R -f /var/www/bash-config
 rm -R -f /var/www/perms-reset
 rm -R -f /var/www/php-install
+rm -R -f /var/www/ssl-install
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
