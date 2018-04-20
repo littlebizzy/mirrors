@@ -1,8 +1,12 @@
 #!/bin/bash
 
-################################
-#### littlebizzy cron daily ####
-################################
+#######################################################################
+#### author: slickstack ###############################################
+#### link: https://slickstack.io ######################################
+#### mirror: http://mirrors.littlebizzy.com/crons/4-cron-daily.txt ####
+#### path: /var/www/4-cron-daily ######################################
+#### purpose: #4 (4/7) priority slickstack cron jobs ##################
+#######################################################################
 
 ## scripts to run ##
 source /var/www/ss-muplugs
