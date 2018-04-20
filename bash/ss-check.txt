@@ -69,7 +69,6 @@ wget --no-cache http://mirrors.littlebizzy.com/bash/ss-muplugs.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-perms.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-update.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-worker.txt
-wget --no-cache http://mirrors.littlebizzy.com/bash/wp-install.txt
 
 ## rename all scripts ##
 cd /tmp/
@@ -89,7 +88,6 @@ mv ss-muplugs.txt ss-muplugs
 mv ss-perms.txt ss-perms
 mv ss-update.txt ss-update
 mv ss-worker.txt ss-worker
-mv wp-install.txt wp-install
 
 # copy all scripts to destination ##
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/1-cron-often /var/www/1-cron-often
@@ -108,7 +106,6 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-perms /var/www/ss-perms
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-update /var/www/ss-update
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-worker /var/www/ss-worker
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/wp-install /var/www/wp-install
 
 ## chown all scripts ##
 chown root:root /var/www/1-cron-often
