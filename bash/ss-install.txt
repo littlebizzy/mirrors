@@ -85,16 +85,16 @@ source /var/www/bash-config
 
 
 
-#########################
-#### install sudoers ####
-#########################
+########################
+#### config sudoers ####
+########################
 
-cd /tmp/
-wget --timestamping http://mirrors.littlebizzy.com/linux/sudoers.txt
-mv bash-sudoers.txt sudoers
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/sudoers /etc/sudoers
-chown root:root /etc/sudoers
-rm -R -f /tmp/sudoers.txt sudoers
+# cd /tmp/
+# wget --no-cache http://mirrors.littlebizzy.com/linux/sudoers.txt
+# mv sudoers.txt sudoers
+# cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/sudoers /etc/sudoers
+# chown root:root /etc/sudoers
+# rm -R -f /tmp/sudoers.txt sudoers
 
 
 
@@ -102,12 +102,12 @@ rm -R -f /tmp/sudoers.txt sudoers
 #### install ssh ####
 #####################
 
-cd /tmp/
-wget --timestamping http://mirrors.littlebizzy.com/ssh/sshd-config.txt
-mv sshd-config.txt sshd_config
-cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/sshd_config /etc/ssh/sshd_config
-chown root:root /etc/ssh/sshd_config
-rm -R -f /tmp/sshd-config.txt sshd_config
+# cd /tmp/
+# wget --no-cache http://mirrors.littlebizzy.com/ssh/sshd-config.txt
+# mv sshd-config.txt sshd_config
+# cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/sshd_config /etc/ssh/sshd_config
+# chown root:root /etc/ssh/sshd_config
+# rm -R -f /tmp/sshd-config.txt sshd_config
 
 
 
@@ -252,6 +252,37 @@ source /var/www/mysql-secure
 # chown -R www-data:wordpress /var/www/html
 # find /var/www/html/ -type d -exec chmod 775 {} \;
 # find /var/www/html/ -type f -exec chmod 664 {} \;
+
+
+
+####################
+#### config ssh ####
+####################
+
+## delete all tmp files before we begin ##
+# rm -R -f /tmp/sshd_config /tmp/sshd-config.txt
+
+## download template files ##
+# cd /tmp/
+# wget --no-cache http://mirrors.littlebizzy.com/ubuntu/sshd-config.txt
+
+## replace placeholders with variables from config ##
+# sed -i "s/@CLIENT/${user}/g" /tmp/sshd-config.txt
+
+## rename tmp files ##
+# mv sshd-config.txt sshd_config
+
+## overwrite all files to their various destinations ##
+# cp -R -f --no-preserve=mode,ownership /tmp/sshd_config /etc/ssh/sshd_config
+
+## delete all tmp files after we finish ##
+# rm -R -f /tmp/sshd_config /tmp/sshd-config.txt
+
+## quick permissions reset ##
+# chown root:root /etc/ssh/sshd_config
+
+## restart ssh ##
+# /etc/init.d/ssh restart
 
 
 
