@@ -69,7 +69,7 @@ chmod -R 700 /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 # chmod -R 700 /var/www/ss-config
 
 ## rename old config ##
-# cp -R -f -d --no-preserve=mode,ownership /var/www/config /var/www/config-OLD
+mv /var/www/config /var/www/config-OLD
 
 ## restart services ##
 /etc/init.d/nginx restart
