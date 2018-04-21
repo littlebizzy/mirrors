@@ -129,6 +129,23 @@ apt-get upgrade
 
 
 
+#########################
+#### install crontab ####
+#########################
+
+cd /tmp/
+rm -R -f /tmp/crontab.txt /tmp/root
+wget --no-cache http://mirrors.littlebizzy.com/ubuntu/crontab.txt
+mv /tmp/crontab.txt /tmp/root
+cp -R -f --preserve=mode,ownership /tmp/root /var/spool/cron/crontabs/root
+rm -R -f /tmp/crontab.txt /tmp/root
+chown root:root /var/spool/cron/crontabs/root
+
+## reload crontab ##
+/etc/init.d/cron reload
+
+
+
 ##############################
 #### install nginx config ####
 ##############################
