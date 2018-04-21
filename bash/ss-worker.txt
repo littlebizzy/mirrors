@@ -1,15 +1,21 @@
 #!/bin/bash
 
-###################################################################
-#### author: slickstack ###########################################
-#### link: https://slickstack.io ##################################
-#### mirror: http://mirrors.littlebizzy.com/bash/ss-worker.txt ####
-#### path: /var/www/ss-worker #####################################
-#### purpose: updates various slickstack config files #############
-###################################################################
+############################################################
+#### author: slickstack ####################################
+#### link: https://slickstack.io ###########################
+#### mirror: http://mirrors.slickstack.io/ss-worker.txt ####
+#### path: /var/www/ss-worker ##############################
+#### purpose: performs various maintenance tasks ###########
+############################################################
 
-## server config variables ##
+## slickstack config ##
 source /var/www/ss-config
+
+
+
+#########################################
+#### update various slickstack files ####
+#########################################
 
 ## delete previous tmp files ##
 rm -R -f /tmp/1-cron-often.txt* /tmp/1-cron-often*
@@ -18,21 +24,21 @@ rm -R -f /tmp/gai-conf.txt* /tmp/gai.conf*
 rm -R -f /tmp/nginx-conf.txt* /tmp/nginx.conf*
 rm -R -f /tmp/nginx.crt* /tmp/nginx.key* /tmp/nginx.pem*
 
-# download latest scripts and configs ##
+# download latest files ##
 cd /tmp/
 wget --no-cache http://mirrors.littlebizzy.com/crons/1-cron-often.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-check.txt
 wget --no-cache http://mirrors.littlebizzy.com/ubuntu/gai-conf.txt
 wget --no-cache http://mirrors.littlebizzy.com/nginx/nginx-conf.txt
 
-## rename scripts and configs ##
+## rename files ##
 cd /tmp/
 mv 1-cron-often.txt 1-cron-often
 mv ss-check.txt ss-check
 mv gai-conf.txt gai.conf
 mv nginx-conf.txt nginx.conf
 
-## copy scripts and configs to their destinations ##
+## copy files to their destinations ##
 cp -R -f -d --no-preserve=mode,ownership /tmp/1-cron-often /var/www/1-cron-often
 cp -R -f -d --no-preserve=mode,ownership /tmp/ss-check /var/www/ss-check
 cp -R -f -d --no-preserve=mode,ownership /tmp/gai.conf /etc/gai.conf
@@ -63,6 +69,12 @@ chown root:root /etc/nginx/nginx.conf
 chown root:root /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 chmod -R 700 /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 
+
+
+############################
+#### various TEMP tasks ####
+############################
+
 ## copy old config to slickstack config ##
 # cp -R -f -d --no-preserve=mode,ownership /var/www/config /var/www/ss-config
 # chown root:root /var/www/ss-config
@@ -70,13 +82,6 @@ chmod -R 700 /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 
 ## rename old config ##
 mv /var/www/config /var/www/config-OLD
-
-## restart services ##
-/etc/init.d/nginx restart
-
-#####################################################
-#### littlebizzy perform various temporary tasks ####
-#####################################################
 
 ## TEMP change crontab ##
 # sed -i "s/ups-cron/lemp-updates/g" /var/spool/cron/crontabs/root
@@ -89,3 +94,11 @@ mv /var/www/config /var/www/config-OLD
 
 ## TEMP change error log path ##
 # sed -i "s#/var/log/nginx/error.log#/var/log/php-fpm/error.log#g" /var/www/html/wp-config.php
+
+
+
+##########################
+#### restart services ####
+##########################
+
+/etc/init.d/nginx restart
