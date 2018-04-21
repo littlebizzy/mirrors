@@ -64,9 +64,12 @@ chown root:root /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 chmod -R 700 /etc/ssl/nginx.crt /etc/ssl/nginx.key /etc/ssl/nginx.pem
 
 ## copy old config to slickstack config ##
-cp -R -f -d --no-preserve=mode,ownership /var/www/config /var/www/ss-config
-chown root:root /var/www/ss-config
-chmod -R 700 /var/www/ss-config
+# cp -R -f -d --no-preserve=mode,ownership /var/www/config /var/www/ss-config
+# chown root:root /var/www/ss-config
+# chmod -R 700 /var/www/ss-config
+
+## rename old config ##
+cp -R -f -d --no-preserve=mode,ownership /var/www/config /var/www/config-OLD
 
 ## restart services ##
 /etc/init.d/nginx restart
