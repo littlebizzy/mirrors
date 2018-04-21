@@ -12,7 +12,7 @@ source /var/www/bash-setup-users.txt
 source /var/www/bash-secure-root.txt
 
 ## server config details ##
-source /var/www/bash-config
+source /var/www/ss-config
 
 ## root config ##
 ## reset root password ##
