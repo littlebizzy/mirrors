@@ -19,6 +19,7 @@ rm -R -f /tmp/4-cron-daily*
 rm -R -f /tmp/5-cron-weekly*
 rm -R -f /tmp/6-cron-monthly*
 rm -R -f /tmp/7-cron-sometimes*
+
 rm -R -f /tmp/apt-update*
 rm -R -f /tmp/apt-upgrade*
 rm -R -f /tmp/bash-worker*
@@ -60,6 +61,7 @@ wget --no-cache http://mirrors.littlebizzy.com/crons/4-cron-daily.txt
 wget --no-cache http://mirrors.littlebizzy.com/crons/5-cron-weekly.txt
 wget --no-cache http://mirrors.littlebizzy.com/crons/6-cron-monthly.txt
 wget --no-cache http://mirrors.littlebizzy.com/crons/7-cron-sometimes.txt
+
 wget --no-cache http://mirrors.littlebizzy.com/bash/linux-crontab-config.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-clean.txt
 wget --no-cache http://mirrors.littlebizzy.com/bash/ss-install.txt
@@ -77,6 +79,7 @@ mv 4-cron-daily.txt 4-cron-daily
 mv 5-cron-weekly.txt 5-cron-weekly
 mv 6-cron-monthly.txt 6-cron-monthly
 mv 7-cron-sometimes.txt 7-cron-sometimes
+
 mv linux-crontab-config.txt linux-crontab-config
 mv ss-clean.txt ss-clean
 mv ss-install.txt ss-install
@@ -93,6 +96,7 @@ cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/5-cron-weekly /var/www/5-cron-weekly
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/6-cron-monthly /var/www/6-cron-monthly
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/7-cron-sometimes /var/www/7-cron-sometimes
+
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/linux-crontab-config /var/www/linux-crontab-config
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-clean /var/www/ss-clean
 cp -R -d --remove-destination --preserve=timestamps --no-preserve=mode,ownership /tmp/ss-install /var/www/ss-install
