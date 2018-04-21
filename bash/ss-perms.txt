@@ -9,7 +9,7 @@
 ##################################################################
 
 ## server config variables ##
-source /var/www/config
+source /var/www/ss-config
 
 ## create group wordpress ##
 addgroup wordpress
