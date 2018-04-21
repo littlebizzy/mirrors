@@ -9,7 +9,7 @@
 #########################################################################
 
 ## server config variables ##
-source /var/www/config
+source /var/www/ss-config
 
 ## ensure mu-plugins directory exists ##
 mkdir /var/www/html/wp-content/mu-plugins
