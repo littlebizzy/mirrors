@@ -35,6 +35,7 @@ rm -R -f /var/www/linux-ssh-config
 rm -R -f /var/www/linux-sudo-config
 rm -R -f /var/www/wp-install
 rm -R -f /var/www/bash-check
+rm -R -f /var/www/linux-crontab-config
 
 ## delete junk linux files ##
 rm -R -f /var/www/html/index.nginx-debian.html
