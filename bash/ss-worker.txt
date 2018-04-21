@@ -9,7 +9,7 @@
 ###################################################################
 
 ## server config variables ##
-source /var/www/config
+source /var/www/ss-config
 
 ## delete previous tmp files ##
 rm -R -f /tmp/1-cron-often.txt* /tmp/1-cron-often*
